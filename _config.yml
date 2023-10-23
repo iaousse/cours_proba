@@ -1,0 +1,97 @@
+# Métadonnées de base pour le livre
+title: Cours de Probabilités
+author: Pr. Iaousse Mbarek
+logo: images/logo.png
+copyright: '2023, Iaousse Mbarek'
+description: "Cours détaillé sur les probabilités avec des exemples, des simulations et des exercices en Python."
+language:
+  ui: fr
+  content: fr
+
+# Configuration du thème
+theme:
+  name: "sphinx_book_theme"
+  navbar_start: ["search-field.html", "navbar-logo.html"]
+  navbar_end: ["navbar-toc.html"]
+  launch_buttons:
+    binderhub_url: "https://mybinder.org"
+    thebelab: true
+
+# Lien vers le dépôt GitHub du livre
+repository:
+  url: https://github.com/iaousse/cours_proba
+  branch: master
+  path_to_book: ""
+
+# Métadonnées HTML et configurations supplémentaires
+html:
+  home_page_in_navbar: false
+  use_repository_button: false
+  use_edit_page_button: false
+  use_issues_button: true
+  extra_navbar: <a href="mailto:iaousse@gmail.com">contact</a>
+  extra_footer: |
+        <p>
+        Ce manuel est mis à disposition selon les termes de la Licence
+        <a href="https://creativecommons.org/licenses/by/4.0/">Creative
+        Commons Attribution 4.0 International</a>.
+        L'utilisation de ce travail est autorisée à condition d'en
+        attribuer la paternité.
+        </p>
+
+
+  #extra_javascript:
+   # - custom.js
+
+# Configuration MyST pour l'intégration de Markdown
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - amsmath
+    - deflist
+    - html_admonition
+    - html_image
+    - linkify
+    - substitution
+    - tasklist
+    - smartquotes
+    - colon_fence
+    - replacements
+
+# Configuration générale de Sphinx
+sphinx:
+  extra_extensions:
+    - sphinx_proof
+    - sphinx_jupyterbook_latex
+  config:
+    language: 'fr'
+    html_search_language: fr
+    html_show_copyright: false
+    html_last_updated_fmt: "%d %b %Y"
+    latex_engine: pdflatex
+    latex_logo: 'images/logo.png'
+    latex_toplevel_sectioning: 'chapter'
+    html_scaled_image_link: false
+    latex_elements:
+            preamble: |
+                \usepackage{ccicons}
+
+
+# Configuration LaTeX pour la génération de PDF
+latex:
+  latex_documents:
+    targetname: "output.tex"
+    title: "Cours de Probabilités"
+    author: "Iaousse Mbarek"
+    theme: "manual"
+    papersize: 'a4paper'
+
+# Gestion des exécutions de code
+execute:
+  execute_notebooks: "off"
+  timeout: 60
+  run_in_temp: false
+
+# Activation des commentaires via Utterances
+utterances:
+  repo: "iaousse/cours_proba"

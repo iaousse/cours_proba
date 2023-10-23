@@ -1,0 +1,33 @@
+- file: chapitre_2
+  title: Probabilité Conditionnelle
+  sections:
+    - file: chap2/independance
+      title: Indépendance
+    - file: chap2/bayes
+      title: Formule de Bayes
+
+- file: chapitre_3
+  title: Variables Aléatoires
+  sections:
+    - file: chap3/definition
+      title: Définition
+    - file: chap3/esperance_variance
+      title: Espérance et Variance
+
+- file: chapitre_4
+  title: Distributions Discrètes
+  sections:
+    - file: chap4/binomiale
+      title: Binomiale
+    - file: chap4/poisson
+      title: Poisson
+
+- file: chapitre_5
+  title: Distributions Continues
+  sections:
+    - file: chap5/uniforme
+      title: Uniforme
+    - file: chap5/normale
+      title: Normale
+    - file: chap5/exponentielle
+      title: Exponentielle
