@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Introduction et Concepts de Base &#8212; Cours de Probabilités</title>
+    <title>Introduction et Concepts de Base &#8212; Cours de Probabilités</title>
   
   
   
@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapitre_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="1.1. Théorie des Ensembles" href="chap1/ensembles_et_operations.html" />
+    <link rel="next" title="Théorie des Ensembles" href="chap1/ensembles_et_operations.html" />
     <link rel="prev" title="Fondements des Probabilités : Introduction au Cours" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
@@ -146,31 +146,25 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">1. Introduction et Concepts de Base</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="chap1/ensembles_et_operations.html">1.1. Théorie des Ensembles</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Introduction et Concepts de Base</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="chap1/ensembles_et_operations.html">Théorie des Ensembles</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="chap1/univers.html">1.3. Univers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chap1/evenements.html">1.4. Événements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chap1/axiomes.html">1.5. Axiomes de Probabilité</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chap1/univers.html">Univers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chap1/evenements.html">Événements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chap1/axiomes.html">Axiomes de Probabilité</a></li>
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapitre_2.html">Concepts de Base 2</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="chap2/bayes.html">Expériences Aléatoires</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="chap2/independance.html">Axiomes de Probabilité</a></li>
 </ul>
 </li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapitre_3.html">Concepts de Base 3</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference external" href="https://iaousse.github.io/cours_proba/cours_proba.pdf">Document pdf</a></li>
 </ul>
 
     </div>
@@ -335,7 +329,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction-et-concepts-de-base">
-<h1><span class="section-number">1. </span>Introduction et Concepts de Base<a class="headerlink" href="#introduction-et-concepts-de-base" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Introduction et Concepts de Base<a class="headerlink" href="#introduction-et-concepts-de-base" title="Lien permanent vers cette rubrique">#</a></h1>
 <p>Les probabilités, une branche fondamentale des mathématiques, jouent un rôle crucial dans divers domaines, allant des sciences naturelles à la sociologie. Elles offrent une structure permettant de quantifier l’incertitude et de traduire l’aléatoire en termes mathématiques. Ce chapitre jette un regard approfondi sur la théorie des probabilités, commençant par une exploration de ses racines historiques et de sa signification intrinsèque. Il se penche ensuite sur les bases des ensembles et les opérations qui y sont associées, mettant en lumière les concepts centraux des probabilités. Le chapitre conclut avec une étude approfondie du dénombrement, montrant comment il se relie étroitement à la probabilité et offre des méthodes robustes pour aborder des problèmes complexes.</p>
 <p><strong>Histoire des Probabilités</strong></p>
 <p>À la base, les probabilités servent à quantifier l’incertitude. Elles offrent une manière de donner une valeur numérique à la probabilité d’occurrence d’un événement. Historiquement liées aux jeux de hasard et à l’univers des paris, ce sont des personnalités telles que Blaise Pascal et Pierre de Fermat qui ont contribué à la formalisation de ce domaine, en traitant des problèmes tels que les jeux de dés ou le partage équitable des enjeux. Au fil du temps, l’impact des probabilités s’est étendu, touchant de vastes domaines scientifiques et devenant un élément essentiel pour prendre des décisions basées sur des données présentant une part d’incertitude.</p>
@@ -396,7 +390,7 @@ document.write(`
        title="page suivante">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
-        <p class="prev-next-title"><span class="section-number">1.1. </span>Théorie des Ensembles</p>
+        <p class="prev-next-title">Théorie des Ensembles</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
