@@ -1,0 +1,11 @@
+format: jb-book
+root: intro
+chapters:
+  - file: chapitre_1
+  - file: ensembles
+  - file: denombrement
+  - file: axiomes
+  - file: chap1/univers
+  - file: chapitre_2
+  - url: https://iaousse.github.io/cours_proba/cours_proba.pdf
+    title: Document pdf

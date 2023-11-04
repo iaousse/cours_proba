@@ -1,0 +1,20 @@
+format: jb-article
+root: intro
+sections:
+- file: chapitre_1
+  sections:
+  - file: chap1/ensembles_et_operations
+  - file: chap1/denombrement
+  - file: chap1/axiomes  
+  - file: chap1/exo
+
+- file: chapitre_2
+  sections:
+  - file: chap2/bayes
+  - file: chap2/independance
+- file: chapitre_3
+  sections:
+  - file: chap3/autre_fichier3
+  - file: chap3/autre_fichier4
+- url: https://iaousse.github.io/cours_proba/cours_proba.pdf
+  title: Document pdf

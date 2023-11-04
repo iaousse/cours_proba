@@ -1,0 +1,22 @@
+jb build .
+jb build . --builder pdflatex
+cp ./_build/latex/output.pdf ./_build/html/cours_proba.pdf
+git add ./_build/html/cours_proba.pdf
+git commit -m "ajout du pdf"
+git push origin main
+
+ghp-import -n -p -f _build/html
+
+
+========
+
+```{admonition} Définition
+
+```{admonition} Exemple
+:class: seealso
+
+```{admonition} Remarque
+:class: tip
+
+```{admonition} Preuve
+:class: seealso, dropdown
