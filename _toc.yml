@@ -1,24 +1,11 @@
 format: jb-book
 root: intro
-parts:
-  - caption: ' '   
-    numbered: true
-    chapters:
-    - file: chapitre_1       # Ceci sera le titre du Chapitre 1
-      sections:             # Les sections sous le Chapitre 1
-      - file: chap1/ensembles_et_operations.ipynb
-      - file: chap1/univers
-      - file: chap1/evenements
-      - file: chap1/axiomes
-  - caption: ' '
-    chapters:
-    - file: chapitre_2       # Ceci sera le titre du Chapitre 2
-      sections:             # Les sections sous le Chapitre 2
-      - file: chap2/bayes
-      - file: chap2/independance
-  - caption: ' '
-    chapters:
-    - file: chapitre_3       # Ceci sera le titre du Chapitre 3
-      sections:             # Les sections sous le Chapitre 3
-      - file: chap3/autre_fichier3
-      - file: chap3/autre_fichier4
+chapters:
+  - file: chapitre_1
+  - file: ensembles
+  - file: denombrement
+  - file: axiomes
+  - file: chap1/univers
+  - file: chapitre_2
+  - url: https://iaousse.github.io/cours_proba/cours_proba.pdf
+    title: Document pdf

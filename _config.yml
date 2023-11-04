@@ -1,9 +1,10 @@
 # Métadonnées de base pour le livre
 title: Cours de Probabilités
-author: Pr. Iaousse Mbarek
+author: Professeur Iaousse Mbarek, Département Informatique, École supérieure de technologie, Casablanca, Maroc.
 logo: images/logo.png
 copyright: '2023, Iaousse Mbarek'
-description: "Cours détaillé sur les probabilités avec des exemples, des simulations et des exercices en Python."
+email: mbarek.iaousse@univh2c.ma
+description: "Cours de probabilité de deuxiième année à l'ESTC, département GI."
 language:
   ui: fr
   content: fr
@@ -40,9 +41,6 @@ html:
         </p>
 
 
-  #extra_javascript:
-   # - custom.js
-
 # Configuration MyST pour l'intégration de Markdown
 parse:
   myst_enable_extensions:
@@ -65,6 +63,10 @@ sphinx:
     - sphinx_jupyterbook_latex
   config:
     language: 'fr'
+    html_theme: "sphinx_book_theme"
+    html_static_path: ["_static"]
+    html_css_files:
+      - "custom.css"
     html_search_language: fr
     html_show_copyright: false
     html_last_updated_fmt: "%d %b %Y"
@@ -72,9 +74,12 @@ sphinx:
     latex_logo: 'images/logo.png'
     latex_toplevel_sectioning: 'chapter'
     html_scaled_image_link: false
+    latex_additional_files: ["_static/custom.sty"]
     latex_elements:
             preamble: |
                 \usepackage{ccicons}
+                \usepackage{custom}
+
 
 
 # Configuration LaTeX pour la génération de PDF
@@ -93,5 +98,5 @@ execute:
   run_in_temp: false
 
 # Activation des commentaires via Utterances
-utterances:
-  repo: "iaousse/cours_proba"
+#utterances:
+#  repo: "iaousse/cours_proba"
