@@ -1,0 +1,1892 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Variables Aléatoires Réelles &#8212; Cours de Probabilités</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chap/var_alea';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="prev" title="4. La théorie des probabilités" href="axiomes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapitre_1.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensembles.html">2. Rapel sur les Ensembles et Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="denombrement.html">3. Dénombrement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="axiomes.html">4. La théorie des probabilités</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Variables Aléatoires Réelles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://iaousse.github.io/cours_proba/cours_proba.pdf">Document pdf</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/iaousse/cours_proba/issues/new?title=Issue%20on%20page%20%2Fchap/var_alea.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Ouvrez un problème"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chap/var_alea.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variables Aléatoires Réelles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-aleatoire-reelle">5.1. Variable Aléatoire Réelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatoires-discretes">5.2. Variables Aléatoires Discrètes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-probabilite-dune-variable-aleatoire-discrete">5.2.1. Loi de Probabilité d’une Variable Aléatoire Discrète</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-probabilite">5.2.1.1. Loi de Probabilité</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-de-repartition">5.2.1.2. Fonction de Répartition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-probabilite-dun-couple-de-variables-aleatoires">5.2.2. Loi de Probabilité d’un Couple de Variables Aléatoires</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lois-marginales">5.2.2.1. Lois Marginales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-conditionnelle">5.2.2.2. Loi Conditionnelle</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-conditionnelle-de-x-sachant-un-evenement-a">5.2.2.2.1. Loi Conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> Sachant un Événement <span class="math notranslate nohighlight">\(A\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-conditionnelle-de-x-sachant-y">5.2.2.2.2. Loi Conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> Sachant <span class="math notranslate nohighlight">\(Y\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independance">5.2.2.3. Indépendance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-la-somme">5.2.2.4. Loi de la Somme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-du-produit">5.2.2.5. Loi du Produit</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moments">5.2.3. Moments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#esperance-mathematique">5.2.3.1. Espérance Mathématique</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#moments-dordre-n">5.2.3.2. Moments d’ordre <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-ecart-type-covariance-correlation">5.2.3.3. Variance, Écart-Type, Covariance, Corrélation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-de-lois-de-probabilites-discretes">5.2.4. Exemples de Lois de Probabilités Discrètes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-uniforme">5.2.4.1. Loi Uniforme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-bernoulli">5.2.4.2. Loi de Bernoulli</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-binomiale">5.2.4.3. Loi Binomiale</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couple-de-variables-aleatoires-discretes">5.2.5. Couple de Variables Aléatoires Discrètes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.5.1. Lois Marginales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lois-conditionnelles">5.2.5.2. Lois Conditionnelles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2.5.3. Indépendance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-la-somme-et-du-produit">5.2.5.4. Loi de la Somme et du Produit</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.5.5. Moments</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple">5.2.5.6. Exemple</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatoires-continues">5.3. Variables Aléatoires Continues</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="variables-aleatoires-reelles">
+<h1><span class="section-number">5. </span>Variables Aléatoires Réelles<a class="headerlink" href="#variables-aleatoires-reelles" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>Lors de l’analyse des résultats d’une expérience aléatoire, l’attention se porte souvent sur certaines fonctions du résultat plutôt que sur le résultat en lui-même. Considérons, par exemple, un jeu de pile ou face offrant une récompense monétaire : 5 dirhams si le résultat est pile, et 0 dirham si c’est face. Dans ce cas, nous sommes en présence d’une fonction <span class="math notranslate nohighlight">\( f \)</span> qui associe à pile la valeur 5, <span class="math notranslate nohighlight">\( f(\text{pile}) = 5 \)</span>, et à face la valeur 0, <span class="math notranslate nohighlight">\( f(\text{face}) = 0 \)</span>. Au lieu de se focaliser sur l’issue de chaque lancer, on s’intéresse au gain potentiel, qui est modélisé par la fonction <span class="math notranslate nohighlight">\( f \)</span>. Cette dernière représente une variable aléatoire, c’est-à-dire une quantité numérique qui résume les résultats de l’expérience en une seule métrique significative.</p>
+<p>En biologie moléculaire, cette méthodologie permet à un scientifique d’analyser une séquence d’ADN en se concentrant sur le comptage d’une séquence spécifique, ou “mot” génétique, plutôt que sur la totalité des nucléotides. Cette approche réduit un problème multidimensionnel à une dimension unique, simplifiant l’analyse et l’interprétation des données.</p>
+<p>Cette notion s’applique également à divers autres domaines : en économétrie, une variable aléatoire peut représenter le rendement attendu d’une start-up, intégrant à la fois le risque et l’incertitude. En ingénierie, elle pourrait quantifier la durée de vie estimée d’un composant sous des contraintes variables, influençant la maintenance préventive et la gestion des stocks. En informatique, les variables aléatoires aident à modéliser le temps de réponse d’un système face à des entrées variées, contribuant à l’optimisation des performances. Dans le secteur financier, elles sont essentielles pour estimer la volatilité des actifs, une composante clé dans l’évaluation des options et la gestion du risque. Enfin, dans le domaine du machine learning, les variables aléatoires sont au cœur de l’apprentissage statistique, facilitant la modélisation de la probabilité d’erreur des classificateurs ou l’estimation de la densité d’une distribution sur la base d’échantillons observés.</p>
+<div class="section" id="variable-aleatoire-reelle">
+<h2><span class="section-number">5.1. </span>Variable Aléatoire Réelle<a class="headerlink" href="#variable-aleatoire-reelle" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Dans tout ce qui suit <span class="math notranslate nohighlight">\((\Omega, \mathcal F, P)\)</span> est un espace probabilisé, <span class="math notranslate nohighlight">\(\mathcal B({\mathbb R})\)</span> est la tribu borélienne sur <span class="math notranslate nohighlight">\(\mathbb R\)</span></p>
+<div class="admonition-definition-variable-aleatoire-reelle admonition">
+<p class="admonition-title">Définition (Variable aléatoire réelle)</p>
+<p>Une application <span class="math notranslate nohighlight">\( X: (\Omega, \mathcal{F}) \to (\mathbb{R}, \mathcal{B}(\mathbb{R})) \)</span> est dite <strong>Variable Aléatoire Réelle</strong> si pour tout ensemble <span class="math notranslate nohighlight">\( B \in \mathcal{B}(\mathbb{R}) \)</span>, on a <span class="math notranslate nohighlight">\( X^{-1}(B) \in \mathcal{F} \)</span>. Cela signifie que l’image réciproque de tout ensemble borélien sous <span class="math notranslate nohighlight">\( X \)</span> est un événement dans l’espace de départ <span class="math notranslate nohighlight">\( \Omega \)</span>, mesurable par la tribu <span class="math notranslate nohighlight">\( \mathcal{F} \)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ol class="arabic">
+<li><p><strong>Fonction de gain d’un jeu de dés</strong> :
+La fonction de gain <span class="math notranslate nohighlight">\(g: \{1, 2, 3, 4, 5, 6\} \to \mathbb{R}\)</span>, où <span class="math notranslate nohighlight">\(g(\omega) = \omega\)</span> pour un lancer de dé, est une variable aléatoire. Chaque résultat est mappé directement à un nombre réel représentant le gain, et comme il existe un nombre fini de résultats, tous les sous-ensembles de l’espace de départ sont mesurables.</p></li>
+<li><p><strong>Fonction de résultat d’un lancer de pièce de monnaie</strong> :
+Pour un lancer de pièce de monnaie, la fonction résultat <span class="math notranslate nohighlight">\(X: \{\text{'face'}, \text{'pile'}\} \to \{0,1\}\)</span>, où <span class="math notranslate nohighlight">\(X(\omega) = 0\)</span> si <span class="math notranslate nohighlight">\(\omega\)</span> est ‘face’ et <span class="math notranslate nohighlight">\(1\)</span> si <span class="math notranslate nohighlight">\(\omega\)</span> est ‘pile’, est une variable aléatoire. Tout comme le dé, la pièce de monnaie a un nombre fini de résultats, et ainsi toute fonction en résultant sera une variable aléatoire.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\mathcal{F} = \mathcal{P}(\Omega)\)</span>, alors toute application <span class="math notranslate nohighlight">\(f: \Omega \to \mathbb{R}\)</span> est une variable aléatoire.</p>
+<p>En effet, pour démontrer cela, considérons n’importe quel ensemble borélien <span class="math notranslate nohighlight">\(B \subset \mathbb{R}\)</span>. La préimage de <span class="math notranslate nohighlight">\(B\)</span> par <span class="math notranslate nohighlight">\(f\)</span> est définie comme l’ensemble <span class="math notranslate nohighlight">\(\{ \omega \in \Omega : f(\omega) \in B \}\)</span>. Puisque tout sous-ensemble de <span class="math notranslate nohighlight">\(\Omega\)</span> est un élément de <span class="math notranslate nohighlight">\(\mathcal{F} = \mathcal{P}(\Omega)\)</span>, y compris l’image réciproque de <span class="math notranslate nohighlight">\(B\)</span>. Donc <span class="math notranslate nohighlight">\(f\)</span> est une variable aléatoire.</p>
+</li>
+<li><p><strong>Fonction indicatrice d’un événement</strong> :
+Pour un ensemble <span class="math notranslate nohighlight">\(A \subset \Omega\)</span> donné, la fonction indicatrice <span class="math notranslate nohighlight">\(\mathbf{1}_A: \Omega \to \{0,1\}\)</span>, définie par <span class="math notranslate nohighlight">\(\mathbf{1}_A(\omega) = 1\)</span> si <span class="math notranslate nohighlight">\(\omega \in A\)</span>, et <span class="math notranslate nohighlight">\(0\)</span> sinon, est une variable aléatoire (pourquoi?).</p></li>
+</ol>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Propriétés</p>
+<p>Si <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont des variables aléatoires sur <span class="math notranslate nohighlight">\(\Omega\)</span>, <span class="math notranslate nohighlight">\(f\)</span> une application borélienne, et <span class="math notranslate nohighlight">\(\lambda\)</span> est un réel, alors les fonctions suivantes sont également des variables aléatoires sur <span class="math notranslate nohighlight">\(\Omega\)</span> :</p>
+<ol class="arabic">
+<li><p><strong>Somme :</strong> <span class="math notranslate nohighlight">\(X + Y\)</span> est une variable aléatoire, car la somme de deux fonctions mesurables est mesurable.</p>
+<div class="math notranslate nohighlight">
+\[ 
+   X + Y : \omega \mapsto X(\omega) + Y(\omega) 
+   \]</div>
+</li>
+<li><p><strong>Multiplication par un scalaire :</strong> <span class="math notranslate nohighlight">\(\lambda X\)</span> est une variable aléatoire, car le produit d’une fonction mesurable par un scalaire est mesurable.</p>
+<div class="math notranslate nohighlight">
+\[
+   \lambda X : \omega \mapsto \lambda \cdot X(\omega) 
+   \]</div>
+</li>
+<li><p><strong>Produit :</strong> <span class="math notranslate nohighlight">\(XY\)</span> est une variable aléatoire, car le produit de deux fonctions mesurables est mesurable.</p>
+<div class="math notranslate nohighlight">
+\[
+   XY : \omega \mapsto X(\omega) \cdot Y(\omega) 
+   \]</div>
+</li>
+<li><p><strong>Différence :</strong> <span class="math notranslate nohighlight">\(X - Y\)</span> est une variable aléatoire, car la différence de deux fonctions mesurables est mesurable.</p>
+<div class="math notranslate nohighlight">
+\[
+   X - Y : \omega \mapsto X(\omega) - Y(\omega) 
+   \]</div>
+</li>
+<li><p><strong>Supremum :</strong> <span class="math notranslate nohighlight">\(\sup(X, Y)\)</span> est une variable aléatoire, car le supremum de deux fonctions mesurables est mesurable.</p>
+<div class="math notranslate nohighlight">
+\[
+   \sup(X, Y) : \omega \mapsto \max\{X(\omega), Y(\omega)\} 
+   \]</div>
+</li>
+<li><p><strong>Infimum :</strong> <span class="math notranslate nohighlight">\(\inf(X, Y)\)</span> est une variable aléatoire, car l’infimum de deux fonctions mesurables est mesurable.</p>
+<div class="math notranslate nohighlight">
+\[
+   \inf(X, Y) : \omega \mapsto \min\{X(\omega), Y(\omega)\} 
+   \]</div>
+</li>
+<li><p><em>fonction</em>* : <span class="math notranslate nohighlight">\(f(x)\)</span> est une variable aléatoire.</p>
+<div class="math notranslate nohighlight">
+\[
+    f(X) : \Omega \mapsto f(X(\omega))
+    \]</div>
+</li>
+</ol>
+<p>La mesurabilité de ces fonctions est garantie par les propriétés de la tribu borélienne sur <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> et la définition de la variable aléatoire.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Notations</p>
+<p>Il est usuel et commode d’alléger les notations en variables aléatoires. Si <span class="math notranslate nohighlight">\(x, y \in X(\Omega) \subset \mathbb R\)</span> on écrit :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{X=x\}\)</span> au lieu de <span class="math notranslate nohighlight">\(X^{-1}(\{x\})\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{ X\leq x\}\)</span> au lieu de <span class="math notranslate nohighlight">\(X^{-1}(]-\infty, x])\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{ X&lt; x\}\)</span> au lieu de <span class="math notranslate nohighlight">\(X^{-1}(]-\infty, x[)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{ X\geq x\}\)</span> au lieu de <span class="math notranslate nohighlight">\(X^{-1}([x, +\infty[)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{ X&gt; x\}\)</span> au lieu de <span class="math notranslate nohighlight">\(X^{-1}(]x, +\infty[)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{ x\leq X \leq y\}\)</span> au lieu de <span class="math notranslate nohighlight">\(X^{-1}([x, y])\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></li>
+<li><p>Généralement si <span class="math notranslate nohighlight">\(A\in \mathcal B(\mathbb R)\)</span> on écrit <span class="math notranslate nohighlight">\(\{X\in A\}\)</span> au lieu de <span class="math notranslate nohighlight">\(X^{-1}(A)\)</span>.</p></li>
+</ul>
+<p>Pour plus d’allégement, on écrit <span class="math notranslate nohighlight">\(P(X\in A)\)</span> au lieu de <span class="math notranslate nohighlight">\(P(\{X\in A\})\)</span>, par exemple <span class="math notranslate nohighlight">\(P(X=x)\)</span>, ou <span class="math notranslate nohighlight">\(P(X&lt;x)\)</span>.</p>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p><strong>La loi de probabilité</strong> d’une variable aléatoire <span class="math notranslate nohighlight">\(X\)</span> est définie par l’application (notée <span class="math notranslate nohighlight">\(P_X\)</span>) défini par:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P_X: \mathcal B(\mathbb R) &amp;\rightarrow [0,1] \\
+A\subset \mathbb R &amp;\mapsto P_X(A) = P(X\in A)
+\end{aligned}
+\end{split}\]</div>
+</div>
+<p>Ainsi, <span class="math notranslate nohighlight">\(P_X\)</span> est une probabilité sur <span class="math notranslate nohighlight">\(\mathbb R\)</span>. En effet :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_X(\mathbb R) = P(\Omega) = 1\)</span>, et  <span class="math notranslate nohighlight">\(P_X(\varnothing) = P(\varnothing) = 0\)</span>.</p></li>
+<li><p>Pour toute suite <span class="math notranslate nohighlight">\((A_n)_{n\geq 1}\)</span> de boréliens deux à deux disjoints, on :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P_X(\bigcup_{n\geq 1} A_n)&amp;=P(X^{-1}(\bigcup_{n\geq 1} A_n)) ~~~~~~~~ (\small{\text{par définition de }} P_X)\\
+&amp;= P(\bigcup_{n\geq 1} X^{-1}(A_n))  ~~~~~~~~ (\small{\text{l'image réciproque de la réunion est la réunion des images réciproques}}  )\\
+&amp;= \sum_{n\geq 1}P(X^{-1}(A_n)) ~~~~~~~~(\small{\text{les }}A_n \small{\text{ sont 2 à 2 disjoints, les }} X^{-1}(A_n)\small{\text{ le sont aussi}})\\
+&amp;= \sum_{n\geq 1}P_X(A_n) ~~~~~~~~~~~~~~~~~ (\small{\text{en utilisant la propriété d'additivité des probabilités}})
+\end{aligned}
+\end{split}\]</div>
+<div class="seealso admonition">
+<p class="admonition-title">Remarque</p>
+<p>Les variables aléatoires seront notées par des lettres majuscules, telles que <span class="math notranslate nohighlight">\( X, Y, \ldots \)</span>. Les valeurs qu’elles prennent pour une issue donnée <span class="math notranslate nohighlight">\( \omega \)</span> seront notées par des lettres minuscules (<span class="math notranslate nohighlight">\(x, y, \ldots\)</span>). Ainsi, on pourra utiliser <span class="math notranslate nohighlight">\( x \)</span> pour représenter <span class="math notranslate nohighlight">\( X(\omega) \)</span>.</p>
+</div>
+<blockquote>
+<div><p>On opère une distinction entre les variables aléatoires discrètes, qui prennent un nombre fini ou dénombrable de valeurs, et les variables aléatoires continues, qui peuvent prendre des valeurs sur un intervalle ou l’ensemble des réels.</p>
+</div></blockquote>
+</div>
+<div class="section" id="variables-aleatoires-discretes">
+<h2><span class="section-number">5.2. </span>Variables Aléatoires Discrètes<a class="headerlink" href="#variables-aleatoires-discretes" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une variable aléatoire sur <span class="math notranslate nohighlight">\((\Omega, \mathcal F)\)</span> est dite <strong>discrète</strong> si l’image de <span class="math notranslate nohighlight">\(X\)</span>, notée <span class="math notranslate nohighlight">\(X(\Omega)\)</span> ou <span class="math notranslate nohighlight">\(Im~X\)</span>, est une partie au plus dénombrable (finie ou dénombrable).</p>
+</div>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>Toute fonction constante est une variable aléatoire discrète, appelée variable aléatoire constante.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(A\)</span> est un événement, alors la fonction <span class="math notranslate nohighlight">\(\mathbb 1_A\)</span> (fonction indicatrice de <span class="math notranslate nohighlight">\(A\)</span>) est une variable aléatoire discrète, appelée <strong>variable aléatoire de Bernoulli</strong>.</p></li>
+</ul>
+</div>
+<div class="section" id="loi-de-probabilite-dune-variable-aleatoire-discrete">
+<h3><span class="section-number">5.2.1. </span>Loi de Probabilité d’une Variable Aléatoire Discrète<a class="headerlink" href="#loi-de-probabilite-dune-variable-aleatoire-discrete" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="section" id="loi-de-probabilite">
+<h4><span class="section-number">5.2.1.1. </span>Loi de Probabilité<a class="headerlink" href="#loi-de-probabilite" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="seealso admonition">
+<p class="admonition-title">Remarque</p>
+<p>Puisque <span class="math notranslate nohighlight">\(X(\Omega)\)</span> est au plus dénombrable, alors on peut écrire <span class="math notranslate nohighlight">\(X(\Omega) =\{x_1, \ldots\} = \bigcup_{i\geq 1} \{x_i\}\)</span>. On a <span class="math notranslate nohighlight">\(\forall i, j \in \mathbb N^{*}, ~ i\neq j:~ \{x_i\}\cap\{x_j\} = \varnothing\)</span>. Avec la deuxième condition de probabilités on a</p>
+<div class="math notranslate nohighlight">
+\[
+P_X(X(\Omega)) = P(\Omega) = 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P_X(X(\Omega))=P_X(\bigcup_{i\geq 1} \{x_i\}) = \sum_{i\geq 1}P_X(\{x_i\}) = \sum_{i\geq 1}P(X = x_i)
+\]</div>
+<p>Donc <span class="math notranslate nohighlight">\(\sum_{i\geq 1}P(X = x_i) = 1\)</span></p>
+<p>En particulier pour <span class="math notranslate nohighlight">\(A\in X(\Omega)\)</span>, <span class="math notranslate nohighlight">\(P_X(A)=P(X\in A) = \sum_{x\in A} P(X=x)\)</span>. Ceci dit, <strong>Pour caractériser la loi de <span class="math notranslate nohighlight">\(X\)</span>, il suffit donc d’expliciter tous les <span class="math notranslate nohighlight">\(P(X = x)\)</span> pour <span class="math notranslate nohighlight">\(x \in X(\Omega)\)</span></strong>.</p>
+</div>
+<div class="seealso admonition" id="exemples">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1 :</p>
+<p>Considérons un lancer de pièce de monnaie équilibrée où <span class="math notranslate nohighlight">\(X\)</span> vaut 1 si c’est pile et 0 si c’est face. Alors, <span class="math notranslate nohighlight">\(P(X=1) = P(X=0) = 0.5\)</span>.</p>
+<p class="rubric">Exemple 2 :</p>
+<ul class="simple">
+<li><p>On lance une pièce de monnaie 3 fois. Chaque lancer peut avoir comme résultat pile (noté P) ou face (noté F).</p></li>
+<li><p>L’univers <span class="math notranslate nohighlight">\(\Omega\)</span> de cette expérience est: <span class="math notranslate nohighlight">\(\Omega = \{PPP, PPF, PFP, FPP, PFF, FPF, FFP, FFF\}\)</span></p></li>
+<li><p>À partir de cet ensemble, nous pouvons définir diverses variables aléatoires dont, par exemple, les variables aléatoires <span class="math notranslate nohighlight">\(X, Y\)</span> et <span class="math notranslate nohighlight">\(Z\)</span> :</p>
+<ul>
+<li><p>X = nombre total de “pile” ;</p></li>
+<li><p>Y = nombre de “pile” lors des deux premiers essais ;</p></li>
+<li><p>Z = nombre de “pile” lors des deux derniers essais.
+On remarque que <span class="math notranslate nohighlight">\(X\)</span> est une variable aléatoire prenant une
+valeur dans l’ensemble <span class="math notranslate nohighlight">\(X(\Omega) = \{0, 1, 2, 3\}\)</span>. <span class="math notranslate nohighlight">\(Y\)</span> et <span class="math notranslate nohighlight">\(Z\)</span> sont aussi des variables aléatoires définies sur l’ensemble fondamental, qui prennent des valeurs incluses dans l’ensemble <span class="math notranslate nohighlight">\(Y(\Omega) = Z(\Omega) =\{0, 1, 2\}\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Evenements</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Z\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PPP</p></td>
+<td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPF</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>PFP</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>FPP</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>PFF</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>FPF</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>FFP</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>FFF</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>On peut donc définir la loi de chaque variable aléatoire :</p>
+<ul>
+<li><p>Pour la variable <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(X=x)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{3}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{3}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Pour la variable <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(Y=x)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{4}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{8}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Pour la variable <span class="math notranslate nohighlight">\(Z\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(Z=x)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{4}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{8}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p class="rubric">Exemple 3 :</p>
+<p>On lance un dé équilibré numéroté de 1 à 6. L’univers <span class="math notranslate nohighlight">\(\Omega\)</span> de cette expérience est: <span class="math notranslate nohighlight">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span>. On appelle <span class="math notranslate nohighlight">\(X\)</span> le numéro obtenu et <span class="math notranslate nohighlight">\(Y\)</span> son complément à 6 et <span class="math notranslate nohighlight">\(Z = \sup(X, Y)\)</span>.
+On remarque que:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span> est une variable aléatoire prenant des valeurs dans l’ensemble <span class="math notranslate nohighlight">\(X(\Omega) = \{1, 2, 3, 4, 5, 6\}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y\)</span> est une variable aléatoire prenant des valeurs dans l’ensemble <span class="math notranslate nohighlight">\(Y(\Omega) = \{0, 1, 2, 3, 4, 5\}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z\)</span> est une variable aléatoire prenant des valeurs dans l’ensemble <span class="math notranslate nohighlight">\(Z(\Omega) = \{3, 4, 5, 6\}\)</span>.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Results</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Z\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3</p></td>
+<td><p>3</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>1</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>6</p></td>
+<td><p>0</p></td>
+<td><p>6</p></td>
+</tr>
+</tbody>
+</table>
+<p>On peut donc définir la loi de chaque variable aléatoire :</p>
+<ul>
+<li><p>Pour la variable <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(X=x)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Pour la variable <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(Y=x)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Pour la variable <span class="math notranslate nohighlight">\(Z\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(Z=x)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{6}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="fonction-de-repartition">
+<h4><span class="section-number">5.2.1.2. </span>Fonction de Répartition<a class="headerlink" href="#fonction-de-repartition" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>La fonction de répartition est un élément essentiel dans l’étude des variables aléatoires. Elle fournit un moyen complet de décrire la distribution de probabilités d’une variable aléatoire.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soit <span class="math notranslate nohighlight">\(X\)</span> une variable aléatoire définie sur un espace probabilisable <span class="math notranslate nohighlight">\((\Omega, \mathcal F, P)\)</span>. La <strong>fonction de répartition</strong> de <span class="math notranslate nohighlight">\(X\)</span>, notée <span class="math notranslate nohighlight">\(F_X\)</span>, est définie par :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+F_X: \mathbb R &amp;\rightarrow [0,1] \\
+x &amp;\mapsto F_X(x) = P(X \leq x)
+\end{aligned}
+\end{split}\]</div>
+</div>
+<p>La définition ci-dessus signifie que pour chaque valeur réelle <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(F_X(x)\)</span> représente la probabilité que la variable aléatoire <span class="math notranslate nohighlight">\(X\)</span> prenne une valeur inférieure ou égale à <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Propriétés</p>
+<p>La fonction de répartition d’une variable aléatoire possède plusieurs propriétés clés :</p>
+<ol class="arabic simple">
+<li><p><strong>Croissante</strong> : Pour tous <span class="math notranslate nohighlight">\(x_1, x_2 \in \mathbb{R}\)</span> avec <span class="math notranslate nohighlight">\(x_1 \leq x_2\)</span>, <span class="math notranslate nohighlight">\(F_X(x_1) \leq F_X(x_2)\)</span>.</p></li>
+<li><p><strong>Normalisée</strong> : <span class="math notranslate nohighlight">\(\lim_{x \to -\infty} F_X(x) = 0\)</span> et <span class="math notranslate nohighlight">\(\lim_{x \to +\infty} F_X(x) = 1\)</span>.</p></li>
+<li><p><strong>Continuité à droite</strong> : Pour tout <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(\lim_{y \downarrow x} F_X(y) = F_X(x)\)</span>.</p></li>
+<li><p><strong>Limite à gauche</strong> : Pour tout <span class="math notranslate nohighlight">\(x \in \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(\lim_{y \uparrow x} F_X(y) = F_X(x-) \leq F_X(x)\)</span>.</p></li>
+</ol>
+<p>Ces propriétés sont valides pour toutes les fonctions de répartition, qu’elles soient issues de variables aléatoires discrètes ou continues.</p>
+</div>
+<p>Dans le cas d’une variable aléatoire discrète, la fonction de répartition présente des caractéristiques spécifiques.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Fonction de Répartition des Variables Discrètes</p>
+<p>Dans le cas d’une variable aléatoire discrète <span class="math notranslate nohighlight">\(X\)</span>, la fonction de répartition <span class="math notranslate nohighlight">\(F_X\)</span> présente des caractéristiques particulières. Rappelons que <span class="math notranslate nohighlight">\(X\)</span> est dite discrète si elle prend ses valeurs dans un ensemble dénombrable, c’est-à-dire <span class="math notranslate nohighlight">\(X(\Omega) = \{x_1, x_2, \ldots\}\)</span>.</p>
+<p>Pour toute valeur réelle <span class="math notranslate nohighlight">\(x\)</span>, la fonction de répartition <span class="math notranslate nohighlight">\(F_X(x)\)</span> représente la probabilité que <span class="math notranslate nohighlight">\(X\)</span> soit inférieure ou égale à <span class="math notranslate nohighlight">\(x\)</span>. On peut exprimer cela comme suit :</p>
+<div class="math notranslate nohighlight">
+\[ 
+F_X(x) = P(X \leq x) = P(\{\omega \in \Omega: X(\omega) \leq x\})
+\]</div>
+<p>Dans le cas discret, cette probabilité peut être décomposée en la somme des probabilités des valeurs individuelles que <span class="math notranslate nohighlight">\(X\)</span> peut prendre jusqu’à <span class="math notranslate nohighlight">\(x\)</span>. Ainsi, nous avons :</p>
+<div class="math notranslate nohighlight">
+\[ 
+F_X(x) = \sum_{\{i: x_i \leq x\}} P(X = x_i)
+\]</div>
+<p>L’expression précédente est obtenue en sommant les probabilités <span class="math notranslate nohighlight">\(P(X = x_i)\)</span> pour toutes les valeurs <span class="math notranslate nohighlight">\(x_i\)</span> telles que <span class="math notranslate nohighlight">\(x_i \leq x\)</span>.</p>
+</div>
+<p>La fonction de répartition d’une variable aléatoire discrète n’est pas continue à gauche. En effet, si <span class="math notranslate nohighlight">\(X\)</span> est une variable aléatoire discrète, alors  pour un certain <span class="math notranslate nohighlight">\( i\geq 1\)</span> tel que <span class="math notranslate nohighlight">\(x_i \in X(\Omega) =\{x_1, \ldots \}\)</span>, la limite de <span class="math notranslate nohighlight">\(F_X(x)\)</span> lorsque <span class="math notranslate nohighlight">\(x\)</span> tend vers <span class="math notranslate nohighlight">\(x_i\)</span> par des valeurs inférieures (c’est-à-dire <span class="math notranslate nohighlight">\(\lim_{x \uparrow x_i} F_X(x)\)</span>) n’est pas égale à <span class="math notranslate nohighlight">\(F_X(x_i)\)</span> car <span class="math notranslate nohighlight">\(P(X = x_i) &gt; 0\)</span>, donc <span class="math notranslate nohighlight">\(F_X(x_i) - F_X(x_i-) = P(X = x_i) &gt; 0\)</span>. Alors il existe une discontinuité en <span class="math notranslate nohighlight">\(x_i\)</span>. Entre les points de discontinuité, la fonction de répartition reste constante, car il n’y a pas d’augmentation de probabilité pour les valeurs de <span class="math notranslate nohighlight">\(X\)</span> qui ne sont pas dans son ensemble de définition.</p>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1</p>
+<p>On considère l’Exemple 1 dans <a class="reference internal" href="#exemples"><span class="std std-ref">Exemples</span></a> dans la section précédente. Alors, la fonction de répartition de la variable <span class="math notranslate nohighlight">\(X\)</span> (lancer de pièce de monnaie équilibrée) est :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = 0\)</span> pour <span class="math notranslate nohighlight">\(x &lt; 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = 0.5\)</span> pour <span class="math notranslate nohighlight">\(0 \leq x &lt; 1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = 1\)</span> pour <span class="math notranslate nohighlight">\(x \geq 1\)</span>.</p></li>
+</ul>
+<p class="rubric">Exemple 2</p>
+<p>Reprenons l’Exemple 2 dans <a class="reference internal" href="#exemples"><span class="std std-ref">Exemples</span></a> sur le triple lancer de pièce. La fonction de répartition des variables <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> et <span class="math notranslate nohighlight">\(Z\)</span> est :</p>
+<p>Pour <span class="math notranslate nohighlight">\(X\)</span> (nombre total de “pile”) :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = 0\)</span> pour <span class="math notranslate nohighlight">\(x &lt; 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{1}{8}\)</span> pour <span class="math notranslate nohighlight">\(0 \leq x &lt; 1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{4}{8}\)</span> pour <span class="math notranslate nohighlight">\(1 \leq x &lt; 2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{7}{8}\)</span> pour <span class="math notranslate nohighlight">\(2 \leq x &lt; 3\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = 1\)</span> pour <span class="math notranslate nohighlight">\(x \geq 3\)</span>.</p></li>
+</ul>
+<p>Pour <span class="math notranslate nohighlight">\(Y\)</span> (nombre de “pile” lors des deux premiers essais) :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = 0\)</span> pour <span class="math notranslate nohighlight">\(y &lt; 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = \dfrac{2}{8}\)</span> pour <span class="math notranslate nohighlight">\(0 \leq y &lt; 1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = \dfrac{6}{8}\)</span> pour <span class="math notranslate nohighlight">\(1 \leq y &lt; 2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = 1\)</span> pour <span class="math notranslate nohighlight">\(y \geq 2\)</span>.</p></li>
+</ul>
+<p>Pour <span class="math notranslate nohighlight">\(Z\)</span> (nombre de “pile” lors des deux derniers essais) :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = 0\)</span> pour <span class="math notranslate nohighlight">\(z &lt; 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = \dfrac{2}{8}\)</span> pour <span class="math notranslate nohighlight">\(0 \leq z &lt; 1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = \dfrac{6}{8}\)</span> pour <span class="math notranslate nohighlight">\(1 \leq z &lt; 2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = 1\)</span> pour <span class="math notranslate nohighlight">\(z \geq 2\)</span>.</p></li>
+</ul>
+<p class="rubric">Exemple 3</p>
+<p>En reprenant l’Exemple 3 dans <a class="reference internal" href="#exemples"><span class="std std-ref">Exemples</span></a> du lancer de dé équilibré, la fonction de répartition des variables <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> et <span class="math notranslate nohighlight">\(Z\)</span> est :</p>
+<p>Pour <span class="math notranslate nohighlight">\(X\)</span> (le numéro obtenu) :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = 0\)</span> pour <span class="math notranslate nohighlight">\(x &lt; 1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{1}{6}\)</span> pour <span class="math notranslate nohighlight">\(1 \leq x &lt; 2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{2}{6}\)</span> pour <span class="math notranslate nohighlight">\(2 \leq x &lt; 3\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{3}{6}\)</span> pour <span class="math notranslate nohighlight">\(3 \leq x &lt; 4\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{4}{6}\)</span> pour <span class="math notranslate nohighlight">\(4 \leq x &lt; 5\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = \dfrac{5}{6}\)</span> pour <span class="math notranslate nohighlight">\(5 \leq x &lt; 6\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_X(x) = 1\)</span> pour <span class="math notranslate nohighlight">\(x \geq 6\)</span>.</p></li>
+</ul>
+<p>Pour <span class="math notranslate nohighlight">\(Y\)</span> (complément à 6 de <span class="math notranslate nohighlight">\(X\)</span>) :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = 0\)</span> pour <span class="math notranslate nohighlight">\(y &lt; 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = \dfrac{1}{6}\)</span> pour <span class="math notranslate nohighlight">\(0 \leq y &lt; 1\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = \dfrac{2}{6}\)</span> pour <span class="math notranslate nohighlight">\(1 \leq y &lt; 2\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = \dfrac{3}{6}\)</span> pour <span class="math notranslate nohighlight">\(2 \leq y &lt; 3\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = \dfrac{4}{6}\)</span> pour <span class="math notranslate nohighlight">\(3 \leq y &lt; 4\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = \dfrac{5}{6}\)</span> pour <span class="math notranslate nohighlight">\(4 \leq y &lt; 5\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Y(y) = 1\)</span> pour <span class="math notranslate nohighlight">\(y \geq 5\)</span>.</p></li>
+</ul>
+<p>Pour <span class="math notranslate nohighlight">\(Z\)</span> (<span class="math notranslate nohighlight">\(\sup(X, Y)\)</span>) :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = 0\)</span> pour <span class="math notranslate nohighlight">\(z &lt; 3\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = \dfrac{1}{6}\)</span> pour <span class="math notranslate nohighlight">\(3 \leq z &lt; 4\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = \dfrac{3}{6}\)</span> pour <span class="math notranslate nohighlight">\(4 \leq z &lt; 5\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = \dfrac{5}{6}\)</span> pour <span class="math notranslate nohighlight">\(5 \leq z &lt; 6\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_Z(z) = 1\)</span> pour <span class="math notranslate nohighlight">\(z \geq 6\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="loi-de-probabilite-dun-couple-de-variables-aleatoires">
+<h3><span class="section-number">5.2.2. </span>Loi de Probabilité d’un Couple de Variables Aléatoires<a class="headerlink" href="#loi-de-probabilite-dun-couple-de-variables-aleatoires" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>L’étude des couples de variables aléatoires permet de comprendre les relations et interactions entre deux phénomènes aléatoires. Dans cette section, nous explorons les concepts de lois marginales et lois conditionnelles. Un couple de variables aléatoires <span class="math notranslate nohighlight">\((X, Y)\)</span> sur <span class="math notranslate nohighlight">\((\Omega, \mathcal F)\)</span> est un couple où <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont des variables aléatoires sur <span class="math notranslate nohighlight">\((\Omega, \mathcal F)\)</span>.</p>
+<div class="admonition-definition-generale admonition">
+<p class="admonition-title">Définition Générale</p>
+<p>La <strong>loi de probabilité</strong> d’un couple de variables aléatoires <span class="math notranslate nohighlight">\((X, Y)\)</span> est une application qui associe à chaque <span class="math notranslate nohighlight">\(A \times B\)</span> où <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont des boreliens dans <span class="math notranslate nohighlight">\(\mathcal{B}(\mathbb{R})\)</span> une probabilité. Cette loi est définie par :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+P_{XY}: \mathcal{B}(\mathbb{R})\times \mathcal{B}(\mathbb{R}) &amp;\rightarrow [0,1] \\
+A \times B &amp;\mapsto P_{XY}(A \times B) = P(X \in A, Y \in B)
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le produit <span class="math notranslate nohighlight">\(\mathcal{B}(\mathbb{R})\times \mathcal{B}(\mathbb{R})\)</span> est une triby sru <span class="math notranslate nohighlight">\( \mathbb R^2\)</span>. C’est exactement la tribu borilienne de <span class="math notranslate nohighlight">\(\mathbb R^2\)</span>. C’est la tribu engendrée par les pavés de la forme <span class="math notranslate nohighlight">\(]a_1, b_1[ \times ]a_2, b_2[\)</span> où <span class="math notranslate nohighlight">\(-\infty \leq a_i \leq b_i \leq +\infty\)</span> pour <span class="math notranslate nohighlight">\(i=1, 2\)</span>. Elle contient tous les pavés fermés, ouverts et semi-ouverts.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Couple de Variables Discrètes</p>
+<p>Dans le cas où <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont des variables aléatoires discrètes, les ensembles de valeurs qu’elles peuvent prendre, notés <span class="math notranslate nohighlight">\(X(\Omega) = \{x_1, x_2, \ldots\}\)</span> et <span class="math notranslate nohighlight">\(Y(\Omega) = \{y_1, y_2, \ldots\}\)</span>, sont au plus dénombrables. Ainsi, la loi de probabilité du couple <span class="math notranslate nohighlight">\((X, Y)\)</span> peut être exprimée comme l’ensemble des probabilités conjointes pour chaque paire de valeurs :</p>
+<div class="math notranslate nohighlight">
+\[ P_{XY}(x_i, y_j) = P(X = x_i, Y = y_j) \]</div>
+<p>pour tous <span class="math notranslate nohighlight">\(i, j\)</span>. Cela décrit la probabilité que <span class="math notranslate nohighlight">\(X\)</span> prenne la valeur <span class="math notranslate nohighlight">\(x_i\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> la valeur <span class="math notranslate nohighlight">\(y_j\)</span> simultanément.</p>
+</div>
+<p>Pour illustrer les probabilités conjointes d’un couple de variables aléatoires discrètes, nous pouvons utiliser le tableau suivant :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(X\Y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y_{n_y}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x_1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{11}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{12}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{1n_y}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(x_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{21}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{22}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{2n_y}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(x_{n_x}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{n_x1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{n_x2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{n_xn_y}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vdots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Dans ce tableau, <span class="math notranslate nohighlight">\(p_{ij} = P(X = x_i, Y = y_j)\)</span> représente la probabilité que <span class="math notranslate nohighlight">\(X\)</span> prenne la valeur <span class="math notranslate nohighlight">\(x_i\in X(\Omega)\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> prenne la valeur <span class="math notranslate nohighlight">\(y_j\in Y(\Omega)\)</span>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition</p>
+<p>Si <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sonde deux variables discretes de loi de porbabilite conjoint definit par <span class="math notranslate nohighlight">\( p_{ij} = P_{XY}(x_i, y_j)\)</span> pour <span class="math notranslate nohighlight">\(x_i \in X(\Omega)\)</span> et <span class="math notranslate nohighlight">\(y_j\in Y(\Omega)\)</span>. Alors on a:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\sum_{i=1}^{n_x} \sum_{j=1}^{n_y} p_{ij} = \sum_{j=1}^{n_y} \sum_{i=1}^{n_x} p_{ij} = 1 
+\]</div>
+</div>
+<div class="tip admonition" id="exemple-couple">
+<p class="admonition-title">Exemple</p>
+<p>Un sac contient 4 boules numérotées de 1 à 4. On tire successivement deux boules avec remise et on note <span class="math notranslate nohighlight">\(X_1\)</span> et <span class="math notranslate nohighlight">\(X_2\)</span> les nombres obtenus. Soient les variables aléatoires <span class="math notranslate nohighlight">\(X = X_1\)</span> et <span class="math notranslate nohighlight">\(Y = X_1 - X_2\)</span>.</p>
+<ul class="simple">
+<li><p>L’espace d’échantillonnage <span class="math notranslate nohighlight">\(\Omega\)</span> pour chaque tirage est <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span>.</p></li>
+<li><p>Les ensembles de valeurs possibles pour les variables aléatoires <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont :</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(X_1(\Omega) = \{1, 2, 3, 4\}\)</span> (le résultat du premier tirage),</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_2(\Omega) = \{1, 2, 3, 4\}\)</span> (le résultat du deuxième tirage),</p></li>
+<li><p><span class="math notranslate nohighlight">\(X(\Omega) = \{1, 2, 3, 4\}\)</span> (car <span class="math notranslate nohighlight">\(X = X_1\)</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y(\Omega) = \{-3, -2, -1, 0, 1, 2, 3\}\)</span> (car <span class="math notranslate nohighlight">\(Y = X_1 - X_2\)</span>).</p></li>
+</ul>
+</li>
+</ul>
+<p>La probabilité de chaque résultat est uniforme, car chaque boule a la même chance d’être tirée. Ainsi, la probabilité <span class="math notranslate nohighlight">\(P\)</span> pour chaque résultat individuel est <span class="math notranslate nohighlight">\(\frac{1}{4}\)</span>.</p>
+<p><strong>Table de Loi du Couple <span class="math notranslate nohighlight">\((X_1, X_2)\)</span></strong> :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>X_1 \ X_2</strong></p></th>
+<th class="head"><p><strong>1</strong></p></th>
+<th class="head"><p><strong>2</strong></p></th>
+<th class="head"><p><strong>3</strong></p></th>
+<th class="head"><p><strong>4</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>4</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table de Loi du Couple <span class="math notranslate nohighlight">\((X, Y)\)</span></strong> :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Y \ X</strong></p></th>
+<th class="head"><p><strong>1</strong></p></th>
+<th class="head"><p><strong>2</strong></p></th>
+<th class="head"><p><strong>3</strong></p></th>
+<th class="head"><p><strong>4</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>-3</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-2</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>-1</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>0</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2</strong></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Dans ces tables, chaque entrée représente la probabilité conjointe <span class="math notranslate nohighlight">\(P_{XY}(x_i, y_j)\)</span> de tirer un certain couple de résultats <span class="math notranslate nohighlight">\((x_i, y_j)\)</span>. Pour que ces distributions soient valides, les probabilités doivent satisfaire la condition suivante :</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{i=1}^{4} \sum_{j=1}^{4} P_{X_1X_2}(x_i, x_j) = \sum_{i=1}^{4} \sum_{j=-3}^{3} P_{XY}(x_i, y_j) = 1 \]</div>
+</div>
+<div class="section" id="lois-marginales">
+<h4><span class="section-number">5.2.2.1. </span>Lois Marginales<a class="headerlink" href="#lois-marginales" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>La <strong>loi marginale</strong> d’une variable <span class="math notranslate nohighlight">\(X\)</span> au sein d’un couple de variables aléatoires <span class="math notranslate nohighlight">\((X, Y)\)</span> est la probabilité que cette variable prenne certaines valeurs, indépendamment de l’autre variable. Dans le cas de variables aléatoires discrètes <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span>, la loi marginale de <span class="math notranslate nohighlight">\(X\)</span> est donnée par :</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(X = x_i) = \sum_{y_j \in Y(\Omega)} P(X = x_i, Y = y_j) 
+\]</div>
+<p>pour chaque <span class="math notranslate nohighlight">\(x_i \in X(\Omega)\)</span>. Une formule similaire s’applique pour la loi marginale de <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>En considérant l’<a class="reference internal" href="#exemple-couple"><span class="std std-ref">Exemple</span></a> précédent, nous allons déterminer les lois marginales des variables <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p><strong>Loi Marginale de <span class="math notranslate nohighlight">\(X_1\)</span> et <span class="math notranslate nohighlight">\(X_2\)</span> :</strong>
+Puisque les tirages sont uniformes et indépendants, la probabilité de chaque valeur pour <span class="math notranslate nohighlight">\(X_1\)</span> et <span class="math notranslate nohighlight">\(X_2\)</span> est la même. Par exemple, pour <span class="math notranslate nohighlight">\(X_1\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(X_1=x_i) = \sum_{j=1}^4 P(X_1 = x_i, X_2 = j) = 4 \times \dfrac{1}{16} = \dfrac{1}{4} 
+\]</div>
+<p>De même, la loi marginale de <span class="math notranslate nohighlight">\(X_2\)</span> est identique à celle de <span class="math notranslate nohighlight">\(X_1\)</span>.</p>
+<p><strong>Loi Marginale de <span class="math notranslate nohighlight">\(X\)</span> :</strong>
+La loi marginale de <span class="math notranslate nohighlight">\(X\)</span> est identique à celle de <span class="math notranslate nohighlight">\(X_1\)</span> car <span class="math notranslate nohighlight">\(X = X_1\)</span>. Donc, <span class="math notranslate nohighlight">\(P(X=x_i) = \dfrac{1}{4}\)</span> pour chaque <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p><strong>Table de Probabilités Marginales pour <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span> et <span class="math notranslate nohighlight">\(X\)</span></strong> :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(X=x)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Loi Marginale de <span class="math notranslate nohighlight">\(Y\)</span> :</strong>
+Calculons la loi marginale de <span class="math notranslate nohighlight">\(Y\)</span> en sommant les probabilités conjointes où <span class="math notranslate nohighlight">\(Y\)</span> prend une valeur spécifique. Par exemple, pour <span class="math notranslate nohighlight">\(Y = 0\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(Y=0) = \sum_{i=1}^4 P(X = i, Y = 0) = \sum_{i=1}^4 P(X_1 = i, X_1 - X_2 = 0) = 4 \times \dfrac{1}{16} = \dfrac{1}{4} 
+\]</div>
+<p>En effectuant des calculs similaires pour les autres valeurs de <span class="math notranslate nohighlight">\(Y\)</span>, on obtient les probabilités marginales pour toutes les valeurs possibles de <span class="math notranslate nohighlight">\(Y\)</span>.
+<strong>Table de Probabilités Marginales pour <span class="math notranslate nohighlight">\(Y\)</span> :</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
+<th class="head"><p>-3</p></th>
+<th class="head"><p>-2</p></th>
+<th class="head"><p>-1</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(Y=y)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{3}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{3}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="loi-conditionnelle">
+<h4><span class="section-number">5.2.2.2. </span>Loi Conditionnelle<a class="headerlink" href="#loi-conditionnelle" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>La loi conditionnelle est un concept fondamental en probabilités, utilisé pour décrire le comportement d’une variable aléatoire en présence d’informations supplémentaires.</p>
+<div class="section" id="loi-conditionnelle-de-x-sachant-un-evenement-a">
+<h5><span class="section-number">5.2.2.2.1. </span>Loi Conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> Sachant un Événement <span class="math notranslate nohighlight">\(A\)</span><a class="headerlink" href="#loi-conditionnelle-de-x-sachant-un-evenement-a" title="Lien permanent vers cette rubrique">#</a></h5>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>La <strong>loi conditionnelle</strong> de la variable aléatoire <span class="math notranslate nohighlight">\(X\)</span> sachant l’événement <span class="math notranslate nohighlight">\(A\in \mathcal F\)</span> (avec <span class="math notranslate nohighlight">\(P(A) &gt; 0\)</span>) est la probabilité que <span class="math notranslate nohighlight">\(X\)</span> prenne certaines valeurs, donné que l’événement <span class="math notranslate nohighlight">\(A\)</span> s’est produit. Elle est définie par :</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(X \in B | A) = \dfrac{P(X \in B \cap A)}{P(A)} 
+\]</div>
+<p>pour tout <span class="math notranslate nohighlight">\(B\in \mathcal B(\mathbb R)\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Cas de Variable Discrète</p>
+<p>Dans le cas où <span class="math notranslate nohighlight">\(X\)</span> est une variable aléatoire discrète et <span class="math notranslate nohighlight">\(A\)</span> un événement, la loi conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> sachant <span class="math notranslate nohighlight">\(A\)</span> est donnée par :</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(X = x | A) = \dfrac{P(X = x \cap A)}{P(A)} 
+\]</div>
+<p>pour chaque valeur <span class="math notranslate nohighlight">\(x\in X(\Omega)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="loi-conditionnelle-de-x-sachant-y">
+<h5><span class="section-number">5.2.2.2.2. </span>Loi Conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> Sachant <span class="math notranslate nohighlight">\(Y\)</span><a class="headerlink" href="#loi-conditionnelle-de-x-sachant-y" title="Lien permanent vers cette rubrique">#</a></h5>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Pour deux des variables aléatoires discrètes <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span>, la loi conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> sachant <span class="math notranslate nohighlight">\(Y\)</span> est donnée pour chaque paire de valeurs <span class="math notranslate nohighlight">\((x, y)\in X(\Omega)\times Y(\Omega)\)</span> par :</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(X = x | Y = y) = \dfrac{P(X = x, Y = y)}{P(Y = y)} 
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Pour reprendre l’<a class="reference internal" href="#exemple-couple"><span class="std std-ref">exemple précédent</span></a> des tirages de boules, calculons la loi conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> sachant <span class="math notranslate nohighlight">\((Y = 3)\)</span> :</p>
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(x=1\)</span> (<span class="math notranslate nohighlight">\(P(X = 1 | Y = 3)\)</span>) : D’après la table de la loi conjointe, <span class="math notranslate nohighlight">\(P(X=1, Y=3) = 0\)</span>. La probabilité marginale <span class="math notranslate nohighlight">\(P(Y = 3) = \dfrac{1}{16}\)</span>. Ainsi, <span class="math notranslate nohighlight">\(P(X = 1 | Y = 3) = \dfrac{0}{\dfrac{1}{16}} = 0\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(x=2\)</span>: De même, <span class="math notranslate nohighlight">\(P(X=2, Y=3) = 0\)</span>, donc <span class="math notranslate nohighlight">\(P(X = 2 | Y = 3) = 0\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(x=3\)</span>: De même, <span class="math notranslate nohighlight">\(P(X=3, Y=3) = 0\)</span>, donc <span class="math notranslate nohighlight">\(P(X = 3 | Y = 3) = 0\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(x=4\)</span>: Ici, <span class="math notranslate nohighlight">\(P(X=4, Y=3) = \dfrac{1}{16}\)</span>. Ainsi, <span class="math notranslate nohighlight">\(P(X = 4 | Y = 3) = \dfrac{\dfrac{1}{16}}{\dfrac{1}{16}} = 1\)</span>.</p></li>
+</ul>
+<p>Ainsi, la table de loi de <span class="math notranslate nohighlight">\(P(X = x | Y = 3)\)</span> est :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(X\)</span></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(X = x | Y = 3)\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Examinons maintenant la loi conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> sachant <span class="math notranslate nohighlight">\((Y = -2)\)</span> :</p>
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(x=1\)</span> : <span class="math notranslate nohighlight">\(P(X=1, Y=-2) = \dfrac{1}{16}\)</span>. La probabilité marginale <span class="math notranslate nohighlight">\(P(Y = -2) = \dfrac{2}{16}\)</span>. Ainsi, <span class="math notranslate nohighlight">\(P(X = 1 | Y = -2) = \dfrac{\dfrac{1}{16}}{\dfrac{2}{16}} = \dfrac{1}{2}\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(x=2\)</span>: De même, <span class="math notranslate nohighlight">\(P(X=2, Y=-2) = \dfrac{1}{16}\)</span>, donc <span class="math notranslate nohighlight">\(P(X = 2 | Y = -2) = \dfrac{1}{2}\)</span>.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(x=3\)</span> et <span class="math notranslate nohighlight">\(x=4\)</span>: <span class="math notranslate nohighlight">\(P(X=x, Y=-2) = 0\)</span>, donc <span class="math notranslate nohighlight">\(P(X = x | Y = -2) = 0\)</span>.</p></li>
+</ul>
+<p>Ainsi, la table de loi de <span class="math notranslate nohighlight">\(P(X = x | Y = -2)\)</span> est :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(X\)</span></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(X = x | Y = -2)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{2}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="independance">
+<h4><span class="section-number">5.2.2.3. </span>Indépendance<a class="headerlink" href="#independance" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Deux variables aléatoires <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont indépendantes si et seulement si pour tous <span class="math notranslate nohighlight">\(A, B \in \mathcal B(\mathbb R)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+P_{XY}(A\times B) = P(X \in A, Y \in B) = P(X \in A)P(Y \in B)
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Cas de Variable Discrète</p>
+<p>Deux variables aléatoires discrètes <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont indépendantes si et seulement si pour tous <span class="math notranslate nohighlight">\(x \in X(\Omega)\)</span> et <span class="math notranslate nohighlight">\(y \in Y(\Omega)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+P(X = x, Y = y) = P(X = x)P(Y = y)
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Reprenant l’<a class="reference internal" href="#exemple-couple"><span class="std std-ref">exemple précédent</span></a> des tirages de boules, vérifions l’indépendance des variables aléatoires <span class="math notranslate nohighlight">\(X_1\)</span> et <span class="math notranslate nohighlight">\(X_2\)</span> puis <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> :</p>
+<p><strong>Pour <span class="math notranslate nohighlight">\(X_1\)</span> et <span class="math notranslate nohighlight">\(X_2\)</span> :</strong></p>
+<ul class="simple">
+<li><p>Les valeurs de <span class="math notranslate nohighlight">\(P(X_1 = x_1)\)</span> et <span class="math notranslate nohighlight">\(P(X_2 = x_2)\)</span> sont <span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span> pour toutes <span class="math notranslate nohighlight">\(x_1\)</span> et <span class="math notranslate nohighlight">\(x_2\)</span>.</p></li>
+<li><p>Pour chaque combinaison <span class="math notranslate nohighlight">\((x_1, x_2)\)</span>, <span class="math notranslate nohighlight">\(P(X_1 = x_1, X_2 = x_2) = \dfrac{1}{16}\)</span>.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(X_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P(X_1 = x_1, X_2 = x_2)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P(X_1 = x_1)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P(X_2 = x_2)\)</span></p></th>
+<th class="head"><p>Comparaison</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>On a <span class="math notranslate nohighlight">\(\dfrac{1}{16} = \dfrac{1}{4} \times \dfrac{1}{4}\)</span> pour toutes les paires <span class="math notranslate nohighlight">\((x_1, x_2)\)</span>, ce qui indique que <span class="math notranslate nohighlight">\(X_1\)</span> et <span class="math notranslate nohighlight">\(X_2\)</span> sont indépendantes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Astuce</p>
+<p><strong>ON DOIT AVOIR L’EGALITE POUR TOUT COUPLE DE VALEURS POUR DIRE QUE LES VARAIBLES SONT INDEPENDANTES</strong></p>
+</div>
+<p><strong>Pour <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> :</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span> prend les valeurs <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> prend les valeurs <span class="math notranslate nohighlight">\(\{-3, -2, -1, 0, 1, 2, 3\}\)</span>.</p></li>
+<li><p>Calculons <span class="math notranslate nohighlight">\(P(X = x, Y = y)\)</span>, <span class="math notranslate nohighlight">\(P(X = x)\)</span> et <span class="math notranslate nohighlight">\(P(Y = y)\)</span> pour chaque paire <span class="math notranslate nohighlight">\((x, y)\)</span> et comparons-les.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(X\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P(X = x, Y = y)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P(X = x)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P(Y = y)\)</span></p></th>
+<th class="head"><p>Comparaison</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>-2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} \neq \dfrac{1}{4} \times \dfrac{1}{8}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>-2</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16} \neq \dfrac{1}{4} \times \dfrac{1}{8}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>-2</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0 \neq \dfrac{1}{4} \times \dfrac{1}{8}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>-2</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0 \neq \dfrac{1}{4} \times \dfrac{1}{8}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Donc, <span class="math notranslate nohighlight">\(X\)</span>, et <span class="math notranslate nohighlight">\(Y\)</span> ne sont pas indépendantes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Astuce</p>
+<p><strong>UNE SEULE COMPARAISON MONTRANT <span class="math notranslate nohighlight">\(\neq\)</span> EST SUFFISENTE POUR DIRE QUE LES DEUX VARIABLE NE SONT PAS INDEPANDANTE</strong>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="loi-de-la-somme">
+<h4><span class="section-number">5.2.2.4. </span>Loi de la Somme<a class="headerlink" href="#loi-de-la-somme" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soient <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> deux variables aléatoires discrètes. La loi de <span class="math notranslate nohighlight">\(X + Y\)</span> est définie par la probabilité :</p>
+<div class="math notranslate nohighlight">
+\[ P(X + Y = z) = \sum_{x \in X(\Omega)} P(X = x, Y = z - x) = \sum_{y \in Y(\Omega)} P(X = z - y, Y = y) \]</div>
+<p>où <span class="math notranslate nohighlight">\(X(\Omega)\)</span> et <span class="math notranslate nohighlight">\(Y(\Omega)\)</span> représentent l’ensemble des valeurs que <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> peuvent respectivement prendre.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Cas de Variables Indépendantes</p>
+<p>Si <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont indépendantes, la loi de <span class="math notranslate nohighlight">\(X + Y\)</span> peut être simplifiée en utilisant la propriété d’indépendance :</p>
+<div class="math notranslate nohighlight">
+\[ P(X + Y = z) = \sum_{x \in X(\Omega)} P(X = x)P(Y = z - x) = \sum_{y \in Y(\Omega)} P(X = z - y)P(Y = y) \]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>En reprenant l’<a class="reference internal" href="#exemple-couple"><span class="std std-ref">exemple précédent</span></a> des tirages de boules, calculons les lois de <span class="math notranslate nohighlight">\(Z = X_1 + X_2\)</span> et <span class="math notranslate nohighlight">\(W = X + Y\)</span> (où <span class="math notranslate nohighlight">\(X = X_1\)</span> et <span class="math notranslate nohighlight">\(Y = X_1 - X_2\)</span>).
+On a <span class="math notranslate nohighlight">\((Z(\Omega) = \{2, 3, 4, 5, 6, 7, 8\}\)</span> et <span class="math notranslate nohighlight">\(W(\Omega)=\{-2, -1, 0, 1, 2, 3, 4, 5, 6, 7\}\)</span></p>
+<p class="rubric">Loi de <span class="math notranslate nohighlight">\(Z = X_1 + X_2\)</span></p>
+<p><strong>Étapes de calcul pour <span class="math notranslate nohighlight">\(Z\)</span>:</strong></p>
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(z = 2\)</span>: Seule la combinaison <span class="math notranslate nohighlight">\((1, 1)\)</span> donne <span class="math notranslate nohighlight">\(Z = 2\)</span>.</p></li>
+</ul>
+<p>Puisque <span class="math notranslate nohighlight">\(X_1, X_2\)</span> sont independants, on utilise la formule:</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(X_1 + X_2 = 2) = \sum_{x \in X_1(\Omega)} P(X_1 = x)P(X_2 = z - x)
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+P(X_1 + X_2 = 2) = P(X_1 = 1)P(X_2 = 2 - 1)+P(X_1 = 2)P(X_2 = 2 - 2)+P(X_1 = 3)P(X_2 = 2 - 3)+P(X_1 = 4)P(X_2 = 2 - 4) = \dfrac{1}{16}+0+0+0
+\]</div>
+<p>Donc, <span class="math notranslate nohighlight">\(P(Z = 2) = \dfrac{1}{16}\)</span>.</p>
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(z = 3\)</span>: Les combinaisons <span class="math notranslate nohighlight">\((1, 2)\)</span> et <span class="math notranslate nohighlight">\((2, 1)\)</span> donnent <span class="math notranslate nohighlight">\(Z = 3\)</span>.</p></li>
+</ul>
+<p>Donc, <span class="math notranslate nohighlight">\(P(Z = 3) = \dfrac{2}{16}\)</span>.</p>
+<ul class="simple">
+<li><p>De même, nous calculons pour <span class="math notranslate nohighlight">\(z = 4, 5, 6, 7, 8\)</span>.</p></li>
+</ul>
+<p><strong>Table de loi de <span class="math notranslate nohighlight">\(Z\)</span> :</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(z\)</span></p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+<th class="head"><p>7</p></th>
+<th class="head"><p>8</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(Z=z)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{3}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{4}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{3}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Loi de <span class="math notranslate nohighlight">\(W = X + Y\)</span></p>
+<p><strong>Étapes de calcul pour <span class="math notranslate nohighlight">\(W\)</span>:</strong></p>
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(w = -2\)</span>: Seule la combinaison <span class="math notranslate nohighlight">\((1, -3)\)</span> donne <span class="math notranslate nohighlight">\(w = -2\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P(W = -2) = \sum_{x \in X(\Omega)} P(X = x,Y = (-2) - x)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(W = -2) = P(X = 1,Y = -2 - 1)+P(X = 2,Y = -2 - 2)+P(X = 3,Y = -2 - 3)+P(X = 4,Y = -2 - 4)= P(X = 1,Y = -3) + 0 + 0+0
+\]</div>
+<p>Donc, <span class="math notranslate nohighlight">\(P(W = -2) = \dfrac{1}{16}\)</span>.</p>
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(w = -1\)</span>: La combinaison <span class="math notranslate nohighlight">\((2, 3)\)</span> donne <span class="math notranslate nohighlight">\(w = -1\)</span>. Donc, <span class="math notranslate nohighlight">\(P(W = -1) = \dfrac{1}{16}\)</span>.</p></li>
+<li><p>De même, nous calculons pour <span class="math notranslate nohighlight">\(w = 0, 1, 2, 3, 4, 5, 6, 7\)</span>.</p></li>
+</ul>
+<p><strong>Table de loi de <span class="math notranslate nohighlight">\(W\)</span> :</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(w\)</span></p></th>
+<th class="head"><p>-2</p></th>
+<th class="head"><p>-1</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+<th class="head"><p>7</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(W=w)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{2}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\dfrac{1}{16}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="loi-du-produit">
+<h4><span class="section-number">5.2.2.5. </span>Loi du Produit<a class="headerlink" href="#loi-du-produit" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>La loi du produit de deux variables aléatoires discrètes <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> est la probabilité de chaque paire de valeurs <span class="math notranslate nohighlight">\((x, y)\)</span> que peuvent prendre ces variables, multipliée ensemble.</p>
+</div>
+</div>
+</div>
+<div class="section" id="moments">
+<h3><span class="section-number">5.2.3. </span>Moments<a class="headerlink" href="#moments" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="section" id="esperance-mathematique">
+<h4><span class="section-number">5.2.3.1. </span>Espérance Mathématique<a class="headerlink" href="#esperance-mathematique" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>L’espérance mathématique d’une variable aléatoire discrète <span class="math notranslate nohighlight">\(X\)</span> est la somme des produits de chaque valeur que <span class="math notranslate nohighlight">\(X\)</span> peut prendre par sa probabilité, soit <span class="math notranslate nohighlight">\(E[X] = \sum_{x} xP(X = x)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="moments-dordre-n">
+<h4><span class="section-number">5.2.3.2. </span>Moments d’ordre <span class="math notranslate nohighlight">\(n\)</span><a class="headerlink" href="#moments-dordre-n" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Le <span class="math notranslate nohighlight">\(n\)</span>-ième moment (ou moment d’ordre <span class="math notranslate nohighlight">\(n\)</span>) d’une variable aléatoire discrète <span class="math notranslate nohighlight">\(X\)</span> est défini par <span class="math notranslate nohighlight">\(E[X^n]\)</span>.</p>
+</div>
+</div>
+<div class="section" id="variance-ecart-type-covariance-correlation">
+<h4><span class="section-number">5.2.3.3. </span>Variance, Écart-Type, Covariance, Corrélation<a class="headerlink" href="#variance-ecart-type-covariance-correlation" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<ul class="simple">
+<li><p><strong>Variance</strong> : <span class="math notranslate nohighlight">\(Var(X) = E[(X - E[X])^2]\)</span></p></li>
+<li><p><strong>Écart-Type</strong> : <span class="math notranslate nohighlight">\(\sqrt{Var(X)}\)</span></p></li>
+<li><p><strong>Covariance</strong> : <span class="math notranslate nohighlight">\(Cov(X, Y) = E[(X - E[X])(Y - E[Y])]\)</span></p></li>
+<li><p><strong>Corrélation</strong> : <span class="math notranslate nohighlight">\(\rho_{X,Y} = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}}\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="exemples-de-lois-de-probabilites-discretes">
+<h3><span class="section-number">5.2.4. </span>Exemples de Lois de Probabilités Discrètes<a class="headerlink" href="#exemples-de-lois-de-probabilites-discretes" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="section" id="loi-uniforme">
+<h4><span class="section-number">5.2.4.1. </span>Loi Uniforme<a class="headerlink" href="#loi-uniforme" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Dans une loi uniforme discrète, chaque événement possible a la même probabilité de se produire.</p>
+</div>
+</div>
+<div class="section" id="loi-de-bernoulli">
+<h4><span class="section-number">5.2.4.2. </span>Loi de Bernoulli<a class="headerlink" href="#loi-de-bernoulli" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une variable aléatoire <span class="math notranslate nohighlight">\(X\)</span> suit une loi de Bernoulli si elle ne prend que deux valeurs : 1 (avec probabilité <span class="math notranslate nohighlight">\(p\)</span>) et 0 (avec probabilité <span class="math notranslate nohighlight">\(1-p\)</span>).</p>
+</div>
+</div>
+<div class="section" id="loi-binomiale">
+<h4><span class="section-number">5.2.4.3. </span>Loi Binomiale<a class="headerlink" href="#loi-binomiale" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une variable aléatoire suit une loi binomiale <span class="math notranslate nohighlight">\(B(n, p)\)</span> si elle compte le nombre de succès dans une série de <span class="math notranslate nohighlight">\(n\)</span> épreuves de Bernoulli indépendantes, avec probabilité de succès <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div>
+<p>ffffffffffffffffffffff</p>
+</div>
+</div>
+<div class="section" id="couple-de-variables-aleatoires-discretes">
+<h3><span class="section-number">5.2.5. </span>Couple de Variables Aléatoires Discrètes<a class="headerlink" href="#couple-de-variables-aleatoires-discretes" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Un couple <span class="math notranslate nohighlight">\((X, Y)\)</span> est une paire de variables aléatoires discrètes dont la loi conjointe est définie par les probabilités <span class="math notranslate nohighlight">\(p_{ij} = P(X = x_i, Y = y_j)\)</span>.</p>
+<div class="section" id="id1">
+<h4><span class="section-number">5.2.5.1. </span>Lois Marginales<a class="headerlink" href="#id1" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Pour chaque variable <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> dans le couple, les lois marginales sont obtenues en sommant les probabilités conjointes sur toutes les valeurs possibles de l’autre variable.</p>
+</div>
+<div class="section" id="lois-conditionnelles">
+<h4><span class="section-number">5.2.5.2. </span>Lois Conditionnelles<a class="headerlink" href="#lois-conditionnelles" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>La probabilité conditionnelle <span class="math notranslate nohighlight">\(P(X=x_i | Y=y_j)\)</span> est calculée par:</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(X=x_i | Y=y_j) = \dfrac{P(X = x_i, Y = y_j)}{P(Y = y_j)} 
+\]</div>
+</div>
+<div class="section" id="id2">
+<h4><span class="section-number">5.2.5.3. </span>Indépendance<a class="headerlink" href="#id2" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Les variables <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont indépendantes si:
+$<span class="math notranslate nohighlight">\( 
+P(X = x_i, Y = y_j) = P(X = x_i)P(Y = y_j) 
+\)</span>$</p>
+<p>pour tous les <span class="math notranslate nohighlight">\(i, j\)</span>.</p>
+</div>
+<div class="section" id="loi-de-la-somme-et-du-produit">
+<h4><span class="section-number">5.2.5.4. </span>Loi de la Somme et du Produit<a class="headerlink" href="#loi-de-la-somme-et-du-produit" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Si <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> sont deux variables aléatoires discrètes indépendantes, la variable <span class="math notranslate nohighlight">\(Z = X + Y\)</span> a pour loi de probabilité la convolution des lois de <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+</div>
+<div class="section" id="id3">
+<h4><span class="section-number">5.2.5.5. </span>Moments<a class="headerlink" href="#id3" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Les moments d’une variable aléatoire donnent des informations sur sa distribution.</p>
+<ul class="simple">
+<li><p><strong>Espérance</strong> (premier moment) : <span class="math notranslate nohighlight">\(E(X) = \sum x_i p_i\)</span></p></li>
+<li><p><strong>Variance</strong> (second moment centré) : <span class="math notranslate nohighlight">\(\text{Var}(X) = E((X - E(X))^2) = \sum (x_i - E(X))^2 p_i\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="exemple">
+<h4><span class="section-number">5.2.5.6. </span>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Pour un dé équilibré, <span class="math notranslate nohighlight">\(E(X) = \sum_{i=1}^{6} i \cdot \dfrac{1}{6} = 3.5\)</span> et <span class="math notranslate nohighlight">\(\text{Var}(X) = \sum_{i=1}^{6} (i - 3.5)^2 \cdot \dfrac{1}{6}\)</span>.
+Chaque section de ce cours peut être développée avec des exemples spécifiques, des problèmes résolus, et des discussions pour illustrer et consolider la compréhension des concepts introduits.</p>
+<ul class="simple">
+<li><p>Loi de probabilité d’une variable aléatoire discrète</p>
+<ul>
+<li><p>Loi de probabilité</p></li>
+<li><p>Fonction de répartition</p></li>
+</ul>
+</li>
+<li><p>Loi de probabilité d’un couple de v.a</p>
+<ul>
+<li><p>Lois marginales</p></li>
+<li><p>Lois conditionnelles</p></li>
+<li><p>Indépendance</p></li>
+<li><p>Loi de la somme</p></li>
+<li><p>Loi de produit</p></li>
+</ul>
+</li>
+<li><p>Moments</p>
+<ul>
+<li><p>Espérance mathématique</p></li>
+<li><p>Moments</p></li>
+<li><p>Variance - Ecart-type - Covariance - Corrélation</p></li>
+</ul>
+</li>
+<li><p>Exemples de lois de probabilités discrètes</p>
+<ul>
+<li><p>Loi uniforme</p></li>
+<li><p>Loi de Bernoulli</p></li>
+<li><p>Loi Binomiale</p></li>
+<li><p>Loi multinômiale</p></li>
+<li><p>Loi hypergéométrique</p></li>
+<li><p>Loi de poisson</p></li>
+<li><p>Loi géométrique</p></li>
+<li><p>Loi binomiale négative</p></li>
+<li><p>Tableaux des lois de probabilités discrètes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="variables-aleatoires-continues">
+<h2><span class="section-number">5.3. </span>Variables Aléatoires Continues<a class="headerlink" href="#variables-aleatoires-continues" title="Lien permanent vers cette rubrique">#</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="axiomes.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>La théorie des probabilités</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-aleatoire-reelle">5.1. Variable Aléatoire Réelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatoires-discretes">5.2. Variables Aléatoires Discrètes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-probabilite-dune-variable-aleatoire-discrete">5.2.1. Loi de Probabilité d’une Variable Aléatoire Discrète</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-probabilite">5.2.1.1. Loi de Probabilité</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-de-repartition">5.2.1.2. Fonction de Répartition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-probabilite-dun-couple-de-variables-aleatoires">5.2.2. Loi de Probabilité d’un Couple de Variables Aléatoires</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lois-marginales">5.2.2.1. Lois Marginales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-conditionnelle">5.2.2.2. Loi Conditionnelle</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-conditionnelle-de-x-sachant-un-evenement-a">5.2.2.2.1. Loi Conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> Sachant un Événement <span class="math notranslate nohighlight">\(A\)</span></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-conditionnelle-de-x-sachant-y">5.2.2.2.2. Loi Conditionnelle de <span class="math notranslate nohighlight">\(X\)</span> Sachant <span class="math notranslate nohighlight">\(Y\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independance">5.2.2.3. Indépendance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-la-somme">5.2.2.4. Loi de la Somme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-du-produit">5.2.2.5. Loi du Produit</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moments">5.2.3. Moments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#esperance-mathematique">5.2.3.1. Espérance Mathématique</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#moments-dordre-n">5.2.3.2. Moments d’ordre <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-ecart-type-covariance-correlation">5.2.3.3. Variance, Écart-Type, Covariance, Corrélation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-de-lois-de-probabilites-discretes">5.2.4. Exemples de Lois de Probabilités Discrètes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-uniforme">5.2.4.1. Loi Uniforme</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-bernoulli">5.2.4.2. Loi de Bernoulli</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-binomiale">5.2.4.3. Loi Binomiale</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couple-de-variables-aleatoires-discretes">5.2.5. Couple de Variables Aléatoires Discrètes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2.5.1. Lois Marginales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lois-conditionnelles">5.2.5.2. Lois Conditionnelles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2.5.3. Indépendance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-de-la-somme-et-du-produit">5.2.5.4. Loi de la Somme et du Produit</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.5.5. Moments</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple">5.2.5.6. Exemple</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatoires-continues">5.3. Variables Aléatoires Continues</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, Département Informatique, École supérieure de technologie, Casablanca, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Iaousse Mbarek.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Mis à jour le 19 déc. 2023.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Ce manuel est mis à disposition selon les termes de la Licence
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative
+Commons Attribution 4.0 International</a>.
+L'utilisation de ce travail est autorisée à condition d'en
+attribuer la paternité.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

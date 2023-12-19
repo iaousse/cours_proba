@@ -1,0 +1,1117 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Dénombrement &#8212; Cours de Probabilités</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chap/denombrement';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="4. La théorie des probabilités" href="axiomes.html" />
+    <link rel="prev" title="2. Rapel sur les Ensembles et Applications" href="ensembles.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapitre_1.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensembles.html">2. Rapel sur les Ensembles et Applications</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Dénombrement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="axiomes.html">4. La théorie des probabilités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="var_alea.html">5. Variables Aléatoires Réelles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://iaousse.github.io/cours_proba/cours_proba.pdf">Document pdf</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/iaousse/cours_proba/issues/new?title=Issue%20on%20page%20%2Fchap/denombrement.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Ouvrez un problème"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chap/denombrement.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dénombrement</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes-du-cardinal">3.1. Propriétés du Cardinal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principe-de-laddition">3.1.1. Principe de l’addition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#union-densembles">3.1.1.1. Union d’Ensembles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intersection-densembles">3.1.1.2. Intersection d’Ensembles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-dapplication-gestion-de-stock-dordinateurs">3.1.1.3. Exemple d’application: Gestion de Stock d’Ordinateurs:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principe-de-la-multiplication">3.1.2. Principe de la multiplication</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#produit-cartesien-densembles">3.1.2.1. Produit Cartésien d’Ensembles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-dapplication-capacite-des-numeros-de-cartes-sim">3.1.2.2. Exemple d’application: Capacité des numéros de cartes SIM</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinal-de-lensemble-des-parties">3.1.3. Cardinal de l’ensemble des Parties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-de-denombrement">3.2. Techniques de dénombrement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangements">3.2.1. Arrangements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations">3.2.1.1. Permutations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangement-de-p-elements-parmi-n-sans-repetition">3.2.1.2. Arrangement de p éléments parmi n sans répétition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangement-de-p-elements-parmi-n-avec-repetition">3.2.1.3. Arrangement de p éléments parmi n avec répétition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaisons">3.2.2. Combinaisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaison-de-p-elements-parmi-n-sans-repetition">3.2.2.1. Combinaison de p éléments parmi n sans répétition</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes-et-theoremes-des-combinaisons">3.2.2.1.1. Propriétés et théorèmes des combinaisons</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaison-de-p-elements-parmi-n-avec-repetition">3.2.2.2. Combinaison de p éléments parmi n avec répétition</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes">3.2.2.2.1. Propriétés</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthese-des-methodes-de-tirage">3.2.3. Synthèse des méthodes de tirage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">3.3. Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">3.3.1. Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">3.3.2. Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">3.3.3. Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">3.3.4. Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">3.3.5. Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">3.3.6. Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">3.3.7. Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">3.3.8. Exercice 8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-9">3.3.9. Exercice 9</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-10">3.3.10. Exercice 10</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-11">3.3.11. Exercice 11</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="denombrement">
+<h1><span class="section-number">3. </span>Dénombrement<a class="headerlink" href="#denombrement" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>Le dénombrement concerne le comptage des éléments d’un ensemble, en particulier lorsqu’ils sont finis ou dénombrables. Il est essentiel en probabilités, notamment pour étudier les variables aléatoires discrètes et leurs distributions. Le dénombrement offre les outils nécessaires pour compter le nombre de façons dont un événement peut se produire, que l’on s’intéresse à des tirages avec remise, sans remise, à des échantillons ordonnés ou non ordonnés.</p>
+<div class="section" id="proprietes-du-cardinal">
+<h2><span class="section-number">3.1. </span>Propriétés du Cardinal<a class="headerlink" href="#proprietes-du-cardinal" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>La discussion antérieure a introduit la notion de cardinalité en théorie des ensembles. La présente section se propose de développer une compréhension approfondie des propriétés qui régissent le dénombrement.</p>
+<div class="section" id="principe-de-laddition">
+<h3><span class="section-number">3.1.1. </span>Principe de l’addition<a class="headerlink" href="#principe-de-laddition" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>La formulation du principe d’addition se présente comme suit :</p>
+<div class="admonition-principe-de-l-addition admonition">
+<p class="admonition-title">Principe de l’addition</p>
+<p>Si une situation <span class="math notranslate nohighlight">\(A\)</span> peut se produire de <span class="math notranslate nohighlight">\(n_1\)</span> façons différentes et une autre situation <span class="math notranslate nohighlight">\(B\)</span> de <span class="math notranslate nohighlight">\(n_2\)</span> façons différentes, et que les deux situations ne peuvent pas se présenter en même temps, alors il y a <span class="math notranslate nohighlight">\(n_1 + n_2\)</span> manières différentes pour que <span class="math notranslate nohighlight">\(A\)</span> ou <span class="math notranslate nohighlight">\(B\)</span> se réalise.</p>
+</div>
+<p>Ce principe s’appuie sur les propriétés cardinales de l’union et de l’intersection des ensembles.</p>
+<div class="section" id="union-densembles">
+<h4><span class="section-number">3.1.1.1. </span>Union d’Ensembles<a class="headerlink" href="#union-densembles" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="seealso admonition">
+<p class="admonition-title">Propriété</p>
+<ul>
+<li><p>Pour deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> disjoint (i.e <span class="math notranslate nohighlight">\(\#A\cap B = \varnothing\)</span>) on a:</p>
+<div class="math notranslate nohighlight">
+\[
+    \# A \cup B = \#A + \#B 
+    \]</div>
+</li>
+<li><p>Plus généralement, si <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span> sont des ensembles deux à deux
+disjoints (i.e <span class="math notranslate nohighlight">\(\#A_i\cap A_j=\varnothing\)</span> pour <span class="math notranslate nohighlight">\(i\neq j\)</span>), alors:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\# \bigcup_{i=1}^{n}A_i = \sum_{i=1}^{n}\#A_i
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Remarque</p>
+<p>quite a considerer les ensembles <span class="math notranslate nohighlight">\(A\setminus B\)</span>, <span class="math notranslate nohighlight">\(B\setminus A\)</span>, et <span class="math notranslate nohighlight">\(A\cap B\)</span>, on trouve que pour deux ensembles quelconques <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\# A \cup B = \#A + \#B - \#A \cap B
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p><strong>Exemple 1</strong>: Soient <span class="math notranslate nohighlight">\(A = \{1, 2, 3\}\)</span> et <span class="math notranslate nohighlight">\(B = \{3, 4, 5\}\)</span>. Alors, <span class="math notranslate nohighlight">\(\# A \cup B = 5\)</span> et <span class="math notranslate nohighlight">\(\#A + \#B| - \# A \cup B = 3 + 3 - 1 = 5\)</span>.</p></li>
+<li><p><strong>Exemple 2</strong>: Soient <span class="math notranslate nohighlight">\(A = \{a, b\}\)</span> et <span class="math notranslate nohighlight">\(B = \{1, 2\}\)</span>. Ici, <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont disjoints, donc <span class="math notranslate nohighlight">\(\# A \cup B = \#A + \#B = 2 + 2 = 4\)</span>.</p></li>
+<li><p><strong>Exemple 3</strong>: Si nous avons 3 chemises et 4 pantalons différents, le nombre de façons de choisir un article (<strong>une chemise OU un pantalon</strong>) est <span class="math notranslate nohighlight">\(3 + 4 = 7\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="intersection-densembles">
+<h4><span class="section-number">3.1.1.2. </span>Intersection d’Ensembles<a class="headerlink" href="#intersection-densembles" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="seealso admonition">
+<p class="admonition-title">Propriété</p>
+<p>Pour deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+\# A \cap B \leq \min(\#A, \#B)
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p><strong>Exemple 1</strong>: Soient <span class="math notranslate nohighlight">\(A = \{x, y, z\}\)</span> et <span class="math notranslate nohighlight">\(B = \{y, z\}\)</span>. Alors, <span class="math notranslate nohighlight">\(\# A \cap B = 2\)</span> et <span class="math notranslate nohighlight">\(\min(\#A, \#B) = \min(3, 2) = 2\)</span>.</p></li>
+<li><p><strong>Exemple 2</strong>: Pour n’importe quel ensemble <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(\#A \cap \varnothing = 0\)</span> car l’intersection de tout ensemble avec l’ensemble vide est l’ensemble vide.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="exemple-dapplication-gestion-de-stock-dordinateurs">
+<h4><span class="section-number">3.1.1.3. </span>Exemple d’application: Gestion de Stock d’Ordinateurs:<a class="headerlink" href="#exemple-dapplication-gestion-de-stock-dordinateurs" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Dans une boutique informatique, on propose à la vente quatre types d’ordinateurs selon le système d’exploitation (OS) installé :</p>
+<ol class="arabic simple">
+<li><p>Des ordinateurs avec Windows uniquement.</p></li>
+<li><p>Des ordinateurs avec Linux uniquement.</p></li>
+<li><p>Des ordinateurs avec un système dual boot Windows/Linux.</p></li>
+<li><p>Des ordinateurs sans aucun système d’exploitation installé.</p></li>
+</ol>
+<p>On dispose des informations suivantes :
+- Il y a 120 ordinateurs au total.
+- 70 ordinateurs ont Windows installé (ce chiffre inclut les ordinateurs avec Windows uniquement et ceux avec dual boot).
+- 50 ordinateurs ont Linux installé (ce chiffre inclut les ordinateurs avec Linux uniquement et ceux avec dual boot).
+- 10 ordinateurs n’ont aucun système d’exploitation installé.
+- 15 ordinateurs ont à la fois Windows et Linux (dual boot).
+<strong>Questions</strong> :
+A. Combien y a-t-il d’ordinateurs avec uniquement Windows installé ?
+B. Combien y a-t-il d’ordinateurs avec uniquement Linux installé ?
+C. Utilisez les lois de De Morgan pour confirmer le nombre d’ordinateurs qui ont au moins un système d’exploitation installé.
+Pour répondre à ces quesitons, on va suivre les étapes suivantes :</p>
+<ul>
+<li><p>Soient les ensembles :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(W\)</span> l’ensemble des ordinateurs avec Windows.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> l’ensemble des ordinateurs avec Linux.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span> l’ensemble des ordinateurs avec un système dual boot (Windows et Linux).</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> l’ensemble des ordinateurs sans aucun système d’exploitation installé.</p></li>
+</ul>
+</li>
+<li><p>On sait que :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\#W = 70\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\#L = 50\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\#D = 15\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\#N = 10\)</span></p></li>
+<li><p>Le total des ordinateurs est <span class="math notranslate nohighlight">\(\#(W \cup L \cup N) = 120\)</span>.</p></li>
+</ul>
+</li>
+<li><p>La formule de dénombrement pour deux ensembles avec intersection est :</p>
+<div class="math notranslate nohighlight">
+\[
+  \#(W \cup L) = \#W + \#L - \#(W \cap L)
+  \]</div>
+</li>
+<li><p>Mais, puisque <span class="math notranslate nohighlight">\(\#(W \cap L) = \#D\)</span>, on peut réécrire cette formule comme :</p>
+<div class="math notranslate nohighlight">
+\[
+  \#(W \cup L) = \#W + \#L - \#D
+  \]</div>
+</li>
+<li><p>Ainsi, le nombre d’ordinateurs avec soit Windows, soit Linux, soit les deux (sans considérer ceux sans OS) est :</p>
+<div class="math notranslate nohighlight">
+\[
+  \#(W \cup L) = 70 + 50 - 15 = 105
+  \]</div>
+</li>
+<li><p>À partir de là, on peut répondre aux questions :</p>
+<p><strong>A.</strong> Le nombre d’ordinateurs avec uniquement Windows installé est <span class="math notranslate nohighlight">\(\#W - \#D\)</span>, soit <span class="math notranslate nohighlight">\(70 - 15 = 55\)</span>.</p>
+<p><strong>B.</strong> Le nombre d’ordinateurs avec uniquement Linux installé est <span class="math notranslate nohighlight">\(\#L - \#D\)</span>, soit <span class="math notranslate nohighlight">\(50 - 15 = 35\)</span>.</p>
+<p><strong>C.</strong> Selon les lois de De Morgan, le complément de l’union de <span class="math notranslate nohighlight">\(W\)</span> et <span class="math notranslate nohighlight">\(L\)</span> est équivalent à l’intersection des compléments de <span class="math notranslate nohighlight">\(W\)</span> et <span class="math notranslate nohighlight">\(L\)</span>. Pour trouver le nombre d’ordinateurs qui ont au moins un système d’exploitation installé, on prend le complément de <span class="math notranslate nohighlight">\(N\)</span> (les ordinateurs sans OS) dans le total, soit</p>
+<div class="math notranslate nohighlight">
+\[
+  120 - \#N = 120 - 10 = 110
+  \]</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="principe-de-la-multiplication">
+<h3><span class="section-number">3.1.2. </span>Principe de la multiplication<a class="headerlink" href="#principe-de-la-multiplication" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Le principe de la multiplication est connue par <strong>Le principe fondamental de dénombrement</strong>. La formulation du principe de la multiplication se présente comme suit :</p>
+<div class="admonition-principe admonition">
+<p class="admonition-title">principe</p>
+<p>Si une situation <span class="math notranslate nohighlight">\(A\)</span> peut se produire de <span class="math notranslate nohighlight">\(n_1\)</span> façons différentes et une autre situation <span class="math notranslate nohighlight">\(B\)</span> de <span class="math notranslate nohighlight">\(n_2\)</span> façons différentes, alors les deux situations <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> peuvent se produire simultanément de <span class="math notranslate nohighlight">\(n_1 \times n_2\)</span> façons.</p>
+</div>
+<p>Ce principe s’appuie sur les propriétés cardinales du produit cartésien des ensembles.</p>
+<div class="section" id="produit-cartesien-densembles">
+<h4><span class="section-number">3.1.2.1. </span>Produit Cartésien d’Ensembles<a class="headerlink" href="#produit-cartesien-densembles" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="seealso admonition">
+<p class="admonition-title">Propriété</p>
+<p>Pour deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+\#A \times B = \#A \cdot \#B
+\]</div>
+<p>Plus généralement, pour des ensembles <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+\#\prod_{i=1}^{n}A_i = \prod_{i=1}^{n}\#A_i
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p><strong>Exemple 1</strong>: Soient <span class="math notranslate nohighlight">\(A = \{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(B = \{a, b\}\)</span>. Alors, <span class="math notranslate nohighlight">\(A \times B = \{(1, a), (1, b), (2, a), (2, b)\}\)</span>, donc <span class="math notranslate nohighlight">\(\#A \times B = 4 = \#A \cdot \#B\)</span>.</p></li>
+<li><p><strong>Exemple 2</strong>: Si <span class="math notranslate nohighlight">\(A = \{1, 2, 3\}\)</span> et <span class="math notranslate nohighlight">\(B = \varnothing\)</span>, alors <span class="math notranslate nohighlight">\(A \times B = \varnothing\)</span> et donc <span class="math notranslate nohighlight">\(\#A \times B = 0 = \#A \cdot \#B\)</span>.</p></li>
+<li><p><strong>Exemple 3</strong>: Pour le même ensemble de vêtements, le nombre de façons de choisir <strong>une chemise ET un pantalon</strong> est <span class="math notranslate nohighlight">\(3 \times 4 = 12\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="exemple-dapplication-capacite-des-numeros-de-cartes-sim">
+<h4><span class="section-number">3.1.2.2. </span>Exemple d’application: Capacité des numéros de cartes SIM<a class="headerlink" href="#exemple-dapplication-capacite-des-numeros-de-cartes-sim" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Les opérateurs de télécommunications distribuent des numéros de téléphone uniques pour chaque carte SIM. Imaginons qu’un opérateur attribue des numéros commençant par 06, suivis de 8 chiffres aléatoires. Nous souhaitons savoir combien de numéros uniques peuvent être créés et en combien d’années la totalité de ces numéros serait attribuée en prenant en compte la croissance de la population.</p>
+<p><strong>Questions</strong> :</p>
+<ol class="arabic simple">
+<li><p>Combien de numéros uniques de cartes SIM de la forme <strong>06XX-XX-XX-XX</strong> sont possibles ?</p></li>
+<li><p>En supposant que la population totale du Maroc est de 40 millions avec un taux de croissance annuel (supposé fixe) de 1.5%, et en considérant que la population évolue selon la formule de croissance exponentielle ci-dessous, et que chaque personne possède exactement une carte SIM, combien d’années faudra-t-il pour que tous les numéros de cartes SIM soient attribués ?</p></li>
+</ol>
+<p>La formule de la croissance exponentielle est :</p>
+<div class="math notranslate nohighlight">
+\[
+N(t) = N_0 \cdot (1 + r)^t
+\]</div>
+<p>où <span class="math notranslate nohighlight">\( N(t) \)</span> est la population totale à l’année <span class="math notranslate nohighlight">\( t \)</span>, <span class="math notranslate nohighlight">\( N_0 \)</span> est la population initiale (40 millions), <span class="math notranslate nohighlight">\( r \)</span> est le taux de croissance annuel (1.5% ou 0.015), et <span class="math notranslate nohighlight">\( t \)</span> est le nombre d’années.</p>
+<p>Pour résoudre ces questions, nous appliquons le principe de multiplication.</p>
+<ul>
+<li><p>Pour la question 1, chaque “x” peut prendre une valeur entre 0 et 9, ce qui donne 10 possibilités par “x”. Comme il y a 8 emplacements pour les “x”, le nombre total de combinaisons de numéros de cartes SIM est :</p>
+<div class="math notranslate nohighlight">
+\[
+  10\times 10\times 10\times 10\times 10\times 10\times 10\times 10\times 10\times 10 =10^8 = 100,000,000
+  \]</div>
+<p>Il y a donc 100 millions de numéros de cartes SIM uniques possibles.</p>
+</li>
+<li><p>Pour la question 2, nous supposons que chaque personne a une carte SIM et que la population augmente à un taux constant de 1.5% par an. Nous voulons trouver <span class="math notranslate nohighlight">\( t \)</span> lorsque <span class="math notranslate nohighlight">\( N(t) \)</span> atteint 100 millions, soit le nombre total de combinaisons possibles pour les numéros de cartes SIM :</p>
+<div class="math notranslate nohighlight">
+\[
+  100,000,000 = 40,000,000 \cdot (1 + 0.015)^t
+  \]</div>
+<div class="math notranslate nohighlight">
+\[
+  \frac{100,000,000}{40,000,000} = (1 + 0.015)^t
+  \]</div>
+<div class="math notranslate nohighlight">
+\[
+  2.5 = (1.015)^t
+  \]</div>
+<div class="math notranslate nohighlight">
+\[
+  t = \frac{\ln(2.5)}{\ln(1.015)}
+  \]</div>
+<p>En calculant cette dernière expression, on obtient <span class="math notranslate nohighlight">\( t \approx 61.5 \)</span>. Cela signifie qu’il faudra environ 61 ans et demi avant que tous les numéros de cartes SIM ne soient attribués.</p>
+</li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Remrque</p>
+<p>Il est important de noter que le calcul ci-dessus repose sur l’hypothèse simplificatrice d’un taux de croissance démographique constant et de l’attribution d’une carte SIM à chaque individu. En réalité, le taux de croissance de la population peut varier et le nombre de personnes possédant une carte SIM est généralement inférieur au nombre total de la population. Par conséquent, le délai réel pour attribuer tous les numéros de cartes SIM pourrait être plus long que l’estimation donnée, ce qui souligne le caractère approximatif de ces calculs.</p>
+</div>
+</div>
+</div>
+<div class="section" id="cardinal-de-lensemble-des-parties">
+<h3><span class="section-number">3.1.3. </span>Cardinal de l’ensemble des Parties<a class="headerlink" href="#cardinal-de-lensemble-des-parties" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="seealso admonition">
+<p class="admonition-title">Propriété</p>
+<p>Pour un ensemble <span class="math notranslate nohighlight">\(A\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+\#\mathcal{P}(A) = 2^{\#A}
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p><strong>Exemple 1</strong>: Soit <span class="math notranslate nohighlight">\(A = \{a, b\}\)</span>. L’ensemble des parties de <span class="math notranslate nohighlight">\(A\)</span> est <span class="math notranslate nohighlight">\(\mathcal{P}(A) = \{\varnothing, \{a\}, \{b\}, \{a, b\}\}\)</span>, donc <span class="math notranslate nohighlight">\(\#\mathcal{P}(A) = 4 = 2^2 = 2^{\#A}\)</span>.</p></li>
+<li><p><strong>Exemple 2</strong>: Si <span class="math notranslate nohighlight">\(A\)</span> est l’ensemble vide, alors <span class="math notranslate nohighlight">\(\mathcal{P}(A) = \{\varnothing\}\)</span> et <span class="math notranslate nohighlight">\(\#\mathcal{P}(A) = 1 = 2^0 = 2^{\#A}\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="techniques-de-denombrement">
+<h2><span class="section-number">3.2. </span>Techniques de dénombrement<a class="headerlink" href="#techniques-de-denombrement" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Dans cette section, nous allons étudier les méthodes permettant de compter et d’énumérer les différentes façons dont des éléments peuvent être combinés, arrangés ou choisis dans diverses situations. Ces techniques sont essentielles pour résoudre une grande variété de problèmes dans des domaines tels que la statistique, la probabilité, la théorie des graphes, l’informatique, et bien d’autres. Il est à noter que toutes ces techniques sont à la base du principe fondamental du dénombrement.</p>
+<div class="section" id="arrangements">
+<h3><span class="section-number">3.2.1. </span>Arrangements<a class="headerlink" href="#arrangements" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="section" id="permutations">
+<h4><span class="section-number">3.2.1.1. </span>Permutations<a class="headerlink" href="#permutations" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une permutation est un arrangement de tous les éléments d’un ensemble dans un ordre particulier. En d’autres termes, c’est une manière de réorganiser les éléments d’un ensemble de façon à ce que chaque élément apparaisse exactement une fois dans la nouvelle séquence. Le nombre total de permutations possibles pour un ensemble de n éléments est donné par la factorielle de n, notée n!.</p>
+<div class="math notranslate nohighlight">
+\[
+n! = n\times (n-1) \times \ldots \times 2 \times 1
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ol class="arabic simple">
+<li><p>Pour un ensemble <span class="math notranslate nohighlight">\(\{a, b, c\}\)</span>, il existe <span class="math notranslate nohighlight">\(3! = 6\)</span> permutations possibles : <span class="math notranslate nohighlight">\(abc\)</span>, <span class="math notranslate nohighlight">\(acb\)</span>, <span class="math notranslate nohighlight">\(bac\)</span>, <span class="math notranslate nohighlight">\(bca\)</span>, <span class="math notranslate nohighlight">\(cab\)</span>, et <span class="math notranslate nohighlight">\(cba\)</span>.</p></li>
+<li><p>On souhaite déterminer combien de nombres de 4 chiffres peuvent être formés en utilisant les chiffres 1, 2, 3 et 4 sans répétition. Il s’agit donc de calculer les 4! = 24 permutations possibles, qui sont les suivantes : 1234, 1243, 1324, 1342, 1423, 1432, 2134, 2143, 2314, 2341, 2413, 2431, 3124, 3142, 3214, 3241, 3412, 3421, 4123, 4132, 4213, 4231, 4312, 4321.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="arrangement-de-p-elements-parmi-n-sans-repetition">
+<h4><span class="section-number">3.2.1.2. </span>Arrangement de p éléments parmi n sans répétition<a class="headerlink" href="#arrangement-de-p-elements-parmi-n-sans-repetition" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>L’arrangement de p éléments distincts parmi n éléments, sans tenir compte de l’ordre, est appelé arrangement. Le nombre d’arrangements possibles est donné par la formule suivante :</p>
+<div class="math notranslate nohighlight">
+\[
+A_{n}^{p} = \frac{n!}{(n - p)!} = n\times (n-1) \times \ldots \times p
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ol class="arabic">
+<li><p><strong>Mathématique :</strong> Pour un ensemble <span class="math notranslate nohighlight">\(\{a, b, c, d\}\)</span>, le nombre d’arrangements possibles de 2 éléments est <span class="math notranslate nohighlight">\(A_{4}^{2} = 12\)</span>.</p></li>
+<li><p><strong>Réel :</strong> Lorsqu’on choisit deux cours parmi cinq pour suivre ce semestre, l’ordre dans lequel les cours sont choisis n’a pas d’importance. Les arrangements sont utilisés pour calculer le nombre total de choix possibles.</p></li>
+<li><p>Supposons que nous voulons créer un nombre de trois chiffres distincts en utilisant les chiffres 1, 2, 3 et 4. Nous pouvons utiliser la technique d’arrangement pour déterminer combien de nombres différents nous pouvons former. En utilisant la formule d’arrangement, nous pouvons calculer le nombre d’arrangements possibles de 3 chiffres parmi 4 :</p>
+<div class="math notranslate nohighlight">
+\[
+   A_{4}^{3} = \frac{4!}{(4 - 3)!} = 24
+   \]</div>
+<p>Il y a donc 24 façons différentes de choisir trois chiffres distincts parmi 1, 2, 3 et 4. Parmi ces arrangements, nous pouvons former des nombres comme 123, 132, 214, 341, etc.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="arrangement-de-p-elements-parmi-n-avec-repetition">
+<h4><span class="section-number">3.2.1.3. </span>Arrangement de p éléments parmi n avec répétition<a class="headerlink" href="#arrangement-de-p-elements-parmi-n-avec-repetition" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Lorsque l’on permet la répétition des éléments dans un arrangement, cela signifie qu’un élément peut apparaître plusieurs fois dans la séquence. Le nombre d’arrangements possibles de p éléments parmi n éléments avec répétition est donné par :</p>
+<div class="math notranslate nohighlight">
+\[
+n^p
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ol class="arabic simple">
+<li><p>Pour un ensemble <span class="math notranslate nohighlight">\(\{a, b, c\}\)</span> où la répétition est autorisée, le nombre d’arrangements possibles de 2 éléments est <span class="math notranslate nohighlight">\(3^2 = 9\)</span>. Ces arrangements sont: <span class="math notranslate nohighlight">\(aa, bb, cc, ab, ac, ba, bc, ca, cb\)</span>.</p></li>
+<li><p>Lorsqu’on crée un code PIN à quatre chiffres, chaque chiffre peut être choisi parmi les dix chiffres possibles (0-9). Le nombre total d’arrangements possibles est de <span class="math notranslate nohighlight">\(10^4 = 10,000\)</span>.</p></li>
+<li><p>Le nombre d’applications d’un ensemble <span class="math notranslate nohighlight">\(A\)</span> dans un ensemble <span class="math notranslate nohighlight">\(B\)</span> que l’on peut former est: <span class="math notranslate nohighlight">\(\# B^A = \#B^{\#A}\)</span> (d’où la notation <span class="math notranslate nohighlight">\(B^A\)</span> pour l’ensemble des applications de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(B\)</span>).</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="combinaisons">
+<h3><span class="section-number">3.2.2. </span>Combinaisons<a class="headerlink" href="#combinaisons" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="section" id="combinaison-de-p-elements-parmi-n-sans-repetition">
+<h4><span class="section-number">3.2.2.1. </span>Combinaison de p éléments parmi n sans répétition<a class="headerlink" href="#combinaison-de-p-elements-parmi-n-sans-repetition" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une combinaison est une sélection de p éléments parmi n éléments, sans tenir compte de l’ordre. Le nombre de combinaisons possibles est donné par la formule suivante :</p>
+<div class="math notranslate nohighlight">
+\[
+\binom{n}{p} = C_{n}^{p} = \frac{n!}{p!(n - p)!}
+\]</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Il convient de noter qu’il existe deux notations couramment utilisées pour représenter les combinaisons : la notation</p>
+<div class="math notranslate nohighlight">
+\[\binom{\text{nombre de cas possibles}}{\text{nombre de cas favorables}} \text{ ou } \binom{n}{p}
+\]</div>
+<p>et la notation</p>
+<div class="math notranslate nohighlight">
+\[
+C_{\text{nombre de cas possibles}}^{\text{nombre de cas favorables}} \text{ ou } C_{n}^{p}
+\]</div>
+<p>Le nombre de cas possibles <span class="math notranslate nohighlight">\(n\)</span> correspond au total des résultats ou des éléments dans un ensemble, tandis que le nombre de cas favorables <span class="math notranslate nohighlight">\(p\)</span> représente le nombre de résultats ou d’éléments souhaités dans cet ensemble. <strong>Dans la première notation, le nombre de cas possibles est placé en haut et le nombre de cas favorables en bas, tandis que dans la seconde notation, c’est l’inverse</strong>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ol class="arabic simple">
+<li><p>Pour un ensemble <span class="math notranslate nohighlight">\(\{a, b, c, d\}\)</span>, le nombre de combinaisons possibles de 2 éléments est <span class="math notranslate nohighlight">\(\binom{4}{2} = C_4^2 = \dfrac{4!}{2!(4-2)!}=6\)</span>. ces combinaisons sont: <span class="math notranslate nohighlight">\(ab, ac, ad, bc, bd, cd\)</span>.</p></li>
+<li><p>Lorsqu’on forme une équipe de 11 joueurs de football parmi 24 joueurs disponibles, l’ordre des sélections n’a pas d’importance. Le nombre d’équipes possibles a former est:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\binom{24}{11}= \dfrac{24!}{11!(24-11)!} = 2496144
+\]</div>
+</div>
+<div class="section" id="proprietes-et-theoremes-des-combinaisons">
+<h5><span class="section-number">3.2.2.1.1. </span>Propriétés et théorèmes des combinaisons<a class="headerlink" href="#proprietes-et-theoremes-des-combinaisons" title="Lien permanent vers cette rubrique">#</a></h5>
+<p>Soient <span class="math notranslate nohighlight">\(n\)</span> et <span class="math notranslate nohighlight">\(k\)</span> des entiers naturels (avec <span class="math notranslate nohighlight">\(1 \leq k \leq n\)</span>),</p>
+<ol class="arabic simple">
+<li><p><strong>Propriété symétrique</strong> :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\binom{n}{k} = \binom{n}{n-k}
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Théorème de Pascal</strong> :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Formule de binôme</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+(a+b)^n = \sum_{i=0}^{n} \binom{n}{i}a^ib^{n-1}
+\]</div>
+</div>
+</div>
+<div class="section" id="combinaison-de-p-elements-parmi-n-avec-repetition">
+<h4><span class="section-number">3.2.2.2. </span>Combinaison de p éléments parmi n avec répétition<a class="headerlink" href="#combinaison-de-p-elements-parmi-n-avec-repetition" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une combinaison avec répétition est une sélection de p éléments parmi n éléments, où chaque élément peut être choisi plus d’une fois et l’ordre des éléments n’est pas pris en compte. Le nombre de ces combinaisons est donné par la formule :</p>
+<div class="math notranslate nohighlight">
+\[
+K_{n}^{p} = \binom{n+p-1}{p} = \frac{(n+p-1)!}{p!(n-1)!}
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ol class="arabic simple">
+<li><p>Pour un ensemble <span class="math notranslate nohighlight">\(\{a, b\}\)</span>, le nombre de combinaisons possibles de 2 éléments avec répétition est <span class="math notranslate nohighlight">\(K_2^2 = \binom{2+2-1}{2} = \binom{3}{2} = \dfrac{3!}{2!(3-2)!}=3\)</span>. Ces combinaisons sont: <span class="math notranslate nohighlight">\(aa, ab, bb\)</span>.</p></li>
+<li><p>Si on a 5 types de fruits et on souhaite choisir 3 fruits avec répétition possible, le nombre de combinaisons serait :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+K_{5}^{3} = \binom{5+3-1}{3} = \binom{7}{3} = \dfrac{7!}{3!(7-3)!} = 35
+\]</div>
+</div>
+<div class="section" id="proprietes">
+<h5><span class="section-number">3.2.2.2.1. </span>Propriétés<a class="headerlink" href="#proprietes" title="Lien permanent vers cette rubrique">#</a></h5>
+<p>Soient <span class="math notranslate nohighlight">\(n\)</span> et <span class="math notranslate nohighlight">\(k\)</span> des entiers naturels,</p>
+<ol class="arabic simple">
+<li><p><strong>Propriété additive</strong> :</p>
+<ul class="simple">
+<li><p>Lorsque l’on ajoute un nouvel élément à l’ensemble, le nombre de combinaisons avec répétition de k éléments augmente.</p></li>
+</ul>
+</li>
+<li><p><strong>Relation avec les combinaisons sans répétition</strong> :</p>
+<ul class="simple">
+<li><p>Les combinaisons avec répétition de p éléments parmi n sont reliées aux combinaisons sans répétition par la formule suivante :</p></li>
+</ul>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+K_{n}^{p} = \binom{n+p-1}{p}
+\]</div>
+<p>Cela revient à choisir p éléments avec répétition dans un ensemble de n éléments en convertissant le problème en un problème de combinaison sans répétition de p éléments parmi n+p-1 éléments.</p>
+</div>
+</div>
+</div>
+<div class="section" id="synthese-des-methodes-de-tirage">
+<h3><span class="section-number">3.2.3. </span>Synthèse des méthodes de tirage<a class="headerlink" href="#synthese-des-methodes-de-tirage" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Le tableau ci-dessous fournit un aperçu détaillé des différents types de tirages en probabilités, en précisant pour chacun la formule mathématique associée et un exemple concret. Vous y trouverez les cas de tirages avec ou sans remise, ainsi que les permutations, avec des explications ordonnées pour une meilleure compréhension des concepts.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tirages de p éléments parmi n</p></th>
+<th class="head"><p>Ordonnés</p></th>
+<th class="head"><p>Non ordonnés</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Sans remise</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_{n}^{p} = \frac{n!}{(n - p)!}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\binom{n}{p} = \frac{n!}{p!(n - p)!}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Avec remise</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(K_{n}^{p} = \binom{n+p-1}{p}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Le tableau suivant est une extension du premier, présentant les formules dans le contexte des arrangements d’objets dans des cases, qui suivent les mêmes principes que les tirages présentés précédemment.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rangement de p objets dans n cases</p></th>
+<th class="head"><p>Discernables</p></th>
+<th class="head"><p>Indiscernables</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Un seul dans chaque case</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(A_{n}^{p} = \frac{n!}{(n - p)!}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\binom{n}{p} = \frac{n!}{p!(n - p)!}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Éventuellement plusieurs dans chaque case</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(K_{n}^{p} = \binom{n+p-1}{p}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="exercices">
+<h2><span class="section-number">3.3. </span>Exercices<a class="headerlink" href="#exercices" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="exercice-1">
+<h3><span class="section-number">3.3.1. </span>Exercice 1<a class="headerlink" href="#exercice-1" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Combien de mots de 8 lettres peut-on former avec les 26 lettres de l’alphabet si :</p>
+<ol class="arabic simple">
+<li><p>On ne peut utiliser chaque lettre qu’une seule fois.</p></li>
+<li><p>On peut réutiliser les lettres à volonté.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-2">
+<h3><span class="section-number">3.3.2. </span>Exercice 2<a class="headerlink" href="#exercice-2" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Dans une école, il y a 12 enseignants, 10 administratifs et 5 membres du personnel de service. De combien de manières différentes peut-on les organiser pour une réunion si :</p>
+<ol class="arabic simple">
+<li><p>Ils peuvent se placer librement.</p></li>
+<li><p>Les enseignants souhaitent se tenir ensemble.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-3">
+<h3><span class="section-number">3.3.3. </span>Exercice 3<a class="headerlink" href="#exercice-3" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Une urne contient 10 boules numérotées de 1 à 10. On tire les boules une à une et on les place en ligne.</p>
+<ol class="arabic simple">
+<li><p>Combien y a-t-il de dispositions possibles si les boules sont tirées au hasard?</p></li>
+<li><p>Combien y a-t-il de dispositions possibles si les boules impaires doivent être placées ensemble?</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-4">
+<h3><span class="section-number">3.3.4. </span>Exercice 4<a class="headerlink" href="#exercice-4" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Dans un jeu de 52 cartes, on tire au hasard 5 cartes (ces cartes constituent une “main”).</p>
+<ol class="arabic simple">
+<li><p>Quel est le nombre total de mains possibles ?</p></li>
+<li><p>Combien de mains contiennent exactement 2 as et 3 rois ?</p></li>
+<li><p>Combien de mains contiennent au moins 4 figures (Valet, Dame, Roi) ?</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-5">
+<h3><span class="section-number">3.3.5. </span>Exercice 5<a class="headerlink" href="#exercice-5" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Calculer:</p>
+<p>a) <span class="math notranslate nohighlight">\(\binom{5}{1}\)</span>
+b) <span class="math notranslate nohighlight">\(\binom{5}{3}\)</span>
+c) <span class="math notranslate nohighlight">\(\binom{9}{3}\)</span>
+d) <span class="math notranslate nohighlight">\(\binom{n}{2}\)</span>
+e) <span class="math notranslate nohighlight">\(\binom{n}{n-2}\)</span>
+f) <span class="math notranslate nohighlight">\(\frac{\binom{11}{3}}{\binom{8}{5}}\)</span>
+g) <span class="math notranslate nohighlight">\(\frac{\binom{24}{4}}{\binom{24}{7}}\)</span></p>
+</div>
+<div class="section" id="exercice-6">
+<h3><span class="section-number">3.3.6. </span>Exercice 6<a class="headerlink" href="#exercice-6" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Dans une classe de 25 élèves, on doit choisir 3 délégués.
+Combien de façons y a-t-il de les choisir ?</p>
+<p>On suppose maintenant que parmi les délégués, il doit y avoir au moins un garçon et une fille.
+Sachant qu’il y a 15 garçons dans cette classe, combien de façons y a-t-il alors de choisir un tel groupe de délégués ?</p>
+</div>
+<div class="section" id="exercice-7">
+<h3><span class="section-number">3.3.7. </span>Exercice 7<a class="headerlink" href="#exercice-7" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Un domino est une petite planchette dont la face supérieure est divisée en deux parties portant chacune un chiffre de 0 à 5.</p>
+<p>a) Une boîte de dominos contient toutes les associations possibles des chiffres entre 0 et 5 (y compris les doubles).
+Montrer qu’une telle boîte contient 21 dominos.</p>
+<p>b) Quelle est la probabilité de tirer au hasard un double dans la boîte ?</p>
+</div>
+<div class="section" id="exercice-8">
+<h3><span class="section-number">3.3.8. </span>Exercice 8<a class="headerlink" href="#exercice-8" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Dans une équipe de handball, 7 joueurs ont été sélectionnés.
+Pour un match, l’entraîneur choisit au hasard 5 joueurs parmi ceux sélectionnés.</p>
+<p>a) Combien l’entraîneur peut-il faire d’équipes différentes ?
+b) Je suis un des 7 sélectionnés. Montrer que la probabilité que je fasse partie de l’équipe finalement retenue est <span class="math notranslate nohighlight">\(\frac{5}{7}\)</span>.</p>
+</div>
+<div class="section" id="exercice-9">
+<h3><span class="section-number">3.3.9. </span>Exercice 9<a class="headerlink" href="#exercice-9" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>On tire au hasard une main de cinq cartes dans un jeu de 52 cartes.
+Calculer la probabilité des événements suivants:</p>
+<p>a) <span class="math notranslate nohighlight">\(A\)</span>: “la main contient exactement trois as”
+b) <span class="math notranslate nohighlight">\(B\)</span>: “la main contient au moins deux dames”
+c) <span class="math notranslate nohighlight">\(C\)</span>: “la main contient au moins un roi”
+d) <span class="math notranslate nohighlight">\(D\)</span>: “la main contient 4 figures”
+(les figures sont les rois, dames et valets)
+e) <span class="math notranslate nohighlight">\(E\)</span>: “la main contient un as, 3 rois et une dame”</p>
+</div>
+<div class="section" id="exercice-10">
+<h3><span class="section-number">3.3.10. </span>Exercice 10<a class="headerlink" href="#exercice-10" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Montrer que:
+<span class="math notranslate nohighlight">\(\sum_{k=0}^n \binom{n}{k}\cdot 3^k = 4^n\)</span>.</p>
+</div>
+<div class="section" id="exercice-11">
+<h3><span class="section-number">3.3.11. </span>Exercice 11<a class="headerlink" href="#exercice-11" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Développer:
+a) <span class="math notranslate nohighlight">\((4+x)^4\)</span>
+b) <span class="math notranslate nohighlight">\((2x-3)^5\)</span>
+c) <span class="math notranslate nohighlight">\((1+i)^6\)</span>
+d) <span class="math notranslate nohighlight">\((3-i)^4\)</span></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ensembles.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Rapel sur les Ensembles et Applications</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="axiomes.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>La théorie des probabilités</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes-du-cardinal">3.1. Propriétés du Cardinal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principe-de-laddition">3.1.1. Principe de l’addition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#union-densembles">3.1.1.1. Union d’Ensembles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intersection-densembles">3.1.1.2. Intersection d’Ensembles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-dapplication-gestion-de-stock-dordinateurs">3.1.1.3. Exemple d’application: Gestion de Stock d’Ordinateurs:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principe-de-la-multiplication">3.1.2. Principe de la multiplication</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#produit-cartesien-densembles">3.1.2.1. Produit Cartésien d’Ensembles</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-dapplication-capacite-des-numeros-de-cartes-sim">3.1.2.2. Exemple d’application: Capacité des numéros de cartes SIM</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinal-de-lensemble-des-parties">3.1.3. Cardinal de l’ensemble des Parties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-de-denombrement">3.2. Techniques de dénombrement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangements">3.2.1. Arrangements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations">3.2.1.1. Permutations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangement-de-p-elements-parmi-n-sans-repetition">3.2.1.2. Arrangement de p éléments parmi n sans répétition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangement-de-p-elements-parmi-n-avec-repetition">3.2.1.3. Arrangement de p éléments parmi n avec répétition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaisons">3.2.2. Combinaisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaison-de-p-elements-parmi-n-sans-repetition">3.2.2.1. Combinaison de p éléments parmi n sans répétition</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes-et-theoremes-des-combinaisons">3.2.2.1.1. Propriétés et théorèmes des combinaisons</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combinaison-de-p-elements-parmi-n-avec-repetition">3.2.2.2. Combinaison de p éléments parmi n avec répétition</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes">3.2.2.2.1. Propriétés</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthese-des-methodes-de-tirage">3.2.3. Synthèse des méthodes de tirage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">3.3. Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">3.3.1. Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">3.3.2. Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">3.3.3. Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">3.3.4. Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">3.3.5. Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">3.3.6. Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">3.3.7. Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">3.3.8. Exercice 8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-9">3.3.9. Exercice 9</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-10">3.3.10. Exercice 10</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-11">3.3.11. Exercice 11</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, Département Informatique, École supérieure de technologie, Casablanca, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Iaousse Mbarek.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Mis à jour le 19 déc. 2023.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Ce manuel est mis à disposition selon les termes de la Licence
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative
+Commons Attribution 4.0 International</a>.
+L'utilisation de ce travail est autorisée à condition d'en
+attribuer la paternité.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

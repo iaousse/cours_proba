@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Introduction &#8212; Cours de Probabilités</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chap/chapitre_1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="2. Rapel sur les Ensembles et Applications" href="ensembles.html" />
+    <link rel="prev" title="Fondements des Probabilités : Introduction au Cours" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensembles.html">2. Rapel sur les Ensembles et Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="denombrement.html">3. Dénombrement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="axiomes.html">4. La théorie des probabilités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="var_alea.html">5. Variables Aléatoires Réelles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://iaousse.github.io/cours_proba/cours_proba.pdf">Document pdf</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/iaousse/cours_proba/issues/new?title=Issue%20on%20page%20%2Fchap/chapitre_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Ouvrez un problème"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chap/chapitre_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fondements-et-evolution-des-probabilites">1.1. Fondements et Évolution des Probabilités</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genese-et-expansion-des-probabilites">1.1.1. Genèse et Expansion des Probabilités</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-la-theorie-a-la-pratique">1.1.2. De la Théorie à la Pratique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approche-educative-et-structure-du-cours">1.1.3. Approche Éducative et Structure du Cours</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-des-probabilites-et-comprehension-conceptuelle">1.2. Application des Probabilités et Compréhension Conceptuelle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-et-application-des-probabilites">1.2.1. Définition et Application des Probabilités</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fondamentaux-et-methodes-de-denombrement">1.2.2. Fondamentaux et Méthodes de Dénombrement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-lhistoire-a-lavenir-des-probabilites">1.2.3. De l’Histoire à l’Avenir des Probabilités</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
+<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>Les probabilités, une branche essentielle des mathématiques, jouent un rôle crucial dans de nombreux domaines allant des sciences naturelles à la sociologie. Elles permettent de quantifier l’incertitude et de modéliser le hasard en termes mathématiques. Ce chapitre examine la théorie des probabilités, débutant par ses origines historiques et son importance fondamentale, puis explore les bases des ensembles et des opérations qui leur sont associées, mettant en évidence les principes clés des probabilités. Le chapitre se clôture par une analyse approfondie des méthodes de dénombrement, essentielles pour relier les concepts de probabilité à la résolution de problèmes complexes.</p>
+<div class="section" id="fondements-et-evolution-des-probabilites">
+<h2><span class="section-number">1.1. </span>Fondements et Évolution des Probabilités<a class="headerlink" href="#fondements-et-evolution-des-probabilites" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="genese-et-expansion-des-probabilites">
+<h3><span class="section-number">1.1.1. </span>Genèse et Expansion des Probabilités<a class="headerlink" href="#genese-et-expansion-des-probabilites" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>L’étude des probabilités s’est développée à partir des jeux de hasard et des paris, où des mathématiciens comme Blaise Pascal et Pierre de Fermat ont posé les premiers jalons d’une approche mathématique de l’incertitude. Par leurs réflexions sur des questions simples liées aux jeux de dés, ils ont jeté les bases de ce qui allait devenir un outil essentiel dans des secteurs aussi variés que la finance et l’épidémiologie. Le problème des partis de tennis de Pascal est un exemple notable, ayant contribué à l’émergence de la probabilité conditionnelle.</p>
+</div>
+<div class="section" id="de-la-theorie-a-la-pratique">
+<h3><span class="section-number">1.1.2. </span>De la Théorie à la Pratique<a class="headerlink" href="#de-la-theorie-a-la-pratique" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Les probabilités modélisent des phénomènes pour refléter la réalité, depuis les prévisions météorologiques jusqu’à l’analyse des risques en ingénierie. Les probabilités se divisent en deux grandes catégories : les probabilités discrètes, qui concernent des événements spécifiques comme le lancer de dés, et les probabilités continues, qui s’appliquent à des variables mesurables telles que le poids ou la température. Par exemple, compter les issues possibles lors du lancer de dés illustre les probabilités discrètes, tandis que l’évaluation des états d’une particule en physique quantique relève des probabilités continues.</p>
+</div>
+<div class="section" id="approche-educative-et-structure-du-cours">
+<h3><span class="section-number">1.1.3. </span>Approche Éducative et Structure du Cours<a class="headerlink" href="#approche-educative-et-structure-du-cours" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Le cours est structuré pour familiariser les étudiants avec le raisonnement probabiliste, indispensable à l’analyse de données et à la prise de décisions éclairées dans des domaines tels que la statistique, l’actuariat et l’informatique. Dans ce dernier domaine, la probabilité est fondamentale pour comprendre les algorithmes de cryptographie, l’intelligence artificielle, et la théorie de l’information.</p>
+</div>
+</div>
+<div class="section" id="application-des-probabilites-et-comprehension-conceptuelle">
+<h2><span class="section-number">1.2. </span>Application des Probabilités et Compréhension Conceptuelle<a class="headerlink" href="#application-des-probabilites-et-comprehension-conceptuelle" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="definition-et-application-des-probabilites">
+<h3><span class="section-number">1.2.1. </span>Définition et Application des Probabilités<a class="headerlink" href="#definition-et-application-des-probabilites" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Les probabilités fournissent un cadre pour gérer l’incertitude et prendre des décisions éclairées en présence d’informations incomplètes. Par exemple, dans les télécommunications, elles aident à comprendre et à réduire les erreurs de transmission des données. En médecine, elles sont essentielles à la prise de décision clinique et à la planification des essais thérapeutiques.</p>
+</div>
+<div class="section" id="fondamentaux-et-methodes-de-denombrement">
+<h3><span class="section-number">1.2.2. </span>Fondamentaux et Méthodes de Dénombrement<a class="headerlink" href="#fondamentaux-et-methodes-de-denombrement" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Les principes des probabilités sont particulièrement pertinents dans la résolution de problèmes de dénombrement, comme déterminer le nombre de façons de chiffrer des données. Le dénombrement est aussi crucial pour développer des algorithmes capables de gérer un large éventail de possibilités, que ce soit pour le routage de réseau ou les requêtes dans les bases de données.</p>
+</div>
+<div class="section" id="de-lhistoire-a-lavenir-des-probabilites">
+<h3><span class="section-number">1.2.3. </span>De l’Histoire à l’Avenir des Probabilités<a class="headerlink" href="#de-lhistoire-a-lavenir-des-probabilites" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>L’histoire des probabilités nous montre que des questions simples peuvent mener à des théories profondes aux applications étendues et influentes. En informatique, la probabilité est devenue fondamentale, en particulier dans l’apprentissage automatique et l’analyse algorithmique. Pour conclure, ce cours vise à inculquer les concepts essentiels des probabilités tout en préparant les étudiants à les appliquer à des problèmes actuels, où l’incertitude est souvent la seule certitude.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Fondements des Probabilités : Introduction au Cours</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ensembles.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Rapel sur les Ensembles et Applications</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fondements-et-evolution-des-probabilites">1.1. Fondements et Évolution des Probabilités</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genese-et-expansion-des-probabilites">1.1.1. Genèse et Expansion des Probabilités</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-la-theorie-a-la-pratique">1.1.2. De la Théorie à la Pratique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approche-educative-et-structure-du-cours">1.1.3. Approche Éducative et Structure du Cours</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-des-probabilites-et-comprehension-conceptuelle">1.2. Application des Probabilités et Compréhension Conceptuelle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-et-application-des-probabilites">1.2.1. Définition et Application des Probabilités</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fondamentaux-et-methodes-de-denombrement">1.2.2. Fondamentaux et Méthodes de Dénombrement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-lhistoire-a-lavenir-des-probabilites">1.2.3. De l’Histoire à l’Avenir des Probabilités</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, Département Informatique, École supérieure de technologie, Casablanca, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Iaousse Mbarek.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Mis à jour le 19 déc. 2023.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Ce manuel est mis à disposition selon les termes de la Licence
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative
+Commons Attribution 4.0 International</a>.
+L'utilisation de ce travail est autorisée à condition d'en
+attribuer la paternité.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1575 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Rapel sur les Ensembles et Applications &#8212; Cours de Probabilités</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chap/ensembles';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="3. Dénombrement" href="denombrement.html" />
+    <link rel="prev" title="1. Introduction" href="chapitre_1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapitre_1.html">1. Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Rapel sur les Ensembles et Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="denombrement.html">3. Dénombrement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="axiomes.html">4. La théorie des probabilités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="var_alea.html">5. Variables Aléatoires Réelles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://iaousse.github.io/cours_proba/cours_proba.pdf">Document pdf</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/iaousse/cours_proba/issues/new?title=Issue%20on%20page%20%2Fchap/ensembles.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Ouvrez un problème"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chap/ensembles.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rapel sur les Ensembles et Applications</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-de-base">2.1. Définitions de base</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble">2.1.1. Ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodes-de-specification-dun-ensemble">2.1.2. Méthodes de Spécification d’un Ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-des-parties">2.1.3. Ensemble des parties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-sur-les-ensembles">2.2. Opérations sur les ensembles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">2.2.1. Union</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersection">2.2.2. Intersection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference">2.2.3. Différence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complementaire">2.2.4. Complémentaire</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-symetrique">2.2.5. Différence Symétrique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes">2.2.6. Propriétés</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2.6.1. Complémentaire</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.6.2. Différence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.6.3. Différence Symétrique</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#le-produit-cartesien">2.3. Le Produit Cartésien</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couple">2.3.1. Couple</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#produit-cartesion">2.3.2. Produit Cartésion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">2.4. Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application">2.4.1. Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-et-antecedent">2.4.2. Image et antécédent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-injective-ou-injection">2.4.3. Application injective (ou injection)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-surjective-ou-surjection">2.4.4. Application surjective (ou surjection)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-bijective-ou-bijection">2.4.5. Application bijective (ou bijection)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensembles-finis-denombrables-et-non-denombrables">2.5. Ensembles finis, dénombrables et non dénombrables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-fini">2.5.1. Ensemble Fini</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-infini-denombrable">2.5.2. Ensemble Infini Dénombrable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-infini-non-denombrable">2.5.3. Ensemble Infini Non Dénombrable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">2.6. Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">2.6.1. Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">2.6.2. Exercice 2 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">2.6.3. Exercice 3 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">2.6.4. Exercice 4 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">2.6.5. Exercice 5 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">2.6.6. Exercice 6 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">2.6.7. Exercice 7 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">2.6.8. Exercice 8 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-9">2.6.9. Exercice 9 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-10">2.6.10. Exercice 10:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-11">2.6.11. Exercice 11 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-12">2.6.12. Exercice 12:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-13">2.6.13. Exercice 13:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-14">2.6.14. Exercice 14:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-15">2.6.15. Exercice 15:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="rapel-sur-les-ensembles-et-applications">
+<h1><span class="section-number">2. </span>Rapel sur les Ensembles et Applications<a class="headerlink" href="#rapel-sur-les-ensembles-et-applications" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>La théorie des ensembles est une fondation des mathématiques qui traite des collections d’objets, nommées ensembles.</p>
+<hr class="docutils" />
+<div class="section" id="definitions-de-base">
+<h2><span class="section-number">2.1. </span>Définitions de base<a class="headerlink" href="#definitions-de-base" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="ensemble">
+<h3><span class="section-number">2.1.1. </span>Ensemble<a class="headerlink" href="#ensemble" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Un <strong>ensemble</strong> est une collection d’objets, appelés <strong>éléments</strong>. Les ensembles peuvent être représentés par une énumération de leurs éléments entre accolades. Par exemple :</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<ul class="simple">
+<li><p>L’ensemble <span class="math notranslate nohighlight">\(A = \{1, 3, 5, 7, 9\}\)</span> contient 5 éléments.</p></li>
+<li><p>L’ensemble <span class="math notranslate nohighlight">\(B = \{a\}\)</span> contient un seul élément ; un ensemble contenant un seul élément est dit <strong>singleton</strong>.</p></li>
+<li><p>L’ensemble <span class="math notranslate nohighlight">\(C = \{1, 2\}\)</span> contient deux éléments ; un ensemble contenant exactement deux éléments est dit <strong>paire</strong>.</p></li>
+<li><p>L’<strong>ensemble vide</strong> est l’ensemble qui ne contient aucun élément. Il est dénoté par le symbole <span class="math notranslate nohighlight">\(\varnothing\)</span> ou simplement par <span class="math notranslate nohighlight">\(\{\}\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="admonition-appartenance admonition">
+<p class="admonition-title">Appartenance</p>
+<p>Si un objet <span class="math notranslate nohighlight">\(a\)</span> appartient à un ensemble <span class="math notranslate nohighlight">\(A\)</span>, on écrit :</p>
+<div class="math notranslate nohighlight">
+\[
+a \in A
+\]</div>
+<p>Inversement, si <span class="math notranslate nohighlight">\(b\)</span> ne fait pas partie de <span class="math notranslate nohighlight">\(A\)</span>, on note :</p>
+<div class="math notranslate nohighlight">
+\[ 
+b \notin A 
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Si <span class="math notranslate nohighlight">\(A = \{1, 2, 3\}\)</span>, alors <span class="math notranslate nohighlight">\(2 \in A\)</span> mais <span class="math notranslate nohighlight">\(4 \notin A\)</span>.</p>
+</div>
+<div class="admonition-definition-inclusion-sous-ensemble admonition">
+<p class="admonition-title">Définition: Inclusion (Sous-ensemble)</p>
+<p>Un ensemble <span class="math notranslate nohighlight">\(A\)</span> est un <strong>sous-ensemble</strong> d’un ensemble <span class="math notranslate nohighlight">\(B\)</span> (noté <span class="math notranslate nohighlight">\(A \subset B\)</span>) si chaque élément de <span class="math notranslate nohighlight">\(A\)</span> est aussi un élément de <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+A \subset B \iff \forall x (x \in A \implies x \in B)
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Soit <span class="math notranslate nohighlight">\(A = \{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(B = \{1, 2, 3\}\)</span>. Comme tous les éléments de <span class="math notranslate nohighlight">\(A\)</span> sont dans <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(A\)</span> est un sous-ensemble de <span class="math notranslate nohighlight">\(B\)</span>, donc <span class="math notranslate nohighlight">\(A \subset B\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Remarque: Appartenance vs Inclusion</p>
+<p>La distinction entre <strong>appartenance</strong> et <strong>inclusion</strong> est fondamentale, en particulier lorsque l’on traite d’ensembles d’ensembles.</p>
+<ul>
+<li><p><strong>Appartenance (<span class="math notranslate nohighlight">\(\in\)</span>)</strong>: Un élément appartient à un ensemble.</p>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Exemple</strong>:</p>
+<p>Si <span class="math notranslate nohighlight">\(A = \{1, 2, \{3, 4\}\}\)</span>, alors:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1 \in A\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{3, 4\} \in A\)</span>,</p></li>
+<li><p>mais <span class="math notranslate nohighlight">\(\{1, 3\} \notin A\)</span>.</p></li>
+</ul>
+</div>
+</li>
+<li><p><strong>Inclusion (<span class="math notranslate nohighlight">\(\subset\)</span>)</strong>: Un ensemble est un sous-ensemble d’un autre.</p>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Exemple</strong>:</p>
+<p>Si <span class="math notranslate nohighlight">\(A = \{1, 2, \{3, 4\}\}\)</span>, alors:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{1, \{3, 4\}\} \subset A\)</span>,</p></li>
+<li><p>et <span class="math notranslate nohighlight">\(\{\{3, 4\}\} \subset A\)</span>,</p></li>
+<li><p>mais <span class="math notranslate nohighlight">\(\{3, 4\} \not\subset A\)</span>.</p></li>
+</ul>
+</div>
+</li>
+</ul>
+<p>Il faut toujoures faire attention!</p>
+</div>
+<div class="admonition-ensembles-egaux admonition">
+<p class="admonition-title">Ensembles égaux</p>
+<p>Deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont dits <strong>égaux</strong> (noté <span class="math notranslate nohighlight">\(A = B\)</span>) si et seulement si chaque élément de <span class="math notranslate nohighlight">\(A\)</span> est un élément de <span class="math notranslate nohighlight">\(B\)</span> et vice versa.</p>
+<p>Formellement, cette définition peut être exprimée comme:</p>
+<div class="math notranslate nohighlight">
+\[ 
+A = B \iff (\forall x)(x \in A \iff x \in B) 
+\]</div>
+<p>ou encore</p>
+<div class="math notranslate nohighlight">
+\[ 
+ A = B \iff A \subset B \text{ et } B \subset A 
+\]</div>
+</div>
+</div>
+<div class="section" id="methodes-de-specification-dun-ensemble">
+<h3><span class="section-number">2.1.2. </span>Méthodes de Spécification d’un Ensemble<a class="headerlink" href="#methodes-de-specification-dun-ensemble" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-specification-par-extension-ou-enumeration admonition">
+<p class="admonition-title">Spécification par extension (ou énumération)</p>
+<p>On liste tous les éléments de l’ensemble entre des accolades.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>Un ensemble de chiffres et de lettres: <span class="math notranslate nohighlight">\(A=\{1, 10, 7, x, y\}\)</span>,</p></li>
+<li><p>Un ensemble de couleurs: <span class="math notranslate nohighlight">\( B = \{ \text{rouge, vert, bleu} \} \)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="admonition-specification-par-comprehension-ou-description-par-une-propriete admonition">
+<p class="admonition-title">Spécification par compréhension (ou description par une propriété)</p>
+<p>On définit un ensemble en spécifiant une propriété caractéristique que tous ses éléments doivent satisfaire. La forme générale est <span class="math notranslate nohighlight">\( B = \{ x \mid P(x) \} \)</span>, où <span class="math notranslate nohighlight">\( P(x) \)</span> est une propriété que les éléments <span class="math notranslate nohighlight">\( x \)</span> doivent satisfaire.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>L’ensemble de tous les nombres pairs: <span class="math notranslate nohighlight">\( C = \{ x \mid x \text{ est un entier et } x \text{ est pair} \} \)</span></p></li>
+<li><p>L’ensemble des nombres réels supérieurs à 10 : <span class="math notranslate nohighlight">\( D = \{ x \mid x \in \mathbb{R} \text{ et } x &gt; 10 \} \)</span></p></li>
+</ul>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Remarque</p>
+<ul class="simple">
+<li><p>Un ensemble ne contient que des éléments <strong>distincts</strong>. C’est-à-dire que chaque élément d’un ensemble est unique et ne peut pas être répété.</p></li>
+</ul>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Considérons un ensemble qui est décrit comme:</p>
+<div class="math notranslate nohighlight">
+\[ 
+E = \{2, 4, 6, 6, 8\} 
+\]</div>
+<p>Même si le nombre 6 est mentionné deux fois, en réalité, l’ensemble <span class="math notranslate nohighlight">\(E\)</span> est simplement :</p>
+<div class="math notranslate nohighlight">
+\[ 
+E = \{2, 4, 6, 8\} 
+\]</div>
+</div>
+<ul class="simple">
+<li><p><strong>l’ordre</strong> des éléments n’a pas d’importance. Cela signifie qu’un ensemble défini avec les éléments dans un certain ordre est le même que le même ensemble avec les éléments dans un ordre différent.</p></li>
+</ul>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Considérons l’ensemble suivant:</p>
+<div class="math notranslate nohighlight">
+\[ 
+F = \{a, b, c, d\} 
+\]</div>
+<p>Peu importe comment nous choisissons d’écrire les éléments, l’ensemble reste le même. Ainsi, les ensembles suivants sont tous équivalents à l’ensemble <span class="math notranslate nohighlight">\(F\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ 
+F = \{a, c, b, d\} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+F = \{d, c, b, a\} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+F = \{b, a, d, c\} 
+\]</div>
+<p>Dans chaque cas, l’ensemble contient exactement les mêmes éléments, donc il est considéré comme identique, indépendamment de l’ordre dans lequel les éléments sont listés.</p>
+</div>
+</div>
+</div>
+<div class="section" id="ensemble-des-parties">
+<h3><span class="section-number">2.1.3. </span>Ensemble des parties<a class="headerlink" href="#ensemble-des-parties" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Pour un ensemble donné <span class="math notranslate nohighlight">\(A\)</span>, l’<strong>ensemble des parties</strong> de <span class="math notranslate nohighlight">\(A\)</span>, noté <span class="math notranslate nohighlight">\(\mathcal{P}(A)\)</span>, est l’ensemble de tous les sous-ensembles possibles de <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Exemples</strong>:</p>
+<ul class="simple">
+<li><p>Soit <span class="math notranslate nohighlight">\(A = \{1, 2\}\)</span>. Alors :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+\mathcal{P}(A) = \{\varnothing, \{1\}, \{2\}, \{1, 2\}\} 
+\]</div>
+<ul class="simple">
+<li><p>Considérons un ensemble <span class="math notranslate nohighlight">\(B\)</span> dont les éléments sont eux-mêmes des ensembles :
+<span class="math notranslate nohighlight">\(B = \{\{1\}, \{2, 3\}, \{4, 5, 6\}\}\)</span>. L’ensemble des parties de <span class="math notranslate nohighlight">\(B\)</span> est :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+\mathcal{P}(B) = \{\varnothing, \{\{1\}\}, \{\{2, 3\}\}, \{\{4, 5, 6\}\}, \{\{1\}, \{2, 3\}\}, \{\{1\}, \{4, 5, 6\}\}, \{\{2, 3\}, \{4, 5, 6\}\}, B\} 
+\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="operations-sur-les-ensembles">
+<h2><span class="section-number">2.2. </span>Opérations sur les ensembles<a class="headerlink" href="#operations-sur-les-ensembles" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="union">
+<h3><span class="section-number">2.2.1. </span>Union<a class="headerlink" href="#union" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>L’<strong>union</strong> de deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> est l’ensemble de tous les éléments qui sont dans <span class="math notranslate nohighlight">\(A\)</span>, dans <span class="math notranslate nohighlight">\(B\)</span>, ou dans les deux.</p>
+<div class="math notranslate nohighlight">
+\[ 
+A \cup B = \{ x : x \in A \text{ ou } x \in B \} 
+\]</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/8aa3f1f4d337cc418b1e3d0c89104cda183f445c52d1deb25e99fa7dd221377c.png" src="../_images/8aa3f1f4d337cc418b1e3d0c89104cda183f445c52d1deb25e99fa7dd221377c.png" />
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Si <span class="math notranslate nohighlight">\(A=\{1, 2, 3, a, b, c\}\)</span>, <span class="math notranslate nohighlight">\(B=\{2, 4, 6, 8, 10, c, d, e\}\)</span></p>
+<p>Alors</p>
+<div class="math notranslate nohighlight">
+\[
+A\cup B = \{1, 2, 3, 4, 6, 8, 10, a, b, c, d, e\}
+\]</div>
+</div>
+</div>
+<div class="section" id="intersection">
+<h3><span class="section-number">2.2.2. </span>Intersection<a class="headerlink" href="#intersection" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>L’<strong>intersection</strong> de deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> contient tous les éléments qui sont à la fois dans <span class="math notranslate nohighlight">\(A\)</span> et dans <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ 
+A \cap B = \{ x : x \in A \text{ et } x \in B \} 
+\]</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/2bcc74f828eed8055bb4b8f385d098e85ce3286960e7a9d6d73c8f0b56c7ceab.png" src="../_images/2bcc74f828eed8055bb4b8f385d098e85ce3286960e7a9d6d73c8f0b56c7ceab.png" />
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Si <span class="math notranslate nohighlight">\(A=\{1, 2, 3, a, b, c\}\)</span>, <span class="math notranslate nohighlight">\(B=\{2, 4, 6, 8, 10, c, d, e\}\)</span></p>
+<p>Alors</p>
+<div class="math notranslate nohighlight">
+\[
+A\cap B = \{2, c\}
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Remarque</p>
+<p>On dit que deux ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont <strong>disjoint</strong> si <span class="math notranslate nohighlight">\(A\cap B = \varnothing\)</span>. Cette notion va etre necessaire si l’on va parler des evenements dans le Chapitre 3</p>
+</div>
+</div>
+<div class="section" id="difference">
+<h3><span class="section-number">2.2.3. </span>Différence<a class="headerlink" href="#difference" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>La <strong>différence</strong> entre les ensembles <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> est l’ensemble de tous les éléments qui sont dans <span class="math notranslate nohighlight">\(A\)</span> mais pas dans <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+A \setminus B = \{ x : x \in A \text{ et } x \notin B \} 
+\]</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/d858f0c50e6e44532a1697d9e6d6e93992ca39a7da08607b9634510a6202083a.png" src="../_images/d858f0c50e6e44532a1697d9e6d6e93992ca39a7da08607b9634510a6202083a.png" />
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Si <span class="math notranslate nohighlight">\(A=\{1, 2, 3, a, b, c\}\)</span>, <span class="math notranslate nohighlight">\(B=\{2, 4, 6, 8, 10, c, d, e\}\)</span></p>
+<p>Alors</p>
+<div class="math notranslate nohighlight">
+\[
+A\setminus B = \{1, 3, a, b\}
+\]</div>
+</div>
+</div>
+<div class="section" id="complementaire">
+<h3><span class="section-number">2.2.4. </span>Complémentaire<a class="headerlink" href="#complementaire" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Supposons qu’il existe un ensemble universel <span class="math notranslate nohighlight">\(U\)</span> qui contient tous les éléments considérés. Le <strong>complémentaire</strong> de l’ensemble <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(U\)</span> (note <span class="math notranslate nohighlight">\(A^c\)</span> ou <span class="math notranslate nohighlight">\(A^c\)</span> ) est l’ensemble de tous les éléments qui sont dans <span class="math notranslate nohighlight">\(U\)</span> mais pas dans <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ 
+A^c = U \setminus A 
+\]</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Pour désigner le complémentaire d’un ensemble
+<span class="math notranslate nohighlight">\(A\)</span>, nous utiliserons la notation <span class="math notranslate nohighlight">\(A^c\)</span> ou <span class="math notranslate nohighlight">\(A^c\)</span>  selon ce qui nous semble le plus clair dans le contexte. Les deux notations sont équivalentes et couramment utilisées.</p>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/a4904933c6571e990961d306f60dff6c433fd2bcc573252bf079aef45ad3efb5.png" src="../_images/a4904933c6571e990961d306f60dff6c433fd2bcc573252bf079aef45ad3efb5.png" />
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Si <span class="math notranslate nohighlight">\(A=\{1, 2, 3, a, b, c\}\)</span>, <span class="math notranslate nohighlight">\(U=\{1,2, 3, 4, 5, 6, 7, 8, 9, 10, a, b, c, d, e\}\)</span></p>
+<p>Alors</p>
+<div class="math notranslate nohighlight">
+\[
+A^c  = \{4, 5, 6, 7, 8, 9, 10, d, e\}
+\]</div>
+</div>
+</div>
+<div class="section" id="difference-symetrique">
+<h3><span class="section-number">2.2.5. </span>Différence Symétrique<a class="headerlink" href="#difference-symetrique" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soient <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> deux ensembles. La <strong>différence symétrique</strong> de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>, notée <span class="math notranslate nohighlight">\(A \Delta B\)</span>, est l’ensemble des éléments qui appartiennent à <span class="math notranslate nohighlight">\(A\)</span> ou à <span class="math notranslate nohighlight">\(B\)</span>, mais pas à les deux simultanément.</p>
+<div class="math notranslate nohighlight">
+\[
+A \Delta B = (A \setminus B) \cup (B \setminus A)
+\]</div>
+<p>En d’autres termes, elle correspond à l’union des différences <span class="math notranslate nohighlight">\(A \setminus B\)</span> et <span class="math notranslate nohighlight">\(B \setminus A\)</span>.</p>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/77ec06c8d3b63cb7ae3ac4f32523a13ff722dc672455b1d62a8ec54315615cc4.png" src="../_images/77ec06c8d3b63cb7ae3ac4f32523a13ff722dc672455b1d62a8ec54315615cc4.png" />
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Si <span class="math notranslate nohighlight">\(A=\{1, 2, 3, a, b, c\}\)</span>, <span class="math notranslate nohighlight">\(B=\{2, 4, 6, 8, 10, c, d, e\}\)</span></p>
+<p>Alors</p>
+<div class="math notranslate nohighlight">
+\[
+A\Delta B = \{1, 3, 4, 6, 8, 10, a, b, d, e\}
+\]</div>
+</div>
+</div>
+<div class="section" id="proprietes">
+<h3><span class="section-number">2.2.6. </span>Propriétés<a class="headerlink" href="#proprietes" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="section" id="id1">
+<h4><span class="section-number">2.2.6.1. </span>Complémentaire<a class="headerlink" href="#id1" title="Lien permanent vers cette rubrique">#</a></h4>
+<ol class="arabic">
+<li><p><strong>Double Complémentaire</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ (A^c)^c = A \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Complémentaire de l’Union et de l’Intersection</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ (A \cup B)^c = A^c \cap B^c \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ (A \cap B)^c = A^c \cup B^c \]</div>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h4><span class="section-number">2.2.6.2. </span>Différence<a class="headerlink" href="#id2" title="Lien permanent vers cette rubrique">#</a></h4>
+<ol class="arabic">
+<li><p><strong>Différence avec soi-même</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \setminus A = \varnothing \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Différence avec l’Ensemble Vide</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \setminus \varnothing = A \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ \varnothing \setminus A = \varnothing \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Différence et Complémentaire</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \setminus B = A \cap B^c \]</div>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h4><span class="section-number">2.2.6.3. </span>Différence Symétrique<a class="headerlink" href="#id3" title="Lien permanent vers cette rubrique">#</a></h4>
+<ol class="arabic">
+<li><p><strong>Propriété Commutative</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \Delta B = B \Delta A \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Propriété Associative</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \Delta (B \Delta C) = (A \Delta B) \Delta C \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Différence Symétrique avec soi-même</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \Delta A = \varnothing \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Différence Symétrique avec l’Ensemble Vide</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \Delta \varnothing = A \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Relation avec l’Union et l’Intersection</strong>:</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ A \Delta B = (A \cup B) \setminus (A \cap B) \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[ A \Delta B = (A \setminus B) \cup (B - A) \]</div>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="le-produit-cartesien">
+<h2><span class="section-number">2.3. </span>Le Produit Cartésien<a class="headerlink" href="#le-produit-cartesien" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="couple">
+<h3><span class="section-number">2.3.1. </span>Couple<a class="headerlink" href="#couple" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Un couple est une paire ordonnée d’éléments. Si <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> sont deux éléments (pas nécessairement distincts), le couple formé par <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> est noté <span class="math notranslate nohighlight">\((a, b)\)</span>.</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Propriété de l’Ordre</p>
+<p>La propriété fondamentale des couples est la suivante :</p>
+<div class="math notranslate nohighlight">
+\[
+(a, b) = (c, d) \Leftrightarrow a = c \text{ et } b = d
+\]</div>
+<p>Cela signifie que deux couples sont égaux si et seulement si leurs premiers éléments sont égaux entre eux et leurs seconds éléments sont égaux entre eux.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Si nous avons deux couples <span class="math notranslate nohighlight">\((1, 2)\)</span> et <span class="math notranslate nohighlight">\((1, 3)\)</span>, alors ces deux couples sont différents car leurs seconds éléments sont différents.</p>
+</div>
+</div>
+</div>
+<div class="section" id="produit-cartesion">
+<h3><span class="section-number">2.3.2. </span>Produit Cartésion<a class="headerlink" href="#produit-cartesion" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soient <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> deux ensembles. Le produit cartésien de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>, noté <span class="math notranslate nohighlight">\(A \times B\)</span>, est défini par :</p>
+<div class="math notranslate nohighlight">
+\[
+A \times B = \{ (a, b) \mid a \in A \text{ et } b \in B \}
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>Considérons les ensembles <span class="math notranslate nohighlight">\(A = \{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(B = \{a, b\}\)</span>, alors :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A \times B = \{(1, a), (1, b), (2, a), (2, b)\}
+\]</div>
+<ul class="simple">
+<li><p>Considérons les ensembles <span class="math notranslate nohighlight">\(A = \{x, y\}\)</span> et <span class="math notranslate nohighlight">\(B = \{1, 2, 3\}\)</span>. Le produit cartésien de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> est :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A \times B = \{(x, 1), (x, 2), (x, 3), (y, 1), (y, 2), (y, 3)\}
+\]</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Propriété de l’Ordre</p>
+<p>Le produit cartésien n’est pas commutatif, c’est-à-dire que <span class="math notranslate nohighlight">\(A \times B \neq B \times A\)</span> en général. Ceci est dû au fait que les couples <span class="math notranslate nohighlight">\((a, b)\)</span> et <span class="math notranslate nohighlight">\((b, a)\)</span> sont considérés comme différents à moins que <span class="math notranslate nohighlight">\(a = b\)</span>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Prenons <span class="math notranslate nohighlight">\(A = \{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(B = \{x, y\}\)</span>. Alors,</p>
+<div class="math notranslate nohighlight">
+\[
+A \times B = \{(1, x), (1, y), (2, x), (2, y)\}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+B \times A = \{(x, 1), (x, 2), (y, 1), (y, 2)\}
+\]</div>
+</div>
+</div>
+<div class="admonition-generalisation-des-couples-et-produits-cartesiens admonition">
+<p class="admonition-title">Généralisation des Couples et Produits Cartésiens</p>
+<p class="rubric">n-uplet</p>
+<p>Un n-uplet est une liste ordonnée de <span class="math notranslate nohighlight">\(n\)</span> éléments, où <span class="math notranslate nohighlight">\(n\)</span> est un entier positif. Si <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_n\)</span> sont <span class="math notranslate nohighlight">\(n\)</span> éléments (pas nécessairement distincts), le n-uplet formé par ces éléments est noté <span class="math notranslate nohighlight">\((a_1, a_2, \ldots, a_n)\)</span>.</p>
+<p class="rubric">Produit Cartésien pour n Ensembles</p>
+<p>Soient <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span> <span class="math notranslate nohighlight">\(n\)</span> ensembles. Le produit cartésien de ces ensembles, noté <span class="math notranslate nohighlight">\(A_1 \times A_2 \times \ldots \times A_n\)</span>, est défini par :</p>
+<div class="math notranslate nohighlight">
+\[
+\prod_{i=1}^{n} A_n= A_1 \times A_2 \times \ldots \times A_n = \{ (a_1, a_2, \ldots, a_n) \mid a_1 \in A_1, a_2 \in A_2, \ldots, a_n \in A_n \}
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1 :</p>
+<p>Soient <span class="math notranslate nohighlight">\(A_1 = \{0\}\)</span>, <span class="math notranslate nohighlight">\(A_2 = \{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(A_3 = \{x\}\)</span>. Le produit cartésien <span class="math notranslate nohighlight">\(A_1 \times A_2 \times A_3\)</span> est :</p>
+<div class="math notranslate nohighlight">
+\[
+A_1 \times A_2 \times A_3 = \{(0, 1, x), (0, 2, x)\}
+\]</div>
+<p class="rubric">Exemple 2 :</p>
+<p>Soient <span class="math notranslate nohighlight">\(A_1 = \{1, 2\}\)</span>,  <span class="math notranslate nohighlight">\(A_2 = \{a, b\}\)</span> et <span class="math notranslate nohighlight">\(A_3=\{\bullet, \triangle\}\)</span>. Le produit cartésien <span class="math notranslate nohighlight">\(A_1 \times A_2 \times A_3\)</span> est :</p>
+<div class="math notranslate nohighlight">
+\[
+A_1 \times A_2 \times A_3= \{(1, a, \bullet), (1, b, \bullet), (2, a, \bullet), (2, b, \bullet),(1, a, \triangle), (1, b, \triangle), (2, a, \triangle), (2, b, \triangle)\}
+\]</div>
+<p class="rubric">Exemple 3 : Produit Cartésien dans l’espace euclidien n-dimensionnel</p>
+<p>Le produit cartésien de <span class="math notranslate nohighlight">\(n\)</span> copies de l’ensemble des nombres réels, <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, est noté <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> et est défini comme suit :</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{R}^n = \mathbb{R} \times \mathbb{R} \times \ldots \times \mathbb{R} = \{ (x_1, x_2, \ldots, x_n) \mid x_i \in \mathbb{R} \text{ pour tout } i = 1, \ldots, n \}
+\]</div>
+<p>Chaque élément de <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> est un n-uplet où chaque composant <span class="math notranslate nohighlight">\(x_i\)</span> est un nombre réel. Par exemple :</p>
+<ul class="simple">
+<li><p>Dans <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, les éléments sont des couples de la forme <span class="math notranslate nohighlight">\((x, y)\)</span>, ce qui peut représenter un point dans le plan cartésien.</p></li>
+<li><p>Dans <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>, les éléments sont des triplets <span class="math notranslate nohighlight">\((x, y, z)\)</span>, pouvant représenter un point dans l’espace tridimensionnel.</p></li>
+<li><p>De manière générale, dans <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, les éléments sont des n-uplets qui peuvent représenter des points dans un espace à <span class="math notranslate nohighlight">\(n\)</span> dimensions.</p></li>
+</ul>
+<p class="rubric">Exemple 4 : Produit Cartésien avec Ensembles Vides</p>
+<p>Soient <span class="math notranslate nohighlight">\(A_1 = \varnothing\)</span> (l’ensemble vide) et <span class="math notranslate nohighlight">\(A_2 = \{1, 2\}\)</span>. Le produit cartésien <span class="math notranslate nohighlight">\(A_1 \times A_2\)</span> est :</p>
+<div class="math notranslate nohighlight">
+\[
+A_1 \times A_2 = \varnothing 
+\]</div>
+<p>Puisque l’ensemble vide n’a aucun élément, le produit cartésien est également vide.</p>
+</div>
+</div>
+</div>
+<div class="section" id="applications">
+<h2><span class="section-number">2.4. </span>Applications<a class="headerlink" href="#applications" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="application">
+<h3><span class="section-number">2.4.1. </span>Application<a class="headerlink" href="#application" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soient <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> deux ensembles.</p>
+<p>Une <strong>application</strong> <span class="math notranslate nohighlight">\(f\)</span> de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(B\)</span> est un sous-ensemble <span class="math notranslate nohighlight">\(f \subset A \times B\)</span> tel que pour tout <span class="math notranslate nohighlight">\(x \in A\)</span>, il existe un et un seul <span class="math notranslate nohighlight">\(y \in B\)</span> tel que <span class="math notranslate nohighlight">\((x, y) \in f\)</span>.</p>
+</div>
+<p>Dans cette définition :</p>
+<ul class="simple">
+<li><p><strong>Existence :</strong> Pour chaque élément <span class="math notranslate nohighlight">\(x\)</span> de l’ensemble de départ <span class="math notranslate nohighlight">\(A\)</span>, il doit y avoir au moins un élément <span class="math notranslate nohighlight">\(y\)</span> dans l’ensemble d’arrivée <span class="math notranslate nohighlight">\(B\)</span> tel que le couple <span class="math notranslate nohighlight">\((x, y)\)</span> appartienne à <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+<li><p><strong>Unicité :</strong> Pour chaque élément <span class="math notranslate nohighlight">\(x\)</span> de l’ensemble de départ <span class="math notranslate nohighlight">\(A\)</span>, il ne peut y avoir qu’un seul élément <span class="math notranslate nohighlight">\(y\)</span> dans l’ensemble d’arrivée <span class="math notranslate nohighlight">\(B\)</span> tel que le couple <span class="math notranslate nohighlight">\((x, y)\)</span> appartienne à <span class="math notranslate nohighlight">\(f\)</span>. Autrement dit, une valeur de départ <span class="math notranslate nohighlight">\(x\)</span> ne peut pas être associée à deux valeurs d’arrivée différentes dans <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+</ul>
+<p>Si <span class="math notranslate nohighlight">\(f\)</span> est une application de l’ensemble <span class="math notranslate nohighlight">\(A\)</span> dans l’ensemble <span class="math notranslate nohighlight">\(B\)</span> et que pour chaque <span class="math notranslate nohighlight">\(x \in A\)</span>, <span class="math notranslate nohighlight">\(f(x)\)</span> est l’image de <span class="math notranslate nohighlight">\(x\)</span> dans <span class="math notranslate nohighlight">\(B\)</span>, on note:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f: A &amp;\rightarrow B \\
+x &amp;\mapsto f(x)
+\end{aligned}
+\end{split}\]</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ol class="arabic">
+<li><p>Si <span class="math notranslate nohighlight">\(A=\{x, y, z\}\)</span> et <span class="math notranslate nohighlight">\(B=\{1, 2, 3, 4\}\)</span>:</p>
+<ul class="simple">
+<li><p>L’ensemble défini par <span class="math notranslate nohighlight">\(\{(x, 1), (y, 2), (z, 3)\}\)</span> est une application de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(B\)</span>, car chaque élément de <span class="math notranslate nohighlight">\(A\)</span> est associé à un et un seul élément de <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+<li><p>L’ensemble défini par <span class="math notranslate nohighlight">\(\{(x, 1), (y, 2), (z, 2)\}\)</span> est une application de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+<li><p>L’ensemble défini par <span class="math notranslate nohighlight">\(\{(x, 1), (x, 2), (y, 4), (z, 3)\}\)</span> n’est pas une application de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(B\)</span>, car l’élément <span class="math notranslate nohighlight">\(x\)</span> de <span class="math notranslate nohighlight">\(A\)</span> est associé à plus d’un élément de <span class="math notranslate nohighlight">\(B\)</span> (<span class="math notranslate nohighlight">\(1\)</span> et <span class="math notranslate nohighlight">\(2\)</span>), ce qui contredit la définition d’une application.</p></li>
+</ul>
+</li>
+<li><p>L’opération qui élève chaque nombre réel au carré constitue une application de <span class="math notranslate nohighlight">\(\mathbb R\)</span> dans <span class="math notranslate nohighlight">\(\mathbb R\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    g: \mathbb R &amp;\rightarrow \mathbb R \\
+    x &amp;\mapsto x^2
+    \end{aligned}
+    \end{split}\]</div>
+</li>
+<li><p>L’association de chaque nombre réel à sa partie entière définit une application de <span class="math notranslate nohighlight">\(\mathbb R\)</span> vers <span class="math notranslate nohighlight">\(\mathbb Z\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    h: \mathbb R &amp;\rightarrow \mathbb Z \\
+    x &amp;\mapsto \lfloor x \rfloor
+    \end{aligned}
+    \end{split}\]</div>
+</li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Remarque</p>
+<ul class="simple">
+<li><p>L’ensemble des applications de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(B\)</span> est noté <span class="math notranslate nohighlight">\(B^A\)</span>.</p></li>
+<li><p>Deux applications (<span class="math notranslate nohighlight">\(f\)</span> et <span class="math notranslate nohighlight">\(g\)</span>) sont dites égales si :</p>
+<ol class="arabic simple">
+<li><p>Elles ont le même ensemble de départ.</p></li>
+<li><p>Elles ont le même ensemble d’arrivée.</p></li>
+<li><p>Elles associent à chaque élément de l’ensemble de départ le même élément dans l’ensemble d’arrivée, c’est-à-dire que pour tout élément <span class="math notranslate nohighlight">\( x \)</span> dans l’ensemble de départ, <span class="math notranslate nohighlight">\( f(x) = g(x) \)</span>.</p></li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="image-et-antecedent">
+<h3><span class="section-number">2.4.2. </span>Image et antécédent<a class="headerlink" href="#image-et-antecedent" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soit <span class="math notranslate nohighlight">\(f: A \to B\)</span> une application. Pour un sous-ensemble <span class="math notranslate nohighlight">\(C\)</span> de <span class="math notranslate nohighlight">\(A\)</span>, l’<strong>image</strong> de <span class="math notranslate nohighlight">\(C\)</span> par <span class="math notranslate nohighlight">\(f\)</span> est le sous-ensemble de <span class="math notranslate nohighlight">\(B\)</span> donné par:</p>
+<div class="math notranslate nohighlight">
+\[ 
+f(C) = \{ f(x) : x \in C \} 
+\]</div>
+<p>De même, pour un sous-ensemble <span class="math notranslate nohighlight">\(D\)</span> de <span class="math notranslate nohighlight">\(B\)</span>, l’<strong>antécédent</strong> de <span class="math notranslate nohighlight">\(D\)</span> par <span class="math notranslate nohighlight">\(f\)</span> est le sous-ensemble de <span class="math notranslate nohighlight">\(A\)</span> donné par:</p>
+<div class="math notranslate nohighlight">
+\[ 
+f^{-1}(D) = \{ x \in A : f(x) \in D \} 
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul>
+<li><p>Exemple 1: Soit <span class="math notranslate nohighlight">\(A=\{a, b, c, x, y, z\}\)</span> et <span class="math notranslate nohighlight">\(B=\{1, 2, 3, 4, 5\}\)</span>:</p>
+<p>On considere l’application <span class="math notranslate nohighlight">\(f: A \to B\)</span> défini par <span class="math notranslate nohighlight">\(\{(a, 2), (b, 5), (c, 4),(x, 1), (y, 5), (z, 3)\}\)</span>.
+<img alt="map1" src="../_images/map1.PNG" /></p>
+<ul class="simple">
+<li><p>Soit <span class="math notranslate nohighlight">\(C\subset A\)</span> defini par <span class="math notranslate nohighlight">\(C=\{a, b, c\}\)</span>. Alors <span class="math notranslate nohighlight">\(f(C)=\{2, 4, 5\}\)</span>
+<img alt="map2" src="../_images/map2.PNG" /></p></li>
+<li><p>Soit <span class="math notranslate nohighlight">\(D\subset B\)</span> defini par <span class="math notranslate nohighlight">\(D=\{1, 2, 5\}\)</span>. Alors <span class="math notranslate nohighlight">\(f(C)=\{a, b, x, y\}\)</span>
+<img alt="map3" src="../_images/map3.PNG" /></p></li>
+</ul>
+</li>
+<li><p>Exemple 2: Soit <span class="math notranslate nohighlight">\(A= \mathbb{R} \setminus \{-2\}, B = \mathbb{R}\)</span>. la fonction <span class="math notranslate nohighlight">\( f\)</span> définie par</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    f: \mathbb{R} \setminus \{-2\} &amp;\rightarrow \mathbb{R} \\
+    x &amp;\mapsto f(x)=\frac{1}{x+2}
+    \end{aligned}
+    \end{split}\]</div>
+<ul class="simple">
+<li><p>Pour le sous-ensemble <span class="math notranslate nohighlight">\( C = \{0, 1, 3\} \)</span> de l’ensemble de départ <span class="math notranslate nohighlight">\( \mathbb{R} \setminus \{-2\} \)</span>, l’image de <span class="math notranslate nohighlight">\(C \)</span> par <span class="math notranslate nohighlight">\( f \)</span> est</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+    f(C) = \left\{\frac{1}{0+2}, \frac{1}{1+2}, \frac{1}{3+2}\right\} = \left\{\frac{1}{2}, \frac{1}{3}, \frac{1}{5}\right\} 
+    \]</div>
+<ul class="simple">
+<li><p>Considérons maintenant un sous-ensemble <span class="math notranslate nohighlight">\( D = \{\frac{1}{4}, \frac{1}{2}, -1\} \)</span> de l’ensemble d’arrivée <span class="math notranslate nohighlight">\( \mathbb{R} \)</span>. L’image réciproque de <span class="math notranslate nohighlight">\( D \)</span> par <span class="math notranslate nohighlight">\( f \)</span>, notée <span class="math notranslate nohighlight">\( f^{-1}(D) \)</span>, est l’ensemble des éléments <span class="math notranslate nohighlight">\( x \)</span> de <span class="math notranslate nohighlight">\( \mathbb{R} \setminus \{-2\} \)</span> tels que <span class="math notranslate nohighlight">\( f(x) \)</span> appartient à <span class="math notranslate nohighlight">\( D \)</span>. Donc,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ f^{-1}(D) = \left\{x \in \mathbb{R} \setminus \{-2\} \mid \frac{1}{x+2} \in \{\frac{1}{4}, \frac{1}{2}, -1\}\right\} = \left\{3, 1, -\frac{3}{2}\right\} 
+    \]</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="application-injective-ou-injection">
+<h3><span class="section-number">2.4.3. </span>Application injective (ou injection)<a class="headerlink" href="#application-injective-ou-injection" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une application <span class="math notranslate nohighlight">\(f: A \to B\)</span> est dite <strong>injective</strong> si tout élément distinct de <span class="math notranslate nohighlight">\(A\)</span> a une image distincte dans <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Autementdit,  <span class="math notranslate nohighlight">\(\forall x_1, x_2 \in A\)</span>,  <span class="math notranslate nohighlight">\(f(x_1) = f(x_2) \implies x_1 = x_2\)</span>.</p>
+<p>Ou encore, <span class="math notranslate nohighlight">\(\forall x_1, x_2 \in A\)</span>,  <span class="math notranslate nohighlight">\(x_1\neq x_2 \implies f(x_1) = f(x_2)\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>On considere l’application <span class="math notranslate nohighlight">\(f: A \to B\)</span> défini par <span class="math notranslate nohighlight">\(\{(a, 2), (b, 5), (c, 4),(x, 1), (y, 5), (z, 3)\}\)</span>.
+<img alt="map11" src="../_images/map1.PNG" />
+Cette apllication n’est pas injective car <span class="math notranslate nohighlight">\(b\)</span> et <span class="math notranslate nohighlight">\(y\)</span> sont distincts mais ils ont la meme image <span class="math notranslate nohighlight">\(5\)</span>.</p></li>
+<li><p>Considérons <span class="math notranslate nohighlight">\(f: \mathbb{Z} \to \mathbb{Z}\)</span> défini par <span class="math notranslate nohighlight">\(f(x) = 2x\)</span>. Cette application est injective car si <span class="math notranslate nohighlight">\(x_1 \neq x_2\)</span>, alors <span class="math notranslate nohighlight">\(2x_1 \neq 2x_2\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="application-surjective-ou-surjection">
+<h3><span class="section-number">2.4.4. </span>Application surjective (ou surjection)<a class="headerlink" href="#application-surjective-ou-surjection" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une application <span class="math notranslate nohighlight">\(f: A \to B\)</span> est dite <strong>surjective</strong> si chaque élément de <span class="math notranslate nohighlight">\(B\)</span> est l’image d’au moins un élément de <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Autrementdit, <span class="math notranslate nohighlight">\(f: A \to B\)</span> est dite <strong>surjective</strong> si <span class="math notranslate nohighlight">\(\forall y \in B, \exists x \in A \text{ tel que } f(x) = y.\)</span></p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>Considérons l’application <span class="math notranslate nohighlight">\(f: \mathbb{R} \to \mathbb{R^+}\)</span> où <span class="math notranslate nohighlight">\(\mathbb{R^+}\)</span> est l’ensemble des nombres réels positifs, définie par <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>. Cette application est surjective car pour tout <span class="math notranslate nohighlight">\(y\)</span> dans <span class="math notranslate nohighlight">\(\mathbb{R^+}\)</span>, il existe un <span class="math notranslate nohighlight">\(x\)</span> tel que <span class="math notranslate nohighlight">\(f(x) = y\)</span> (par exemple, <span class="math notranslate nohighlight">\(x = \sqrt{y}\)</span> ou <span class="math notranslate nohighlight">\(x = -\sqrt{y}\)</span>).</p></li>
+<li><p>En revanche, l’application <span class="math notranslate nohighlight">\(f: \mathbb{R} \to \mathbb{R}\)</span> définie par <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>. Cette application n’est pas surjective car les nombres negatifs n’ont pas d’anticidants.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="application-bijective-ou-bijection">
+<h3><span class="section-number">2.4.5. </span>Application bijective (ou bijection)<a class="headerlink" href="#application-bijective-ou-bijection" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une application <span class="math notranslate nohighlight">\(f: A \to B\)</span> est dite <strong>bijective</strong> si elle est à la fois injective et surjective. Cela signifie qu’il y a une correspondance unique et réciproque entre les éléments de <span class="math notranslate nohighlight">\(A\)</span> et les éléments de <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>L’application identite <span class="math notranslate nohighlight">\(Id_A\)</span> definie par:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+Id_A: A &amp;\rightarrow A \\
+x &amp;\mapsto x
+\end{aligned}
+\end{split}\]</div>
+<p>est une bijection de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(A\)</span>. car chaque element <span class="math notranslate nohighlight">\(x\)</span> de <span class="math notranslate nohighlight">\(A\)</span> a un et un seul anticidant (lui-meme).</p>
+<ul class="simple">
+<li><p>Considérons l’application <span class="math notranslate nohighlight">\(f: \mathbb{Z} \to \mathbb{Z}\)</span> définie par <span class="math notranslate nohighlight">\(f(x) = x + 1\)</span>. Cette application est bijective. En effet, chaque element <span class="math notranslate nohighlight">\(y\)</span> de <span class="math notranslate nohighlight">\(\mathbb Z\)</span> a un et un seul anticidant, <span class="math notranslate nohighlight">\(x = y-1\)</span>.</p></li>
+</ul>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Propriété</p>
+<p>Si une application est bijective, il existe une application inverse <span class="math notranslate nohighlight">\(f^{-1}: B \to A\)</span> telle que <span class="math notranslate nohighlight">\(f^{-1}(f(a)) = a\)</span> pour tout <span class="math notranslate nohighlight">\(a\)</span> dans <span class="math notranslate nohighlight">\(A\)</span>, et <span class="math notranslate nohighlight">\(f(f^{-1}(b)) = b\)</span> pour tout <span class="math notranslate nohighlight">\(b\)</span> dans <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<p>Pour l’application <span class="math notranslate nohighlight">\(f: \mathbb{Z} \to \mathbb{Z}\)</span> définie précédemment par <span class="math notranslate nohighlight">\(f(x) = x + 1\)</span>, l’application inverse est <span class="math notranslate nohighlight">\(f^{-1}(x) = x - 1\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ensembles-finis-denombrables-et-non-denombrables">
+<h2><span class="section-number">2.5. </span>Ensembles finis, dénombrables et non dénombrables<a class="headerlink" href="#ensembles-finis-denombrables-et-non-denombrables" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="ensemble-fini">
+<h3><span class="section-number">2.5.1. </span>Ensemble Fini<a class="headerlink" href="#ensemble-fini" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Un ensemble <span class="math notranslate nohighlight">\(A\)</span> est dit <strong>fini</strong> s’il vide (<span class="math notranslate nohighlight">\(A=\varnothing\)</span>) ou s’il existe un nombre entier <span class="math notranslate nohighlight">\(n \geq 1\)</span> et une application bijective <span class="math notranslate nohighlight">\(f : A \to \{1, \ldots, n\}\)</span>. L’entier <span class="math notranslate nohighlight">\(n\)</span> est alors dit <strong>cardinal</strong> de <span class="math notranslate nohighlight">\(A\)</span>, et on écrit <span class="math notranslate nohighlight">\(\#A = n\)</span> ou <span class="math notranslate nohighlight">\(card~ A = n\)</span> ou encore <span class="math notranslate nohighlight">\(|A| =n\)</span>. On dit que <span class="math notranslate nohighlight">\(A\)</span> est <strong>infini</strong> s’il n’est pas fini.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>L’ensemble des faces d’un dé est fini et a pour cardinal 6.</p></li>
+<li><p>L’ensemble des lettres de l’alphabet est fini et a pour cardinal 26 (en considérant l’alphabet anglais).</p></li>
+<li><p>Par convention, l’ensemble vide a pour cardinal 0, c’est-à-dire <span class="math notranslate nohighlight">\(\#\varnothing = 0\)</span>.</p></li>
+<li><p>Un Singleton, par exemple <span class="math notranslate nohighlight">\(\{a\}\)</span>, a pour cardinal 1.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="ensemble-infini-denombrable">
+<h3><span class="section-number">2.5.2. </span>Ensemble Infini Dénombrable<a class="headerlink" href="#ensemble-infini-denombrable" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Un ensemble <span class="math notranslate nohighlight">\(A\)</span> est dit <strong>infini dénombrable</strong> (ou tout simplement <strong>dénombrable</strong>) s’il existe une bijection entre <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(\mathbb N\)</span>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>L’ensemble des entiers naturels <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> est dénombrable (on considerer l’application identite).</p></li>
+<li><p>L’ensemble des entiers naturels pairs <span class="math notranslate nohighlight">\(2\mathbb N\)</span> est dénombrable (l’application de <span class="math notranslate nohighlight">\(\mathbb N\)</span> dans <span class="math notranslate nohighlight">\(2\mathbb N\)</span> definie par <span class="math notranslate nohighlight">\(n\mapsto 2n\)</span> est bijective).</p></li>
+<li><p>L’ensemble des entiers naturels impairs <span class="math notranslate nohighlight">\(2\mathbb N +1\)</span> est dénombrable (l’application de <span class="math notranslate nohighlight">\(\mathbb N\)</span> dans <span class="math notranslate nohighlight">\(2\mathbb N+1\)</span> definie par <span class="math notranslate nohighlight">\(n\mapsto 2n+1\)</span> est bijective).</p></li>
+<li><p>L’ensemble des entiers relatifs <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> est dénombrable, même s’il s’étend dans les deux directions à l’infini.</p></li>
+<li><p>l’ensemble des rationels <span class="math notranslate nohighlight">\(\mathbb Q\)</span> est dénombrable.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="ensemble-infini-non-denombrable">
+<h3><span class="section-number">2.5.3. </span>Ensemble Infini Non Dénombrable<a class="headerlink" href="#ensemble-infini-non-denombrable" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Un ensemble <span class="math notranslate nohighlight">\(A\)</span> est dit <strong>infini non dénombrable</strong> (ou tout simplement <strong>non dénombrable</strong>) s’il est infini et ne peut être mis en bijection avec les entiers naturels <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<ul class="simple">
+<li><p>Un exemple classique d’ensemble infini non dénombrable est l’ensemble des nombres réels <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.</p></li>
+<li><p>Tout ensemble qui est en bejiction avec <span class="math notranslate nohighlight">\(\mathbb R\)</span> est non dénombrable (pourquoi?).</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercices">
+<h2><span class="section-number">2.6. </span>Exercices<a class="headerlink" href="#exercices" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="exercice-1">
+<h3><span class="section-number">2.6.1. </span>Exercice 1<a class="headerlink" href="#exercice-1" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Donner un exemple d’un ensemble qui est un élément d’un autre ensemble.</p></li>
+<li><p>Spécifier l’ensemble <span class="math notranslate nohighlight">\(A = \{x \in \mathbb N \mid x &lt; 4\}\)</span> en utilisant la méthode d’extension.</p></li>
+<li><p>Décrire l’ensemble <span class="math notranslate nohighlight">\(B\)</span> des entiers pairs plus grands que 3 et inférieurs à 11 en utilisant la méthode de compréhension.</p></li>
+<li><p>Définissez un ensemble en utilisant la méthode de compréhension (ensemble des nombres pairs entre 0 et 10).</p></li>
+<li><p>Écrivez en extension l’ensemble des nombres entiers compris entre 1 et 5.</p></li>
+<li><p>Écrire l’ensemble des parties de <span class="math notranslate nohighlight">\(\{1, 2, \{3, 4\}\}\)</span>.</p></li>
+<li><p>Donner un exemple d’un ensemble spécifié par une propriété et non par une énumération.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-2">
+<h3><span class="section-number">2.6.2. </span>Exercice 2 :<a class="headerlink" href="#exercice-2" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple" start="3">
+<li><p>Déterminer si <span class="math notranslate nohighlight">\(\{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(\{1, \{2\}\}\)</span> sont les memes.</p></li>
+<li><p>Soit <span class="math notranslate nohighlight">\(A = \{1, 2, 3\}\)</span> et <span class="math notranslate nohighlight">\(B = \{\{1, 2, 3\}, 4\}\)</span>. Déterminez si les affirmations suivantes sont vraies ou fausses :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1 \in A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \subset B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \in B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(2 \subset A\)</span></p></li>
+</ul>
+</li>
+<li><p>Soient <span class="math notranslate nohighlight">\(X = \{a, \{b, c\}\}\)</span> et <span class="math notranslate nohighlight">\(Y = \{\{a\}, \{b, c\}\}\)</span>. Déterminez si les affirmations suivantes sont vraies ou fausses :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a \in X\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\{b, c\} \subset X\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\{a\} \in Y\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(X \subset Y\)</span></p></li>
+</ul>
+</li>
+<li><p>Soit <span class="math notranslate nohighlight">\(Z = \{5, \{6, 7\}, 8\}\)</span>. Répondez :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(6 \in Z\)</span> est-il vrai ?</p></li>
+<li><p>Est-il vrai que <span class="math notranslate nohighlight">\(\{6\} \subset Z\)</span> ?</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(W = \{5, 6, 7, 8\}\)</span>, <span class="math notranslate nohighlight">\(W \subset Z\)</span> est-il vrai ?</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{8\} \in Z\)</span> est-il vrai ?</p></li>
+</ul>
+</li>
+<li><p>Considérez <span class="math notranslate nohighlight">\(E = \{x \mid x \text{ est un nombre pair entre 1 et 10}\}\)</span> et <span class="math notranslate nohighlight">\(F = \{2, 4, 6, 8, 10\}\)</span>. Vérifiez si les affirmations suivantes sont vraies ou fausses :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2 \in E\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F \subset E\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E \in F\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\{4, 6\} \subset E\)</span></p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="exercice-3">
+<h3><span class="section-number">2.6.3. </span>Exercice 3 :<a class="headerlink" href="#exercice-3" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Trouver l’ensemble des parties de <span class="math notranslate nohighlight">\(\{a, b, c\}\)</span>.</p></li>
+<li><p>Combien d’éléments contient l’ensemble des parties de <span class="math notranslate nohighlight">\(\{1, 2, 3, 4\}\)</span> ?</p></li>
+<li><p>Donnez l’ensemble des parties de <span class="math notranslate nohighlight">\(\varnothing\)</span>.</p></li>
+<li><p>Démontrez que si <span class="math notranslate nohighlight">\(A \subset B\)</span>, alors <span class="math notranslate nohighlight">\(\mathcal{P}(A) \subset \mathcal{P}(B)\)</span>.</p></li>
+<li><p>Démontrez que pour deux ensembles A et B, <span class="math notranslate nohighlight">\(\mathcal{P}(A \cup B) = \mathcal{P}(A) \cup \mathcal{P}(B) \cup \mathcal{P}(A \cap B)\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(\#\mathcal{P}(A) = 2^{\#A}\)</span> pour un ensemble fini A.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-4">
+<h3><span class="section-number">2.6.4. </span>Exercice 4 :<a class="headerlink" href="#exercice-4" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>On considere l’ensemble universel <span class="math notranslate nohighlight">\(U = \{1, 2, 3, 4, 5, 6, 8, 9, 10\}\)</span>, <span class="math notranslate nohighlight">\(A = \{1, 2, 3\}\)</span>, <span class="math notranslate nohighlight">\(B = \{3, 4, 5\}\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Trouver l’union, l’intersection, et la différence, la difference symetrique de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+<li><p>Meme question pour <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(C\)</span></p></li>
+<li><p>Déterminer le complémentaire <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, et <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+<li><p>calculer <span class="math notranslate nohighlight">\((A \cup B) \cup C\)</span> et <span class="math notranslate nohighlight">\(A \cup (B \cup C)\)</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-5">
+<h3><span class="section-number">2.6.5. </span>Exercice 5 :<a class="headerlink" href="#exercice-5" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(A \cup B = B \cup A\)</span> et <span class="math notranslate nohighlight">\(A \cap B = B \cap A\)</span> (lois commutatives).</p></li>
+<li><p>Prouvez que <span class="math notranslate nohighlight">\((A \cup B) \setminus C = (A \setminus C) \cup (B \setminus C)\)</span>.</p></li>
+<li><p>Démontrez que si <span class="math notranslate nohighlight">\(A \subset B\)</span>, alors <span class="math notranslate nohighlight">\(A \cup C \subset B \cup C\)</span> et <span class="math notranslate nohighlight">\(A \cap C \subset B \cap C\)</span>.</p></li>
+<li><p>Démontrez que si <span class="math notranslate nohighlight">\(A \subset B\)</span>, alors <span class="math notranslate nohighlight">\(B^c \subset A^c\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(A \setminus B = A \cap B^c\)</span>.</p></li>
+<li><p>Démontrez que si <span class="math notranslate nohighlight">\(A \subset B\)</span>, alors <span class="math notranslate nohighlight">\(B \setminus A\)</span> et <span class="math notranslate nohighlight">\(A \cap B\)</span> sont disjoints.</p></li>
+<li><p>Prouvez que <span class="math notranslate nohighlight">\((A \setminus B) \cup B = A \cup B\)</span>.</p></li>
+<li><p>Montrez que la différence symétrique est commutative (<span class="math notranslate nohighlight">\(A \Delta B = B \Delta A\)</span>).</p></li>
+<li><p>Démontrez que <span class="math notranslate nohighlight">\(A \Delta B = (A \cup B) \setminus (A \cap B)\)</span>.</p></li>
+<li><p>Prouvez que si <span class="math notranslate nohighlight">\(A \Delta B = \varnothing\)</span>, alors <span class="math notranslate nohighlight">\(A = B\)</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-6">
+<h3><span class="section-number">2.6.6. </span>Exercice 6 :<a class="headerlink" href="#exercice-6" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>On considere l’ensemble universel <span class="math notranslate nohighlight">\(U = \{1, 2, 3, 4, 5, 6, 8, 9, 10\}\)</span>, <span class="math notranslate nohighlight">\(A = \{1, 2, 3\}\)</span>, <span class="math notranslate nohighlight">\(B = \{3, 4, 5\}\)</span>.
+Verifier que  <span class="math notranslate nohighlight">\((A \cup B)^c = A^c \cap B^c\)</span> et <span class="math notranslate nohighlight">\((A \cap B)^c = A^c \cup B^c\)</span></p>
+</div>
+<div class="section" id="exercice-7">
+<h3><span class="section-number">2.6.7. </span>Exercice 7 :<a class="headerlink" href="#exercice-7" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Soient <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> deux ensembles. Utilisez les lois de De Morgan pour montrer les équivalences suivantes :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\((A \cup B)^c = A^c \cap B^c\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\((A \cap B)^c = A^c \cup B^c\)</span>.</p></li>
+</ol>
+</li>
+<li><p>Soient <span class="math notranslate nohighlight">\(A_1, A_2, ..., A_n\)</span> une collection finie d’ensembles. Utilisez les lois de De Morgan pour montrer les équivalences suivantes :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\((\bigcup_{i=1}^{n} A_i)^c = \bigcap_{i=1}^{n} A_i^c\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\((\bigcap_{i=1}^{n} A_i)^c = \bigcup_{i=1}^{n} A_i^c\)</span>.</p></li>
+</ol>
+</li>
+<li><p>Considérez une collection (dénombrable ou non) d’ensembles <span class="math notranslate nohighlight">\(\{A_\alpha\}_{\alpha \in I}\)</span>, où <span class="math notranslate nohighlight">\(I\)</span> est un index quelconque. Utilisez les lois de De Morgan pour montrer les équivalences suivantes :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\((\bigcup_{\alpha \in I} A_\alpha)^c = \bigcap_{\alpha \in I} A_\alpha^c\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\((\bigcap_{\alpha \in I} A_\alpha)^c = \bigcup_{\alpha \in I} A_\alpha^c\)</span>.</p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="exercice-8">
+<h3><span class="section-number">2.6.8. </span>Exercice 8 :<a class="headerlink" href="#exercice-8" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Construire le produit cartésien <span class="math notranslate nohighlight">\(A \times B\)</span> pour <span class="math notranslate nohighlight">\(A = \{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(B = \{a, b\}\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(C = \{0, 1\}\)</span> et <span class="math notranslate nohighlight">\(D = \{x, y\}\)</span>, combien d’éléments contient <span class="math notranslate nohighlight">\(C \times D\)</span> ?</p></li>
+<li><p>Représenter graphiquement le produit cartésien <span class="math notranslate nohighlight">\(E \times F\)</span> où <span class="math notranslate nohighlight">\(E = \{1, 2\}\)</span> et <span class="math notranslate nohighlight">\(F = \{3, 4\}\)</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-9">
+<h3><span class="section-number">2.6.9. </span>Exercice 9 :<a class="headerlink" href="#exercice-9" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Montrez que si <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont des ensembles non vides, alors <span class="math notranslate nohighlight">\(A \times B\)</span> est non vide.</p></li>
+<li><p>Démontrez que <span class="math notranslate nohighlight">\((A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D)\)</span>.</p></li>
+<li><p>Prouvez que si <span class="math notranslate nohighlight">\(A \times B = A \times C\)</span> et <span class="math notranslate nohighlight">\(A\)</span> est non vide, alors <span class="math notranslate nohighlight">\(B = C\)</span>.</p></li>
+<li><p>Démontrez que pour tous ensembles <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, <span class="math notranslate nohighlight">\((A \times B) \cup (A \times C) = A \times (B \cup C)\)</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-10">
+<h3><span class="section-number">2.6.10. </span>Exercice 10:<a class="headerlink" href="#exercice-10" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Définir ce qu’est une application entre deux ensembles.</p></li>
+<li><p>Donner un exemple de fonction qui n’est pas une application.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(f : x \mapsto x^2\)</span>, trouver l’image de l’ensemble {1, 2, 3} par <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+<li><p>Déterminer l’image réciproque de {4, 9} par la même fonction <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+<li><p>Expliquer pourquoi l’image réciproque d’un singleton par une fonction peut contenir plusieurs éléments.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-11">
+<h3><span class="section-number">2.6.11. </span>Exercice 11 :<a class="headerlink" href="#exercice-11" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Considérons une fonction <span class="math notranslate nohighlight">\(f: E \rightarrow F\)</span> et des ensembles <span class="math notranslate nohighlight">\(A, B\)</span> deux sous-ensembles de <span class="math notranslate nohighlight">\(E\)</span>, <span class="math notranslate nohighlight">\(A_1, \ldots A_n\)</span> des sous-ensembles de <span class="math notranslate nohighlight">\(E\)</span>, et <span class="math notranslate nohighlight">\((A_\alpha)_{\alpha \in I)\)</span>, où <span class="math notranslate nohighlight">\(I\)</span> est un index quelconque, une famille de sous-ensembles de <span class="math notranslate nohighlight">\(E\)</span>.</p>
+<p><strong>Pour <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span></strong> :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f(A \cap B) \subset f(A) \cap f(B)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f(A \cup B) \subset f(A) \cup f(B)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f(A \setminus B) \subset f(A) \setminus f(B)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f(A^c)\)</span> n’a pas de relation directe avec <span class="math notranslate nohighlight">\(f(A)^c\)</span>, et expliquez pourquoi.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f(A \triangle B) \subset f(A) \triangle f(B)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+</ol>
+<p><strong>Pour <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)</span></strong> :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f\left(\bigcap_{i=1}^{n} A_i\right) \subset \bigcap_{i=1}^{n} f(A_i)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f\left(\bigcup_{i=1}^{n} A_i\right) \subset \bigcup_{i=1}^{n} f(A_i)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+</ol>
+<p><strong>Pour <span class="math notranslate nohighlight">\(A_\alpha\)</span> (<span class="math notranslate nohighlight">\(\alpha \in I\)</span>)</strong> :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f\left(\bigcap_{\alpha \in I} A_\alpha\right) \subset \bigcap_{\alpha \in I} f(A_\alpha)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f\left(\bigcup_{\alpha \in I} A_\alpha\right) \subset \bigcup_{\alpha \in I} f(A_\alpha)\)</span>, et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-12">
+<h3><span class="section-number">2.6.12. </span>Exercice 12:<a class="headerlink" href="#exercice-12" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Considérons une fonction <span class="math notranslate nohighlight">\(f: E \rightarrow F\)</span> et des ensembles <span class="math notranslate nohighlight">\(A, B\)</span> deux sous-ensembles de <span class="math notranslate nohighlight">\(E\)</span>, <span class="math notranslate nohighlight">\(A_1, \ldots A_n\)</span> des sous-ensembles de <span class="math notranslate nohighlight">\(E\)</span>, et <span class="math notranslate nohighlight">\((A_\alpha)_{\alpha \in I)\)</span>, où <span class="math notranslate nohighlight">\(I\)</span> est un index quelconque, une famille de sous-ensembles de <span class="math notranslate nohighlight">\(E\)</span>.</p>
+<p><strong>Pour <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span></strong> :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}(A \setminus B) = f^{-1}(A) \setminus f^{-1}(B)\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}(A^c) = (f^{-1}(A))^c\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}(A \triangle B) = f^{-1}(A) \triangle f^{-1}(B)\)</span>.</p></li>
+</ol>
+<p><strong>Pour <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)</span></strong> :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}\left(\bigcap_{i=1}^{n} A_i\right) = \bigcap_{i=1}^{n} f^{-1}(A_i)\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}\left(\bigcup_{i=1}^{n} A_i\right) = \bigcup_{i=1}^{n} f^{-1}(A_i)\)</span>.</p></li>
+</ol>
+<p><strong>Pour <span class="math notranslate nohighlight">\(A_\alpha\)</span> (<span class="math notranslate nohighlight">\(\alpha \in I\)</span>)</strong> :</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}\left(\bigcap_{\alpha \in I} A_\alpha\right) = \bigcap_{\alpha \in I} f^{-1}(A_\alpha)\)</span>.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}\left(\bigcup_{\alpha \in I} A_\alpha\right) = \bigcup_{\alpha \in I} f^{-1}(A_\alpha)\)</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-13">
+<h3><span class="section-number">2.6.13. </span>Exercice 13:<a class="headerlink" href="#exercice-13" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Donner un exemple d’une application qui n’est ni injective ni surjective d’un semble <span class="math notranslate nohighlight">\(A\)</span> dans un ensbmle <span class="math notranslate nohighlight">\(B\)</span> (les ensembles a donner).</p></li>
+<li><p>Donner un exemple d’une application qui n’est pas surjective mais injective d’un semble <span class="math notranslate nohighlight">\(A\)</span> dans un ensbmle <span class="math notranslate nohighlight">\(B\)</span> (les ensembles a donner).</p></li>
+<li><p>Donner un exemple d’une application qui n’est pas injective mais surjective d’un semble <span class="math notranslate nohighlight">\(A\)</span> dans un ensbmle <span class="math notranslate nohighlight">\(B\)</span> (les ensembles a donner).</p></li>
+<li><p>Donner un exemple d’une application qui bijective d’un semble <span class="math notranslate nohighlight">\(A\)</span> dans un ensbmle <span class="math notranslate nohighlight">\(B\)</span> (les ensembles a donner).</p></li>
+<li><p>Traiter selon les cas (<span class="math notranslate nohighlight">\(\#A &lt; \#B\)</span>, <span class="math notranslate nohighlight">\(\#A&gt; \#B\)</span>, et <span class="math notranslate nohighlight">\(\#A = \#B\)</span>) les types d’applications qu’on peut construire (injections, surjections, bijections).</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(A =\{1, 2, 3\}\)</span> et <span class="math notranslate nohighlight">\(B=\{a, b, c\}\)</span> donner toutes les application, les applications injectives, les applications surjective, et les applications bijective de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(B\)</span>. quel sera le cas si <span class="math notranslate nohighlight">\(\#A =n\)</span>?</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-14">
+<h3><span class="section-number">2.6.14. </span>Exercice 14:<a class="headerlink" href="#exercice-14" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Considérons une fonction <span class="math notranslate nohighlight">\(f: E \rightarrow F\)</span> et des ensembles <span class="math notranslate nohighlight">\(A\subset E\)</span> et <span class="math notranslate nohighlight">\(B \subset F\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f(f^{-1}(B)) \subset B\)</span> et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+<li><p>Montrez que <span class="math notranslate nohighlight">\(f^{-1}(f(A)) \supset A\)</span> et fournissez un exemple où l’égalité n’est pas vraie.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(f\)</span> est injective, montrez que <span class="math notranslate nohighlight">\(f^{-1}(f(A)) = A\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(f\)</span> est surjective,  montrez que <span class="math notranslate nohighlight">\(f(f^{-1}(B)) = B\)</span>.</p></li>
+</ol>
+</div>
+<div class="section" id="exercice-15">
+<h3><span class="section-number">2.6.15. </span>Exercice 15:<a class="headerlink" href="#exercice-15" title="Lien permanent vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Montrez que l’application <span class="math notranslate nohighlight">\(f: \mathbb{N} \rightarrow 2\mathbb{N}\)</span> définie par <span class="math notranslate nohighlight">\(f(n) = 2n\)</span> est bijective. En déduire que l’ensemble <span class="math notranslate nohighlight">\(2\mathbb{N}\)</span> est dénombrable.</p></li>
+<li><p>Montrez que l’application <span class="math notranslate nohighlight">\(g: \mathbb{N} \rightarrow 2\mathbb{N}+1\)</span> définie par <span class="math notranslate nohighlight">\(g(n) = 2n + 1\)</span> est bijective. En déduire que l’ensemble <span class="math notranslate nohighlight">\(2\mathbb{N}+1\)</span> est dénombrable.</p></li>
+<li><p>Montrez que l’application <span class="math notranslate nohighlight">\(h: \mathbb{N} \rightarrow \mathbb{Z}\)</span>, qui associe à chaque nombre naturel un entier (par exemple, en alternant positifs et négatifs), est bijective. En déduire que l’ensemble <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> est dénombrable.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapitre_1.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="denombrement.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Dénombrement</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-de-base">2.1. Définitions de base</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble">2.1.1. Ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodes-de-specification-dun-ensemble">2.1.2. Méthodes de Spécification d’un Ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-des-parties">2.1.3. Ensemble des parties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operations-sur-les-ensembles">2.2. Opérations sur les ensembles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">2.2.1. Union</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersection">2.2.2. Intersection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference">2.2.3. Différence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complementaire">2.2.4. Complémentaire</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-symetrique">2.2.5. Différence Symétrique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proprietes">2.2.6. Propriétés</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2.6.1. Complémentaire</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.6.2. Différence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.6.3. Différence Symétrique</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#le-produit-cartesien">2.3. Le Produit Cartésien</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#couple">2.3.1. Couple</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#produit-cartesion">2.3.2. Produit Cartésion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">2.4. Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application">2.4.1. Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-et-antecedent">2.4.2. Image et antécédent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-injective-ou-injection">2.4.3. Application injective (ou injection)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-surjective-ou-surjection">2.4.4. Application surjective (ou surjection)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-bijective-ou-bijection">2.4.5. Application bijective (ou bijection)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensembles-finis-denombrables-et-non-denombrables">2.5. Ensembles finis, dénombrables et non dénombrables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-fini">2.5.1. Ensemble Fini</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-infini-denombrable">2.5.2. Ensemble Infini Dénombrable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-infini-non-denombrable">2.5.3. Ensemble Infini Non Dénombrable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">2.6. Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">2.6.1. Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">2.6.2. Exercice 2 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">2.6.3. Exercice 3 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">2.6.4. Exercice 4 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">2.6.5. Exercice 5 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">2.6.6. Exercice 6 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">2.6.7. Exercice 7 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">2.6.8. Exercice 8 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-9">2.6.9. Exercice 9 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-10">2.6.10. Exercice 10:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-11">2.6.11. Exercice 11 :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-12">2.6.12. Exercice 12:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-13">2.6.13. Exercice 13:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-14">2.6.14. Exercice 14:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-15">2.6.15. Exercice 15:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, Département Informatique, École supérieure de technologie, Casablanca, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Iaousse Mbarek.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Mis à jour le 19 déc. 2023.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Ce manuel est mis à disposition selon les termes de la Licence
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative
+Commons Attribution 4.0 International</a>.
+L'utilisation de ce travail est autorisée à condition d'en
+attribuer la paternité.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

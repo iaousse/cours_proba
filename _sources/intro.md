@@ -6,11 +6,12 @@ Le domaine des probabilités, se situant au croisement des mathématiques, de la
 ---
 
 **Aperçu du Cours :**
-1. **Chapitre 1 : Introduction et Concepts de Base** -  Il abordera les sections Ensembles et Opérations, Concepts Fondamentaux, Dénombrement, et Probabilités et Dénombrement.
-2. **Chapitre 2 : Axioms des proba** - Immersion dans les distributions probabilistes courantes et leurs implications.
-2. **Chapitre 2 : Variables Aléatoires et Distributions** - Immersion dans les distributions probabilistes courantes et leurs implications.
+1. **Introduction**.
+1. **Chapitre 1 : Un peu sur la théorie des ensembles** -  Il abordera les sections Ensembles et Opérations, Concepts Fondamentaux des ensembles et applications
+1. **Chapitre 2 : Dénombrement** - Un apercu sur le denombrement et tirage connus.
+1. **Chapitre 3 : Axioms des proba** - un definition regoureuse et mathmatique des probabilites
+1. **Chapitre 2 : Variables Aléatoires et Distributions** - Immersion dans les distributions probabilistes courantes et leurs implications.
 3. **Chapitre 3 : Théorèmes Limite et Convergence** - Approfondissement des principaux théorèmes et de leurs conséquences.
-4. ...(Ajoutez autant de chapitres que nécessaire).
 
 **Méthodologie Pédagogique :**
 - **Cours Magistraux** : Exposition théorique et démonstrations mathématiques pour établir des bases solides.

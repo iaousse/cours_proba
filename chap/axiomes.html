@@ -1,0 +1,1467 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. La théorie des probabilités &#8212; Cours de Probabilités</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chap/axiomes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="5. Variables Aléatoires Réelles" href="var_alea.html" />
+    <link rel="prev" title="3. Dénombrement" href="denombrement.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapitre_1.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ensembles.html">2. Rapel sur les Ensembles et Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="denombrement.html">3. Dénombrement</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. La théorie des probabilités</a></li>
+<li class="toctree-l1"><a class="reference internal" href="var_alea.html">5. Variables Aléatoires Réelles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text"> </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://iaousse.github.io/cours_proba/cours_proba.pdf">Document pdf</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/iaousse/cours_proba/issues/new?title=Issue%20on%20page%20%2Fchap/axiomes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Ouvrez un problème"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chap/axiomes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>La théorie des probabilités</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langage-de-probabilites">4.1. Langage de Probabilités</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-aleatoire">4.1.1. Expérience aléatoire</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomatisation-des-probabilites">4.2. Axiomatisation des probabilités</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tribu-ou-sigma-algebre">4.2.1. Tribu ou <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tribu-borelienne">4.2.2. Tribu borélienne</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesure-de-probabilite">4.2.3. Mesure de Probabilité</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evenement-presque-sur-evenement-negligeable">4.2.4. Événement presque sûr, événement négligeable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equiprobabilite">4.2.5. Equiprobabilité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilite-conditionnelle-et-independance">4.3. Probabilité Conditionnelle et Independance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilite-conditionnelle">4.3.1. Probabilité Conditionnelle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independance">4.3.2. Indépendance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independance-de-deux-evenements">4.3.2.1. Indépendance de deux événements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independance-de-plusieurs-evenements">4.3.2.2. Indépendance de Plusieurs Évènements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">4.4. Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">4.4.1. Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">4.4.2. Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">4.4.3. Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">4.4.4. Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">4.4.5. Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">4.4.6. Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">4.4.7. Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">4.4.8. Exercice 8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-9">4.4.9. Exercice 9</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-10">4.4.10. Exercice 10</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-11">4.4.11. Exercice 11</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="la-theorie-des-probabilites">
+<h1><span class="section-number">4. </span>La théorie des probabilités<a class="headerlink" href="#la-theorie-des-probabilites" title="Lien permanent vers cette rubrique">#</a></h1>
+<div class="section" id="langage-de-probabilites">
+<h2><span class="section-number">4.1. </span>Langage de Probabilités<a class="headerlink" href="#langage-de-probabilites" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="experience-aleatoire">
+<h3><span class="section-number">4.1.1. </span>Expérience aléatoire<a class="headerlink" href="#experience-aleatoire" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Une expérience est dite <strong>aléatoire</strong> si son résultat ne peut pas être prévu à l’avance. Autrement dit, si elle est répétée dans des conditions identiques, elle peut donner lieu à des résultats différents.</p>
+<ul class="simple">
+<li><p>Les résultats obtenus lors d’une expérience aléatoire sont dits <strong>réalisations</strong> ou <strong>observations</strong>.</p></li>
+<li><p>L’ensemble de tous les résultats possibles d’une expérience s’appelle <strong>Univers</strong>, noté <span class="math notranslate nohighlight">\(\Omega\)</span>. Il peut être fini, infini dénombrable ou infini non dénombrable.</p></li>
+<li><p>Un élément <span class="math notranslate nohighlight">\(\omega\)</span> de <span class="math notranslate nohighlight">\(\Omega\)</span> est dit <strong>évènement élémentaire</strong>.</p></li>
+<li><p>Un sous ensemble de <span class="math notranslate nohighlight">\(\Omega\)</span> est dit <strong>évènement</strong>.</p></li>
+</ul>
+</div>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1: Lancer d’un dé à six faces</p>
+<ul class="simple">
+<li><p><strong>Univers (<span class="math notranslate nohighlight">\(\Omega\)</span>)</strong>: <span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 5, 6\}\)</span></p></li>
+<li><p><strong>Réalisations</strong>: le numéro obtenu après avoir lancé le dé.</p></li>
+<li><p><strong>Évènements élémentaires</strong>: <span class="math notranslate nohighlight">\(\{1\}, \{2\}, \{3\}, \{4\}, \{5\}, \{6\}\)</span></p></li>
+<li><p><strong>Évènements</strong>:</p>
+<ul>
+<li><p>Obtenir un nombre pair: <span class="math notranslate nohighlight">\(\{2, 4, 6\}\)</span></p></li>
+<li><p>Obtenir un nombre impair: <span class="math notranslate nohighlight">\(\{1, 3, 5\}\)</span></p></li>
+<li><p>Obtenir un nombre supérieur à 4: <span class="math notranslate nohighlight">\(\{5, 6\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Exemple 2: Tirage d’une carte d’un jeu de <span class="math notranslate nohighlight">\(52\)</span> cartes</p>
+<ul class="simple">
+<li><p><strong>Univers (<span class="math notranslate nohighlight">\(\Omega\)</span>)</strong>: Ensemble des <span class="math notranslate nohighlight">\(52\)</span> cartes.</p></li>
+<li><p><strong>Réalisations</strong>:  La carte spécifique Tirée.</p></li>
+<li><p><strong>Évènements élémentaires</strong>: Chaque carte est un évènement élémentaire.</p></li>
+<li><p><strong>Évènements</strong>:</p>
+<ul>
+<li><p>Tirer un as: Tous les as du paquet.</p></li>
+<li><p>Tirer une carte rouge (cœur ou carreau).</p></li>
+<li><p>Tirer une figure (valet, reine, roi).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Exemple 3: Lancer d’une pièce de monnaie</p>
+<ul class="simple">
+<li><p><strong>Univers (<span class="math notranslate nohighlight">\(\Omega\)</span>)</strong>: {Pile, Face}</p></li>
+<li><p><strong>Réalisations</strong>: La pièce montre ‘Pile’ ou ‘Face’.</p></li>
+<li><p><strong>Évènements élémentaires</strong>: {Pile}, {Face}</p></li>
+<li><p><strong>Évènements</strong>:</p>
+<ul>
+<li><p>Obtenir Pile.</p></li>
+<li><p>Obtenir Face.</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Exemple 4: Mesure de la température quotidienne</p>
+<ul class="simple">
+<li><p><strong>Univers (<span class="math notranslate nohighlight">\(\Omega\)</span>)</strong>: L’ensemble des températures possibles.</p></li>
+<li><p><strong>Réalisations</strong>: La température enregistrée à un moment donné.</p></li>
+<li><p><strong>Évènements élémentaires</strong>: Chaque température spécifique mesurée est un évènement élémentaire.</p></li>
+<li><p><strong>Évènements</strong>:</p>
+<ul>
+<li><p>Température supérieure à 30°C.</p></li>
+<li><p>Température inférieure ou égale à 0°C (gel).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Exemple 5: Nombre de clients entrant dans une boutique par jour</p>
+<ul class="simple">
+<li><p><strong>Univers (<span class="math notranslate nohighlight">\(\Omega\)</span>)</strong>: <span class="math notranslate nohighlight">\(\{0, 1, 2, 3, \ldots, n\}\)</span> (où <span class="math notranslate nohighlight">\(n\)</span> est un nombre maximum estimé de clients par jour)</p></li>
+<li><p><strong>Réalisations</strong>: Le nombre spécifique de clients entrant dans la boutique.</p></li>
+<li><p><strong>Évènements élémentaires</strong>: Chaque nombre spécifique de clients est un évènement élémentaire.</p></li>
+<li><p><strong>Évènements</strong>:</p>
+<ul>
+<li><p>Aucun client n’entre dans la boutique.</p></li>
+<li><p>Plus de 50 clients entrent dans la boutique.</p></li>
+<li><p>moins de 20 clients entrent dans la boutique.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Exemple 6: Réception d’emails dans une heure</p>
+<ul class="simple">
+<li><p><strong>Univers (<span class="math notranslate nohighlight">\(\Omega\)</span>)</strong>: <span class="math notranslate nohighlight">\(\{0, 1, 2, 3, \ldots\}\)</span></p></li>
+<li><p><strong>Réalisations</strong>: le nombre spécifique d’emails reçus après l’expérience.</p></li>
+<li><p><strong>Évènements élémentaires</strong>: Chaque nombre spécifique d’emails reçus est un évènement élémentaire.</p></li>
+<li><p><strong>Évènements</strong>:</p>
+<ul>
+<li><p>Recevoir exactement un email.</p></li>
+<li><p>Ne recevoir aucun email.</p></li>
+<li><p>Recevoir plus de 10 emails.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ldots\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Deux évènements <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont dits <strong>incompatibles</strong> (ou <strong>disjoints</strong>) si leur intersection est vide, c’est-à-dire <span class="math notranslate nohighlight">\(A \cap B = \varnothing\)</span>.</p>
+</div>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<p><strong>Exemples d’évènements incompatibles</strong></p>
+<ol class="arabic simple">
+<li><p>Dans un lancer de dé, <span class="math notranslate nohighlight">\(A = \{\text{obtenir un pair}\}\)</span>, <span class="math notranslate nohighlight">\(B = \{\text{obtenir un impair}\}\)</span>. Ici, <span class="math notranslate nohighlight">\(A \cap B = \varnothing\)</span>.</p></li>
+<li><p>Lors du tirage d’une carte, <span class="math notranslate nohighlight">\(A = \{\text{tirer un as}\}\)</span>, <span class="math notranslate nohighlight">\(B = \{\text{tirer un roi}\}\)</span>. Aucune carte ne peut être à la fois un as et un roi, donc <span class="math notranslate nohighlight">\(A \cap B = \varnothing\)</span>.</p></li>
+<li><p>Dans un lancer de dé, <span class="math notranslate nohighlight">\(C = \{\text{obtenir un nombre inférieur à} 4\}\)</span>, <span class="math notranslate nohighlight">\(D = \{5, 6\}\)</span>. Ici, <span class="math notranslate nohighlight">\(C \cap D = \varnothing\)</span> .</p></li>
+</ol>
+<p><strong>Exemples d’évènements qui ne sont pas incompatibles</strong></p>
+<ol class="arabic simple">
+<li><p>Dans un lancer de dé, <span class="math notranslate nohighlight">\(C = \{\text{obtenir un nombre inférieur à} 4\}\)</span>, <span class="math notranslate nohighlight">\(D = \{\text{obtenir un nombre pair}\}\)</span>. Ici, <span class="math notranslate nohighlight">\(C \cap D = \{2\}\)</span> n’est pas vide.</p></li>
+<li><p>Lors du tirage d’une carte, <span class="math notranslate nohighlight">\(E = \{\text{tirer un cœur}\}\)</span>, <span class="math notranslate nohighlight">\(F = \{\text{tirer une carte rouge}\}\)</span>. Les cœurs sont rouges, donc <span class="math notranslate nohighlight">\(E \cap F = \{\text{toutes les cartes de cœur}\}\)</span> n’est pas vide.</p></li>
+</ol>
+</div>
+<p>Dans le contexte d’une expérience aléatoire, il peut sembler intuitif de considérer que tous les sous-ensembles de l’espace des résultats possibles, <span class="math notranslate nohighlight">\(\Omega\)</span>, représentent des événements, c’est-à-dire que l’ensemble des événements est équivalent à l’ensemble de toutes les parties de <span class="math notranslate nohighlight">\(\Omega\)</span>, noté <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega)\)</span>. Cependant, il est crucial de reconnaître que, dans certains contextes, il n’est ni approprié ni faisable d’inclure chaque sous-ensemble de <span class="math notranslate nohighlight">\(\Omega\)</span> comme événement potentiel. Ces cas se présentent fréquemment quand l’espace <span class="math notranslate nohighlight">\(\Omega\)</span> est d’une complexité excessive ou de taille non-dénombrablement infinie, par exemple pour des résultats continus sur un intervalle ou dans des espaces de dimensions infinies.</p>
+<p>Dans ces situations, plutôt que de travailler avec l’ensemble de toutes les parties de <span class="math notranslate nohighlight">\(\Omega\)</span>, nous nous limitons à une collection spécifique de sous-ensembles de <span class="math notranslate nohighlight">\(\Omega\)</span>, désignée sous le nom de <em>tribu</em> ou <em><span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre</em>. Cette collection est choisie de manière à satisfaire certains critères mathématiques nécessaires à la construction d’une mesure de probabilité cohérente et utile.</p>
+<p>Lorsque <span class="math notranslate nohighlight">\(\Omega\)</span> est fini ou dénombrable à l’infini, il est souvent possible et pratique de définir une mesure de probabilité sur <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega)\)</span>, puisque l’ensemble des sous-ensembles est moins problématique à gérer et que chaque sous-ensemble peut se voir attribuer une probabilité de manière bien définie.</p>
+</div>
+</div>
+<div class="section" id="axiomatisation-des-probabilites">
+<h2><span class="section-number">4.2. </span>Axiomatisation des probabilités<a class="headerlink" href="#axiomatisation-des-probabilites" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="tribu-ou-sigma-algebre">
+<h3><span class="section-number">4.2.1. </span>Tribu ou <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre<a class="headerlink" href="#tribu-ou-sigma-algebre" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soit <span class="math notranslate nohighlight">\( \Omega \)</span> un ensemble non vide. Une <strong><span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre</strong> (ou <strong>tribu</strong>) <span class="math notranslate nohighlight">\( \mathcal{F} \)</span> sur <span class="math notranslate nohighlight">\( \Omega \)</span> est une collection de sous-ensembles de <span class="math notranslate nohighlight">\( \Omega \)</span> répondant aux critères suivants :</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\( \Omega \in \mathcal{F} \)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\( A \in \mathcal{F} \)</span>, alors son complémentaire <span class="math notranslate nohighlight">\( A^c \in \mathcal{F} \)</span> aussi.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\( (A_n)_{n\geq 1} \)</span> est une suite d’ensembles appartenant à <span class="math notranslate nohighlight">\( \mathcal{F} \)</span>, alors l’union dénombrable <span class="math notranslate nohighlight">\( \bigcup_{n\geq 1} A_n\)</span> appartient a <span class="math notranslate nohighlight">\(\mathcal{F} \)</span>, c-a-d,  <span class="math notranslate nohighlight">\( \bigcup_{n\geq 1} A_n\in \mathcal{F} \)</span>.</p></li>
+</ol>
+</div>
+<p>Si l’esemble <span class="math notranslate nohighlight">\(\Omega\)</span> est muni d’une tribu <span class="math notranslate nohighlight">\(\mathcal F\)</span> alors on dit que le couple <span class="math notranslate nohighlight">\((\Omega, \mathcal F)\)</span> est un <strong>espace probabilisable</strong>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1: Tribu Grossière sur un Ensemble</p>
+<p>Soit <span class="math notranslate nohighlight">\(\Omega\)</span> un ensemble quelconque. La tribu grossière sur <span class="math notranslate nohighlight">\(\Omega\)</span> est la <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre la plus simple et est définie par <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{g}} = \{\varnothing, \Omega\}\)</span>.</p>
+<ul class="simple">
+<li><p><strong>Condition 1</strong>: <span class="math notranslate nohighlight">\(\Omega\)</span> est par définition dans <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{g}}\)</span> (satisfait).</p></li>
+<li><p><strong>Condition 2</strong>: Le complémentaire de <span class="math notranslate nohighlight">\(\Omega\)</span> est <span class="math notranslate nohighlight">\(\varnothing\)</span> et le complémentaire de <span class="math notranslate nohighlight">\(\varnothing\)</span> est <span class="math notranslate nohighlight">\(\Omega\)</span>; tous deux sont présents dans <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{g}}\)</span> (satisfait).</p></li>
+<li><p><strong>Condition 3</strong>: Les seules unions dénombrables possibles sont <span class="math notranslate nohighlight">\(\varnothing\)</span> et <span class="math notranslate nohighlight">\(\Omega\)</span> eux-mêmes, qui sont déjà dans <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{g}}\)</span> (satisfait).</p></li>
+</ul>
+<p class="rubric">Exemple 2: Tribu Discrète sur Ensemble</p>
+<p>Soit <span class="math notranslate nohighlight">\(\Omega\)</span> un ensemble quelconque. La tribu discrète sur <span class="math notranslate nohighlight">\(\Omega\)</span> est <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{d}} = \mathcal{P}(\Omega)\)</span>, où <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega)\)</span> est l’ensemble de toutes les parties de <span class="math notranslate nohighlight">\(\Omega\)</span> (l’ensemble de puissance de <span class="math notranslate nohighlight">\(\Omega\)</span>).</p>
+<ul class="simple">
+<li><p><strong>Condition 1</strong>: <span class="math notranslate nohighlight">\(\Omega\)</span> est un membre de <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega)\)</span>, donc <span class="math notranslate nohighlight">\(\Omega \in \mathcal{F}_{\text{d}}\)</span> (satisfait).</p></li>
+<li><p><strong>Condition 2</strong>: Pour tout sous-ensemble <span class="math notranslate nohighlight">\(A \subseteq \Omega\)</span>, le complémentaire <span class="math notranslate nohighlight">\(A^c = \Omega \setminus A\)</span> est également dans <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega)\)</span>, donc dans <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{d}}\)</span> (satisfait).</p></li>
+<li><p><strong>Condition 3</strong>: Toute union dénombrable d’ensembles de <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{d}}\)</span> est un sous-ensemble de <span class="math notranslate nohighlight">\(\Omega\)</span> et donc appartient à <span class="math notranslate nohighlight">\(\mathcal{F}_{\text{d}}\)</span> (satisfait).</p></li>
+</ul>
+<p class="rubric">Exemple 3:</p>
+<p>Si <span class="math notranslate nohighlight">\(\Omega\)</span> est un ensemble et <span class="math notranslate nohighlight">\(A\)</span> est un sous-ensemble de <span class="math notranslate nohighlight">\(\Omega\)</span>, alors <span class="math notranslate nohighlight">\(\{\varnothing; A; \bar{A}; \Omega\}\)</span> est une tribu sur <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<p class="rubric">Exemple 4:</p>
+<p>Pour l’ensemble <span class="math notranslate nohighlight">\(\Omega = \{1, 2, 3\}\)</span>.</p>
+<ol class="arabic">
+<li><p>Considérons la <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre suivante:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{F}_1 = \{\varnothing, \{1, 2\}, \{3\}, \{1, 2, 3\}\}
+    \]</div>
+<p>Vérification des conditions :</p>
+<ul class="simple">
+<li><p><strong>Condition 1</strong>: L’ensemble total <span class="math notranslate nohighlight">\(\Omega = \{1, 2, 3\} \in \mathcal{F}_1\)</span>.</p></li>
+<li><p><strong>Condition 2</strong>: Les complémentaires dans <span class="math notranslate nohighlight">\(\Omega\)</span> des éléments de <span class="math notranslate nohighlight">\(\mathcal{F}_1\)</span> sont :</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\{1, 2\}^c = \{3\} \in \mathcal{F}_1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{3\}^c = \{1, 2\}\in \mathcal{F}_1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varnothing^c = \Omega\in \mathcal{F}_1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Omega^c = \varnothing \in \mathcal{F}_1\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Condition 3</strong>: Toute union dénombrable d’éléments de <span class="math notranslate nohighlight">\(\mathcal{F}_1\)</span> est déjà dans <span class="math notranslate nohighlight">\(\mathcal{F}_1\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Considérons la <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre suivante:</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{F}_2 = \{\varnothing, \{2\}, \{1, 3\}, \{1, 2, 3\}\}
+    \]</div>
+<p>Vérification des conditions :</p>
+<ul class="simple">
+<li><p><strong>Condition 1</strong>: L’ensemble total <span class="math notranslate nohighlight">\(\Omega = \{1, 2, 3\} \in \mathcal{F}_2\)</span>.</p></li>
+<li><p><strong>Condition 2</strong>: Les complémentaires dans <span class="math notranslate nohighlight">\(\Omega\)</span> des éléments de <span class="math notranslate nohighlight">\(\mathcal{F}_2\)</span> sont :</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\{2\}^c = \{1, 3\}\)</span>, qui est déjà dans <span class="math notranslate nohighlight">\(\mathcal{F}_2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{1, 3\}^c = \{2\}\)</span>, qui est aussi déjà dans <span class="math notranslate nohighlight">\(\mathcal{F}_2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varnothing^c = \Omega\)</span>, qui est déjà dans <span class="math notranslate nohighlight">\(\mathcal{F}_2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Omega^c = \varnothing\)</span>, qui est déjà dans <span class="math notranslate nohighlight">\(\mathcal{F}_2\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Condition 3</strong>: L’union dénombrable est satisfaite car toute union d’ensembles dans <span class="math notranslate nohighlight">\(\mathcal{F}_2\)</span> donne soit un ensemble déjà dans <span class="math notranslate nohighlight">\(\mathcal{F}_2\)</span>, soit <span class="math notranslate nohighlight">\(\Omega\)</span> lui-même.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition</p>
+<p>Si <span class="math notranslate nohighlight">\(\mathcal F\)</span> est une tribu sur un ensemble <span class="math notranslate nohighlight">\(\Omega\)</span>, alors:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\varnothing \in \mathcal F\)</span></p></li>
+<li><p>Si <span class="math notranslate nohighlight">\( (A_n)_{n\geq 1} \)</span> est une suite d’ensembles appartenant à <span class="math notranslate nohighlight">\( \mathcal{F} \)</span>, alors l’intersection dénombrable <span class="math notranslate nohighlight">\( \bigcap_{n\geq 1} A_n\)</span> appartient a <span class="math notranslate nohighlight">\(\mathcal F\)</span>, c-a-d <span class="math notranslate nohighlight">\( \bigcap_{n\geq 1} A_n \in \mathcal{F} \)</span>.</p></li>
+<li><p>si <span class="math notranslate nohighlight">\(A, B \in \mathcal F\)</span> alors:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(A\cup B \in mathcal F\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\cap B \in mathcal F\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\setminus B \in \mathcal F\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \Delta B \in \mathcal F\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Approfondissons les propriétés structurelles des <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbres, essentielles pour la construction de la notion de tribu engendrée.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition</p>
+<p>Soit <span class="math notranslate nohighlight">\((\mathcal{F}_i)_{i\in I}\)</span> une collections de tribus sur <span class="math notranslate nohighlight">\(\Omega\)</span>. Alors, <span class="math notranslate nohighlight">\(\mathcal F = \bigcap_{i \in I} \mathcal{F}_i\)</span> est une tribu sur <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Remarque</p>
+<p>Il est crucial de noter que l’intersection en question est quelconque et, de manière significative, n’est pas restreinte à être dénombrable.</p>
+</div>
+</div>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Demonstration</p>
+<p>Nous souhaitons démontrer que l’intersection <span class="math notranslate nohighlight">\(\mathcal{F} = \bigcap_{i \in I} \mathcal{F}_i\)</span> d’une famille <span class="math notranslate nohighlight">\((\mathcal{F}_i)_{i \in I}\)</span> de <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbres sur un ensemble <span class="math notranslate nohighlight">\(\Omega\)</span> est elle-même une <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre sur <span class="math notranslate nohighlight">\(\Omega\)</span>. Pour cela, nous devons vérifier que <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> satisfait aux trois propriétés caractéristiques d’une <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre.</p>
+<p><strong>Première propriété : Présence de <span class="math notranslate nohighlight">\(\Omega\)</span></strong></p>
+<p>Puisque chaque <span class="math notranslate nohighlight">\(\mathcal{F}_i\)</span> est une <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre, nous avons <span class="math notranslate nohighlight">\(\Omega \in \mathcal{F}_i\)</span> pour tout <span class="math notranslate nohighlight">\(i \in I\)</span>. L’intersection de tous ces ensembles contiendra aussi <span class="math notranslate nohighlight">\(\Omega\)</span>, car c’est un élément commun à tous les <span class="math notranslate nohighlight">\(\mathcal{F}_i\)</span>. Donc, nous avons <span class="math notranslate nohighlight">\(\Omega \in \mathcal{F}\)</span>.</p>
+<p><strong>Deuxième propriété : Fermeture par passage au complémentaire</strong></p>
+<p>Soit <span class="math notranslate nohighlight">\(A \in \mathcal{F}\)</span>. Cela signifie que <span class="math notranslate nohighlight">\(A \in \mathcal{F}_i\)</span> pour tout <span class="math notranslate nohighlight">\(i \in I\)</span>. Comme chaque <span class="math notranslate nohighlight">\(\mathcal{F}_i\)</span> est une <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre, le complémentaire de <span class="math notranslate nohighlight">\(A\)</span> dans <span class="math notranslate nohighlight">\(\Omega\)</span>, noté <span class="math notranslate nohighlight">\(A^c\)</span>, doit également appartenir à chaque <span class="math notranslate nohighlight">\(\mathcal{F}_i\)</span>. Par conséquent, le complémentaire <span class="math notranslate nohighlight">\(A^c\)</span> appartient à l’intersection <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, car il est inclus dans tous les <span class="math notranslate nohighlight">\(\mathcal{F}_i\)</span>. Ainsi, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est fermé sous la formation de compléments.</p>
+<p><strong>Troisième propriété : Fermeture par union dénombrable</strong></p>
+<p>Considérons maintenant une suite dénombrable d’ensembles <span class="math notranslate nohighlight">\((A_j)_{j \geq 1}\)</span> tels que pour tout <span class="math notranslate nohighlight">\(j\geq 1\)</span>, <span class="math notranslate nohighlight">\(A_j \in \mathcal{F}\)</span>. Cela implique que pour tout <span class="math notranslate nohighlight">\(j\geq 1\)</span> et pour tout <span class="math notranslate nohighlight">\(i \in I\)</span>, <span class="math notranslate nohighlight">\(A_j \in \mathcal{F}_i\)</span>. Étant donné que chaque <span class="math notranslate nohighlight">\(\mathcal{F}_i\)</span> est une <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre, il est fermé sous les unions dénombrables, donc <span class="math notranslate nohighlight">\(\bigcup_{j \geq 1} A_j \in \mathcal{F}_i\)</span> pour tout <span class="math notranslate nohighlight">\(i \in I\)</span>. L’union <span class="math notranslate nohighlight">\(\bigcup_{j \geq 1} A_j\)</span> est donc dans l’intersection <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, montrant que <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est fermé sous les unions dénombrables.</p>
+<p>Puisque <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> répond à toutes ces conditions, nous pouvons conclure que <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est une sigma-algèbre sur <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition <strong>(Tribu engendrée)</strong></p>
+<p>Soit <span class="math notranslate nohighlight">\(\mathcal C \subset \mathcal{P}(\Omega)\)</span>. Il existe une plus petite tribu (au sens de l’inclusion) contenant <span class="math notranslate nohighlight">\(\mathcal C\)</span>. Cette tribu est appelée tribu engendrée par <span class="math notranslate nohighlight">\(\mathcal C\)</span> et est notée <span class="math notranslate nohighlight">\(\sigma(C)\)</span>.</p>
+</div>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Démonstration</p>
+<p>Soit <span class="math notranslate nohighlight">\(\mathcal{S}\)</span> l’ensemble des tribus sur <span class="math notranslate nohighlight">\(\Omega\)</span> qui contiennent <span class="math notranslate nohighlight">\(\mathcal C\)</span>. Nous avons <span class="math notranslate nohighlight">\(\mathcal{S} \neq \varnothing\)</span> car <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega) \in \mathcal{S}\)</span>, ce qui est évident puisque l’ensemble des parties de <span class="math notranslate nohighlight">\(\Omega\)</span>, <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega)\)</span>, est une tribu qui contient tout sous-ensemble de <span class="math notranslate nohighlight">\(\Omega\)</span>, donc <span class="math notranslate nohighlight">\(\mathcal C \subset \mathcal P(\Omega)\)</span>.</p>
+<p>Considérons l’intersection de toutes ces tribus, notons-la <span class="math notranslate nohighlight">\(\mathcal{F} = \bigcap_{\mathcal{T} \in \mathcal{S}} \mathcal{T}\)</span>. On obtient <span class="math notranslate nohighlight">\(\mathcal{F} = \{ A \in \mathcal{T}, \mathcal{T} \text{ est un tribu sur }\Omega, \mathcal C \subset \mathcal{T} \}\)</span>.</p>
+<p>D’après une proposition antérieure (l’intersection de tribus est une tribu), <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est une tribu sur <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<p>De plus, si <span class="math notranslate nohighlight">\(\mathcal{G}\)</span> est une tribu sur <span class="math notranslate nohighlight">\(\Omega\)</span> contenant <span class="math notranslate nohighlight">\(\mathcal C\)</span>, alors, puisque <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est l’intersection de toutes les tribus contenant <span class="math notranslate nohighlight">\(\mathcal C\)</span>, il s’ensuit que <span class="math notranslate nohighlight">\(\mathcal{F} \subseteq \mathcal{G}\)</span>. Aussi, puisque <span class="math notranslate nohighlight">\(\mathcal C\)</span> est inclus dans toutes les tribus considérées, il est inclus dans leur intersection, qui est <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. Donc, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est la plus petite tribu sur <span class="math notranslate nohighlight">\(\Omega\)</span> contenant <span class="math notranslate nohighlight">\(\mathcal C\)</span>.</p>
+<p>Nous notons <span class="math notranslate nohighlight">\(\sigma(\mathcal C) = \mathcal{F}\)</span>, et nous obtenons ainsi la plus petite tribu contenant <span class="math notranslate nohighlight">\(\mathcal C\)</span>, qui est précisément <span class="math notranslate nohighlight">\(\sigma(\mathcal C)\)</span>. Formellement, nous avons :</p>
+<div class="math notranslate nohighlight">
+\[ \sigma(\mathcal C) = \bigcap_{\mathcal{T} \in \mathcal{S}} \mathcal{T} = \{ A \in \mathcal{T}, \mathcal{T} \text{ est une tribu sur }\Omega \text{ et } \mathcal C \subset \mathcal{T} \}\]</div>
+<p>Ceci définit la tribu engendrée par <span class="math notranslate nohighlight">\(\mathcal C\)</span> comme l’intersection de toutes les tribus contenant <span class="math notranslate nohighlight">\(\mathcal C\)</span>, ce qui est, par sa définition, la plus petite tribu par rapport à l’ensemble d’inclusion.</p>
+</div>
+</div>
+<div class="section" id="tribu-borelienne">
+<h3><span class="section-number">4.2.2. </span>Tribu borélienne<a class="headerlink" href="#tribu-borelienne" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>La <strong>tribu borélienne</strong> sur <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> est la tribu engendrée par l’ensemble des intervalles ouverts de <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. En d’autres termes, c’est la plus petite tribu contenant tous les intervalles ouverts (intervalles de la forme <span class="math notranslate nohighlight">\(]a, b[\)</span>; <span class="math notranslate nohighlight">\(]-\infty, a[\)</span>; <span class="math notranslate nohighlight">\(]a, +\infty[\)</span>; et <span class="math notranslate nohighlight">\(]-\infty, +\infty[\)</span> avec <span class="math notranslate nohighlight">\(a, b \in \mathbb R\)</span>). Formellement, si nous notons <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> l’ensemble de tous les intervalles ouverts dans <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, alors la tribu borélienne, notée <span class="math notranslate nohighlight">\(\mathcal{B}(\mathbb{R})\)</span>, est donnée par:</p>
+<div class="math notranslate nohighlight">
+\[ \mathcal{B}(\mathbb{R}) = \sigma(\mathcal{I}) \]</div>
+</div>
+<p>La <strong>tribu borélienne</strong> est cruciale dans l’analyse des variables aléatoires.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples d’ensembles Boréliens:</p>
+<ol class="arabic simple">
+<li><p>Tout intervalle de la forme <span class="math notranslate nohighlight">\(]-\infty, a]\)</span>, <span class="math notranslate nohighlight">\([a, +\infty[\)</span> est un ensemble borélien (Pourquoi?).</p></li>
+<li><p>Tout ensemble singleton <span class="math notranslate nohighlight">\(\{x\}\)</span> est borélien (Pourquoi?).</p></li>
+<li><p>L’ensemble des nombres entiers naturels <span class="math notranslate nohighlight">\(\mathbb N\)</span>, entier relatifs <span class="math notranslate nohighlight">\(\mathbb Z\)</span>, rationnels <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> sont des boréliens car car ils peuvent être écrits comme une union dénombrable de singletons. L’ensemble des nombres irrationels <span class="math notranslate nohighlight">\(\mathbb R \setminus \mathbb Q\)</span> est un ensemble borélien (pourquoi?)</p></li>
+<li><p>Les intervalles fermés: Pour tout intervalle fermé <span class="math notranslate nohighlight">\([a, b]\)</span> est un borelien (pourquoi?).</p></li>
+<li><p>Les intervalles semi-ouverts: Tout ensemble de la forme <span class="math notranslate nohighlight">\([a, b[\)</span> ou <span class="math notranslate nohighlight">\(]a, b]\)</span> est un borelien (pourquoi?).</p></li>
+</ol>
+</div>
+<div class="admonition-definition-fonction-borelienne admonition">
+<p class="admonition-title">Définition (Fonction borélienne)</p>
+<p>Une application <span class="math notranslate nohighlight">\( f: \mathbb R \to \mathbb{R}\)</span> est dite borélienne si si pour tout ensemble <span class="math notranslate nohighlight">\( B \in \mathcal{B}(\mathbb{R}) \)</span>, on a <span class="math notranslate nohighlight">\( f^{-1}(B) \in \mathcal{B}(\mathbb{R}) \)</span>
+Cela signifie que l’image réciproque de tout borélien sous <span class="math notranslate nohighlight">\( f \)</span> est un Borélien.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemple</p>
+<p>Toute fonction continue <span class="math notranslate nohighlight">\(f: \mathbb{R} \to \mathbb{R}\)</span> est une application borélienne (<span class="math notranslate nohighlight">\(\Omega = \mathbb R\)</span> dans ce cas). Cela découle du fait que la l’image réciproque de tout ensemble ouvert par une fonction continue est également un ensemble ouvert.</p>
+</div>
+</div>
+<div class="section" id="mesure-de-probabilite">
+<h3><span class="section-number">4.2.3. </span>Mesure de Probabilité<a class="headerlink" href="#mesure-de-probabilite" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>La mesure de probabilité est un concept fondamental en théorie des probabilités, qui assigne à chaque événement défini au sein d’une certaine structure, la <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre, une valeur numérique entre 0 et 1, représentant la “chance” ou la “probabilité” que cet événement se produise.</p>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soit <span class="math notranslate nohighlight">\((\Omega, \mathcal{F})\)</span> un espace probabilisable, c’est-à-dire, <span class="math notranslate nohighlight">\(\Omega\)</span> est un ensemble d’issues possibles et <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est une <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre sur <span class="math notranslate nohighlight">\(\Omega\)</span>. Une mesure de probabilité (ou tout simplement une probabilité) est une application <span class="math notranslate nohighlight">\(P : \mathcal{F} \rightarrow [0,1]\)</span> qui satisfait les conditions suivantes :</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(P(\Omega) = 1\)</span>.</p></li>
+<li><p>Pour toute suite dénombrable <span class="math notranslate nohighlight">\((A_n)_{n=1}^{\infty}\)</span> d’ensembles mutuellement exclusifs (c-a-d <span class="math notranslate nohighlight">\(\forall i, j \in \mathbb N, i\neq j \implies A_i\cap A_j = \varnothing\)</span>) dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, on a :</p>
+<div class="math notranslate nohighlight">
+\[
+   P\left(\bigcup_{n=1}^{\infty} A_n\right) = \sum_{n=1}^{\infty} P(A_n).
+   \]</div>
+</li>
+</ol>
+<p>Un espace probabilisé est alors le triplet <span class="math notranslate nohighlight">\((\Omega, \mathcal{F}, P)\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Propriétés</p>
+<p>Soient <span class="math notranslate nohighlight">\((\Omega, \mathcal F, P)\)</span> un espace probabilisé, <span class="math notranslate nohighlight">\(A, B\)</span> deux événements, et <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)</span> des événements deux a deux disjoint, alors:</p>
+<ol class="arabic">
+<li><p><strong>Probabilité de l’ensemble vide</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   P(\varnothing) = 0
+   \]</div>
+</li>
+<li><p><strong>Probabilité de l’union finis d’événements incompatibles</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+    P\left(\bigcup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} P(A_i)
+    \]</div>
+<p>En particulier, si <span class="math notranslate nohighlight">\(A\cap B = \varnothing\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(A\cup B) = P(A) + P(B)
+    \]</div>
+</li>
+<li><p><strong>Probabilité du complémentaire</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   P(A^c) = 1 - P(A)
+   \]</div>
+</li>
+<li><p><strong>Probabilité de l’union d’événements quelconques</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   P(A \cup B) = P(A) + P(B) - P(A \cap B)
+   \]</div>
+</li>
+<li><p><strong>Inégalité de Boole</strong> (si cette fois les événements <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span> ne sont pas deux a deux disjoints):</p>
+<div class="math notranslate nohighlight">
+\[
+   P\left(\bigcup_{i=1}^{n} A_i\right) \leq \sum_{i=1}^{n} P(A_i).
+   \]</div>
+</li>
+<li><p><strong>Propriété de la monotonie</strong>: Si <span class="math notranslate nohighlight">\(A \subset B\)</span>, alors :</p>
+<div class="math notranslate nohighlight">
+\[
+    P(A) \leq P(B).
+    \]</div>
+</li>
+</ol>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<p>quelques exemples</p>
+</div>
+</div>
+<div class="section" id="evenement-presque-sur-evenement-negligeable">
+<h3><span class="section-number">4.2.4. </span>Événement presque sûr, événement négligeable<a class="headerlink" href="#evenement-presque-sur-evenement-negligeable" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>Un événement <span class="math notranslate nohighlight">\(A\)</span> est dit <strong>presque sûr</strong> si <span class="math notranslate nohighlight">\(P(A) = 1\)</span>. Il est dit <strong>négligeable</strong> si <span class="math notranslate nohighlight">\(P(A) = 0\)</span>.</p>
+</div>
+<div class="admonition-proprietes admonition">
+<p class="admonition-title">Proprietes</p>
+<p>Soient <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont deux événements tels que <span class="math notranslate nohighlight">\(A \subset B\)</span>.</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(A\)</span> est presque sûr, alors <span class="math notranslate nohighlight">\(B\)</span> est aussi presque sûr.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(B\)</span> est négligeable, alors <span class="math notranslate nohighlight">\(A\)</span> est aussi négligeable.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\((A_n)_{n\geq 1}\)</span> est une suite d’événements négligeables, alors <span class="math notranslate nohighlight">\(\bigcup_{n\geq 1} A_n\)</span> est négligeable.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="equiprobabilite">
+<h3><span class="section-number">4.2.5. </span>Equiprobabilité<a class="headerlink" href="#equiprobabilite" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Definition</p>
+<p>On dit qu’il y a équiprobabilité lorsque <span class="math notranslate nohighlight">\(\Omega\)</span> est fini, de cardinal <span class="math notranslate nohighlight">\(n\)</span>, et tous les événements simples sont de même probabilité. C’est-à-dire, elles ont la même chance de se réaliser (équiprobables). Dans ce cas :
+<span class="math notranslate nohighlight">\(P({\omega}) = \frac{1}{\#\Omega}=\frac{1}{n}\)</span> pour tout <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span> (Pourquoi?). Le cas echeant, on dit que la probabilité <span class="math notranslate nohighlight">\(P\)</span> sur <span class="math notranslate nohighlight">\(\Omega\)</span> est uniforme.</p>
+</div>
+<p>Si les événements simples sont équiprobables, la probabilité de tout événement <span class="math notranslate nohighlight">\(A\subset \Omega\)</span> est donnée par :
+<span class="math notranslate nohighlight">\(P(A) = \frac{\# A}{\#\Omega} = \dfrac{\text{Nombre de cas favorables à }A}{\text{Nombre de cas possibles}}\)</span> (Pourquoi?).</p>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<ul>
+<li><p>Le lancer d’un dé <strong>équilibré</strong> est une expérience aléatoire avec un univers fini de cardinal 6. La probabilité de tomber sur un nombre est donc égale à <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span>. Si <span class="math notranslate nohighlight">\(A\)</span>: “Le nombre obtenu est paire” (i.e <span class="math notranslate nohighlight">\(A =\{2, 4, 6\}\)</span>) alors:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(A) = \dfrac{\text{Nombre de cas favorables à }A}{\text{Nombre de cas possibles}}= \dfrac{\#A}{\#\Omega}= \dfrac{3}{6} = \frac{1}{2}
+    \]</div>
+</li>
+<li><p>Le tirage d’une carte d’un jeu de 52 cartes est une expérience aléatoire avec un univers fini de cardinal 52. La probabilité de tirer une carte de pique, de cœur, de carreau ou de trèfle est donc égale à <span class="math notranslate nohighlight">\(\frac{4}{52}=\frac{1}{13}\)</span>.</p></li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Astuce</p>
+<p><strong>Indicateurs d’équiprobabilité :</strong></p>
+<p>La mention de “pièces non truquées”, “dés équilibrés”, “tirages de cartes d’un jeu mélangé” ou “sélection de boules dans une urne homogène” dans les énoncés signale une possible équiprobabilité, où chaque issue, telle que face ou pile, un numéro de dé, une carte spécifique ou une couleur de boule, a une chance égale de se produire. Des termes comme “au hasard”, “sans biais”, “répartition uniforme” et “indistinctement” renforcent cette notion, essentielle pour l’application correcte des principes de probabilité.</p>
+</div>
+</div>
+</div>
+<div class="section" id="probabilite-conditionnelle-et-independance">
+<h2><span class="section-number">4.3. </span>Probabilité Conditionnelle et Independance<a class="headerlink" href="#probabilite-conditionnelle-et-independance" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>En probabilités, le conditionnement et l’indépendance sont deux notions importantes. Le conditionnement ajuste la probabilité d’un événement en fonction des données déjà connues, tandis que l’indépendance caractérise des événements dont les probabilités ne sont pas influencées les uns par les autres. Ces concepts sont fondamentaux pour évaluer les chances d’occurrence d’événements en prenant en compte ou en ignorant les informations disponibles.</p>
+<p>Dans tout ce qui suit, <span class="math notranslate nohighlight">\((\Omega, \mathcal{F}, P)\)</span> est un espace probabilisé arbitraire et tous les ensembles considérés sont des événements de la <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+<div class="section" id="probabilite-conditionnelle">
+<h3><span class="section-number">4.3.1. </span>Probabilité Conditionnelle<a class="headerlink" href="#probabilite-conditionnelle" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Soit <span class="math notranslate nohighlight">\(A\)</span> un événement de probabilité non nulle (i.e <span class="math notranslate nohighlight">\(P(A) \neq 0\)</span>). Pour tout événement <span class="math notranslate nohighlight">\(B\)</span>, la probabilité conditionnelle de <span class="math notranslate nohighlight">\(B\)</span> sachant <span class="math notranslate nohighlight">\(A\)</span> (notee <span class="math notranslate nohighlight">\(P(B/A)\)</span> ou <span class="math notranslate nohighlight">\(P_A(B)\)</span>) est définie par :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B/A) = \frac{P(B \cap A)}{P(A)}
+\]</div>
+</div>
+<p>L’expression “probabilité de B sachant A” se réfère à la probabilité que l’événement <span class="math notranslate nohighlight">\(B\)</span> se produise sous la condition que l’événement <span class="math notranslate nohighlight">\(A\)</span> soit déjà advenu. Cela indique que même si l’événement B a généralement une faible probabilité d’occurrence, sa probabilité conditionnelle étant donné <span class="math notranslate nohighlight">\(A\)</span> pourrait être élevée, soulignant que la survenue de <span class="math notranslate nohighlight">\(A\)</span> a un effet significatif sur la probabilité de <span class="math notranslate nohighlight">\(B\)</span>. Inversement, un événement <span class="math notranslate nohighlight">\(B\)</span> habituellement probable pourrait s’avérer moins probable dans le contexte où <span class="math notranslate nohighlight">\(A\)</span> se produit.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1: Jeu de cartes</p>
+<p>Imaginons un jeu de cartes standard de 52 cartes.</p>
+<ul>
+<li><p><strong>Expérience aléatoire</strong>: Tirer une carte d’un jeu de 52 cartes.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\Omega\)</span></strong>: Ensemble de toutes les cartes du jeu.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\mathcal{F}\)</span></strong>:  <span class="math notranslate nohighlight">\(\mathcal P(\Omega)\)</span>, car chaque ensemble de cartes peut être considérée comme un événement.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(P\)</span></strong>: Probabilité uniforme où chaque carte a une chance égale d’être tirée, donc <span class="math notranslate nohighlight">\(P(\{\text{une carte spécifique}\}) = \frac{1}{52}\)</span>.</p></li>
+<li><p><strong>Exemple 1.1</strong></p>
+<ul class="simple">
+<li><p><strong>Événement A</strong>: Tirer un as.</p></li>
+<li><p><strong>Événement B</strong>: Tirer une carte de cœur.</p></li>
+<li><p>Calcul de <span class="math notranslate nohighlight">\( P(B|A) \)</span>, la probabilité que la carte soit de cœur sachant qu’on a tiré un as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+  P(B/A) = \frac{P(A \cap B)}{P(A)} = \frac{1/52}{4/52} = \frac{1}{4}
+  \]</div>
+<ul class="simple">
+<li><p><strong>Interprétation</strong>: Si on sait qu’on a tiré un as, la probabilité que cet as soit de cœur est <span class="math notranslate nohighlight">\(\frac{1}{4}\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Exemple 1.2</strong></p>
+<ul class="simple">
+<li><p><strong>Événement A</strong>: Tirer un carte de cœur.</p></li>
+<li><p><strong>Événement B</strong>: Tirer une carte de roi.</p></li>
+<li><p>Calcul de <span class="math notranslate nohighlight">\( P(B|A) \)</span>, la probabilité de tirer un roi sachant qu’on a tiré une carte de cœur:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+  P(B|A) = \frac{P(A \cap B)}{P(A)} =\frac{\frac{1}{52}}{\frac{13}{52}} = \frac{1}{13}
+  \]</div>
+<ul class="simple">
+<li><p><strong>Interprétation</strong>: Cela signifie que si nous savons déjà que la carte tirée est un cœur, la probabilité que cette carte soit également un roi est <span class="math notranslate nohighlight">\(\frac{1}{13}\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Exemple 2: Lancer de dé</p>
+<p>On lance deux dés équilibrés à six faces.</p>
+<ul>
+<li><p><strong>Expérience aléatoire</strong>: Lancer deux dés équilibrés à six faces.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\Omega\)</span></strong>: Ensemble de tous les couples possibles de chiffres obtenus avec les deux dés, soit <span class="math notranslate nohighlight">\(\Omega = \{ (1,1), (1,2), ..., (6,6) \}\)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\mathcal{F}\)</span></strong>: L’ensemble des sous-ensembles de <span class="math notranslate nohighlight">\(\Omega\)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(P\)</span></strong>: Probabilité uniforme où chaque résultat des dés a une chance égale, donc <span class="math notranslate nohighlight">\(P(\{(i,j)\}) = \frac{1}{36}\)</span> pour <span class="math notranslate nohighlight">\(i, j \in \{1, \ldots,6\}\)</span>.</p></li>
+<li><p><strong>Exemple 2.1</strong></p>
+<ul class="simple">
+<li><p><strong>Événement A</strong>: La somme des dés est 8 (<span class="math notranslate nohighlight">\(A=\{(2,6), (3,5), (4, 4), (5,3), (6, 2)\}\)</span>).</p></li>
+<li><p><strong>Événement B</strong>: Au moins un dé montre un 3 (<span class="math notranslate nohighlight">\(B=\{(3, 1), (3, 2), \ldots, (3, 6), (1, 3), \ldots,(6, 3)\}\)</span>).</p></li>
+<li><p>Calcul de <span class="math notranslate nohighlight">\( P(B|A) \)</span>, la probabilité d’obtenir au moins un 3 sachant que la somme est 8:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+  P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{2/36}{5/36} = \frac{2}{5} 
+  \]</div>
+<ul class="simple">
+<li><p><strong>Interprétation</strong>: Si la somme des dés est 8, la probabilité qu’au moins un dé montre un 3 est de 2 sur 5.</p></li>
+</ul>
+</li>
+<li><p><strong>Exemple 2.2</strong></p>
+<ul class="simple">
+<li><p><strong>Événement A</strong>: La somme des dés est supérieure ou egale a (<span class="math notranslate nohighlight">\(\geq\)</span>) à 3 (<span class="math notranslate nohighlight">\(A=\Omega \setminus \{(1, 1)\}\)</span>).</p></li>
+<li><p><strong>Événement B</strong>: Au moins un dé montre un 2 (<span class="math notranslate nohighlight">\(B=\{(1, 2), (2, 2), \ldots, (6, 2), (2, 1), (2, 3) \ldots,(2, 6)\}\)</span>).</p></li>
+<li><p>Calcul de <span class="math notranslate nohighlight">\( P(B|A) \)</span>, la probabilité d’obtenir au moins un 2 sachant que la somme est supérieure à 3:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+  P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{11/36}{35/36} = \frac{11}{35}
+  \]</div>
+<ul class="simple">
+<li><p><strong>Interprétation</strong>: Si la somme des dés est supérieure à 3, la probabilité qu’au moins un dé montre un 2 est de 11 sur 35.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>La connaissance de la réalisation de l’événement <span class="math notranslate nohighlight">\( A \)</span> peut modifier la probabilité de tous les événements subséquents ; par conséquent, une nouvelle probabilité conditionnelle <span class="math notranslate nohighlight">\( P_A(\cdot) \)</span> peut être définie sur <span class="math notranslate nohighlight">\( (\Omega, \mathcal F) \)</span>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition</p>
+<p>Soit <span class="math notranslate nohighlight">\(A\)</span> un événement de probabilité non nulle (i.e <span class="math notranslate nohighlight">\(P(A) \neq 0\)</span>). L’application:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P_A : \mathcal F \to [0,1] \\
+B \mapsto P_A(B) 
+\end{split}\]</div>
+<p>est une mesure de probabilité sur <span class="math notranslate nohighlight">\( (\Omega, \mathcal F) \)</span>.</p>
+</div>
+<p>Nous allons maintenant présenter quelques propriétés associées aux probabilités conditionnelles.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition (Inversement des probabilités conditionnelles)</p>
+<p>Soient <span class="math notranslate nohighlight">\(A\)</span> deux événements de probabilités non nulles (i.e <span class="math notranslate nohighlight">\(P(A) \neq 0\)</span> et <span class="math notranslate nohighlight">\(P(B) \neq 0\)</span>).</p>
+<p>Alors:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A/B) = P(B/A)\times \frac{P(A)}{P(B)}
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition (Formule des probabilités composées)</p>
+<p>Soient <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span> des événements avec leur intersectionnon vide (i.e <span class="math notranslate nohighlight">\(\bigcap_{i=1}^{n}A_i=A_1\cap A_2\cap\ldots\cap A_n \neq \varnothing\)</span>).</p>
+<p>Alors:</p>
+<div class="math notranslate nohighlight">
+\[
+P(\bigcap_{i=1}^{n}A_i) = P(A_1)P(A_2/A_1)P(A_3/A_1\cap A_2)\ldots P(A_n/A_1\cap A_2\cap\ldots\cap A_{n-1})
+\]</div>
+</div>
+<div class="admonition-definition-partition admonition">
+<p class="admonition-title">Definition (Partition)</p>
+<p>Soient <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span> des sous-ensembles de <span class="math notranslate nohighlight">\(\Omega\)</span>. On dit que <span class="math notranslate nohighlight">\((A_i)_{i=1}^{n}\)</span> est une partition de <span class="math notranslate nohighlight">\(\Omega\)</span> si leur reunion est eggale a <span class="math notranslate nohighlight">\(\Omega\)</span> et leurs intersections deux-a-deux est vide. Autrementdit, si:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bigcup_{i=1}^{n} A_i = A_1 \cup A_2\cup\ldots\cup A_n = \Omega\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \forall i, j \in \{1, \ldots, n\}, i\neq j \implies A_i\cap A_j = \varnothing\)</span>.</p></li>
+</ul>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition (Formule des probabilités totales)</p>
+<p>Soient <span class="math notranslate nohighlight">\((A_i)_{i=1}^{n}\)</span> une suite d’événements qui forment une partition de <span class="math notranslate nohighlight">\(\Omega\)</span>. Alors pour tout événement <span class="math notranslate nohighlight">\(B\)</span> de <span class="math notranslate nohighlight">\(\mathcal F\)</span> on a:</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = \sum_{i=1}^{n} P(B | A_i) P(A_i)
+\]</div>
+</div>
+<div class="admonition-remarque admonition">
+<p class="admonition-title">Remarque</p>
+<p>Dans la pratique, on utilise souvent la formule suivante:</p>
+<p>Pour <span class="math notranslate nohighlight">\(n=2\)</span>, <span class="math notranslate nohighlight">\(A_1 = A\)</span>, <span class="math notranslate nohighlight">\(A_2 = A^c\)</span> sont deux événements qui forment une partition de <span class="math notranslate nohighlight">\(\Omega\)</span>. Donc:</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = P(B | A) P(A) +P(B | A^c) P(A^c)
+\]</div>
+</div>
+<div class="admonition-exemples admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1 :</p>
+<p>Considérons une urne contenant des boules numérotées qui sont soit rouges soit bleues. Soit <span class="math notranslate nohighlight">\(B\)</span>: “tirer une boule avec un numéro pair”. Nous cherchons à calculer la probabilité <span class="math notranslate nohighlight">\(P(B)\)</span>.</p>
+<p>Soit <span class="math notranslate nohighlight">\(A\)</span> : “Tirer une boule rouge”. On suppose que les probabilités suivantes sont connues:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(A) = 0.6\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B|A) = 0.5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B|A^c) = 0.3\)</span></p></li>
+</ul>
+<p>Le théorème des probabilités totales nous dit que :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = P(A) \cdot P(B|A) + P(A^c) \cdot P(B|A^c)
+\]</div>
+<p>Donc :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = 0.6 \cdot 0.5 + 0.4 \cdot 0.3 = 0.42
+\]</div>
+<p>La probabilité totale de tirer une boule avec un numéro pair de l’urne est donc de 0.42, ou 42%.</p>
+<p class="rubric">Exemple 2 :</p>
+<p>Un patient peut avoir l’un de trois types de grippe: <span class="math notranslate nohighlight">\(G_1\)</span>, <span class="math notranslate nohighlight">\(G_2\)</span>, et <span class="math notranslate nohighlight">\(G_3\)</span>. La probabilité qu’une personne choisisse au hasard ait chacun de ces types de grippe est <span class="math notranslate nohighlight">\(P(G_1) = 0.5\)</span>, <span class="math notranslate nohighlight">\(P(G_2) = 0.3\)</span>, <span class="math notranslate nohighlight">\(P(G_3) = 0.2\)</span>. La probabilité d’avoir un certain symptôme <span class="math notranslate nohighlight">\(S\)</span> étant donné ces types de grippe est <span class="math notranslate nohighlight">\(P(S|G_1) = 0.4\)</span>, <span class="math notranslate nohighlight">\(P(S|G_2) = 0.6\)</span>, et <span class="math notranslate nohighlight">\(P(S|G_3) = 0.7\)</span>. La probabilité totale d’avoir le symptôme <span class="math notranslate nohighlight">\(S\)</span> est donc:</p>
+<div class="math notranslate nohighlight">
+\[
+P(S) = P(G_1) \cdot P(S|G_1) + P(G_2) \cdot P(S|G_2) + P(G_3) \cdot P(S|G_3)
+\]</div>
+<p>Calculons:</p>
+<div class="math notranslate nohighlight">
+\[
+P(S) = 0.5 \cdot 0.4 + 0.3 \cdot 0.6 + 0.2 \cdot 0.7 = 0.52
+\]</div>
+<p>Donc, la probabilité d’avoir le symptôme <span class="math notranslate nohighlight">\(S\)</span> pour une personne prise au hasard est de <span class="math notranslate nohighlight">\(0.52\)</span>.</p>
+</div>
+<p>Une autre formule tres importantes, souvent utilisee, liee a la proposition de l’inversement des probabilités conditionnelles et la formule des probabilités totales. Il s’agit de la <strong>formule de Byes</strong>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition</p>
+<p>Soient <span class="math notranslate nohighlight">\((A_i)_{i=1}^{n}\)</span> une suite d’événements qui forment une partition de <span class="math notranslate nohighlight">\(\Omega\)</span> et <span class="math notranslate nohighlight">\(B\)</span> un événement. Alors:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A_i/B) = \dfrac{P(B/A_i)P(A_i)}{\sum_{j=1}^{n}P(B/A_j)P(A_j)}
+\]</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Astuce</p>
+<p>Si on considere <span class="math notranslate nohighlight">\(A, A^c\)</span> comme partition de <span class="math notranslate nohighlight">\(\Omega\)</span>, alors pour un événement <span class="math notranslate nohighlight">\(B\)</span> on a:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A/B) = \dfrac{P(B/A)P(A)}{P(B/A)P(A) + P(B/A^c)P(A^c)}
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1 :</p>
+<p>Une urne contient des boules rouges et bleues, chacune numérotée de 1 à 10. On tire une boule au hasard. Soit <span class="math notranslate nohighlight">\(B\)</span> : “une boule tirée porte un numéro impair”. Nous voulons calculer la probabilité <span class="math notranslate nohighlight">\(P(B)\)</span>.
+Soit <span class="math notranslate nohighlight">\(A\)</span> : Tirer une boule rouge.
+On suppose que :</p>
+<ul class="simple">
+<li><p>La répartition des couleurs est équitable.</p></li>
+<li><p>Si une boule rouge est tirée, alors la probabilité que le numéro obtenu soit impair est de 0.6.</p></li>
+<li><p>Si une boule bleue est tirée, alors la probabilité que le numéro obtenu soit impair est de 0.5.</p></li>
+</ul>
+<p>Alors on a :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(A) = P(A^c) = 0.5\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B|A) = 0.6\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B|A^c) = 0.5\)</span>.</p></li>
+</ul>
+<p>En appliquant le théorème des probabilités totales :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = P(A) \cdot P(B|A) + P(A^c) \cdot P(B|A^c)
+\]</div>
+<p>Donc :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = 0.5 \cdot 0.6 + 0.5 \cdot 0.5 = 0.3 + 0.25 = 0.55
+\]</div>
+<p>La probabilité de tirer une boule avec un numéro impair de l’urne est donc de 0.55, ou 55%.</p>
+<p class="rubric">Exemple 2 :</p>
+<p>Une clinique vétérinaire diagnostique une maladie chez les chiens. Soit <span class="math notranslate nohighlight">\(A\)</span>: “Le chien a la maladie” et <span class="math notranslate nohighlight">\(B\)</span>: “Le chien teste positif pour la maladie”.
+Le test présente les caractéristiques suivantes :</p>
+<ul class="simple">
+<li><p>Sensibilité de 80% (c’est-à-dire que le test est positif à 80% lorsque le chien est réellement malade).</p></li>
+<li><p>Spécificité de 90% (c’est-à-dire que le test est négatif à 90% quand le chien est sain).
+Une enquête réalisée au préalable indique que 10% des chiens sont atteints par cette maladie.</p></li>
+</ul>
+<p>Nous souhaitons calculer la probabilité qu’un chien soit réellement malade sachant que le test est négatif, soit <span class="math notranslate nohighlight">\(P(A|B^c)\)</span>. Pour ce faire, nous utiliserons la formule de Bayes :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A|B^c) = \frac{P(B^c|A) \cdot P(A)}{P(B^c)}
+\]</div>
+<p>Nous avons besoin de connaître <span class="math notranslate nohighlight">\(P(A)\)</span>, <span class="math notranslate nohighlight">\(P(B^c|A)\)</span>, et <span class="math notranslate nohighlight">\(P(B^c)\)</span>.
+Tout d’abord, nous avons :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(A) = 0.1\)</span> : La probabilité a priori qu’un chien soit atteint de la maladie.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B|A) = 0.8\)</span> : La probabilité qu’un chien teste positif sachant qu’il est malade.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B^c|A^c) = 0.9\)</span> : La probabilité qu’un chien teste négatif sachant qu’il n’est pas malade.</p></li>
+</ul>
+<p>Avec ces informations, nous procédons aux calculs suivants :</p>
+<p>Calcul de <span class="math notranslate nohighlight">\(P(B^c|A)\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B^c|A) = 1 - P(B|A) = 1 - 0.8 = 0.2
+\]</div>
+<p>Calcul de <span class="math notranslate nohighlight">\(P(B^c)\)</span> en utilisant le théorème des probabilités totales :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B^c) = P(B^c|A) \cdot P(A) + P(B^c|A^c) \cdot (1 - P(A))
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(B^c) = 0.2 \cdot 0.1 + 0.9 \cdot (1 - 0.1) = 0.02 + 0.81 = 0.83
+\]</div>
+<p>Finalement, nous appliquons la formule de Bayes pour calculer <span class="math notranslate nohighlight">\(P(A|B^c)\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A|B^c) = \frac{P(B^c|A) \cdot P(A)}{P(B^c)}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(A|B^c) = \frac{0.2 \cdot 0.1}{0.83}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(A|B^c) \approx \frac{0.02}{0.83}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(A|B^c) \approx 0.0241
+\]</div>
+<p>Ainsi, la probabilité qu’un chien soit malade sachant que le test est négatif est d’environ 2.41%.</p>
+</div>
+</div>
+<div class="section" id="independance">
+<h3><span class="section-number">4.3.2. </span>Indépendance<a class="headerlink" href="#independance" title="Lien permanent vers cette rubrique">#</a></h3>
+<div class="section" id="independance-de-deux-evenements">
+<h4><span class="section-number">4.3.2.1. </span>Indépendance de deux événements<a class="headerlink" href="#independance-de-deux-evenements" title="Lien permanent vers cette rubrique">#</a></h4>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>Deux événements <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont dits indépendants si et seulement si :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \cap B) = P(A)P(B).
+\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition</p>
+<p>Soient <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> événements avec <span class="math notranslate nohighlight">\(P(A)\neq 0\)</span> alors <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont indépendants si <span class="math notranslate nohighlight">\(P(B/A) = P(B)\)</span>. Ceci dit, l’information que l’événement <span class="math notranslate nohighlight">\(A\)</span> se realise ne donne aucune information sur la probabilite de la realisation de <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1:</p>
+<p>Une urne contient 12 boules numérotées de 1 à 12. On tire une boule au hasard, et on considère les événements suivants :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A = \text{&quot;tirage d'un nombre pair&quot;}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(B = \text{&quot;tirage d'un multiple de 3&quot;}\)</span></p></li>
+</ul>
+<p>La probabilité de tirer un nombre pair (événement <span class="math notranslate nohighlight">\(A\)</span>) est :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A) = \frac{\text{Nombre de nombres pairs de 1 à 12}}{\text{Nombre total de boules}} = \frac{6}{12} = 0.5
+\]</div>
+<p>La probabilité de tirer un multiple de 3 (événement <span class="math notranslate nohighlight">\(B\)</span>) est :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = \frac{\text{Nombre de multiples de 3 de 1 à 12}}{\text{Nombre total de boules}} = \frac{4}{12} = \frac{1}{3}
+\]</div>
+<p>La probabilité de tirer une boule qui est à la fois un nombre pair et un multiple de 3 (intersection de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>) est :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \cap B) = \frac{\text{Nombre de boules qui sont à la fois pairs et multiples de 3}}{\text{Nombre total de boules}} = \frac{2}{12} = \frac{1}{6}
+\]</div>
+<p>Pour vérifier si <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont indépendants, nous vérifions si <span class="math notranslate nohighlight">\(P(A \cap B) = P(A) \cdot P(B)\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A) \cdot P(B) = 0.5 \cdot \frac{1}{3} = \frac{1}{6}
+\]</div>
+<p>Ce qui est égal à <span class="math notranslate nohighlight">\(P(A \cap B)\)</span>. Par conséquent, les événements <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont indépendants.</p>
+<p class="rubric">Exemple 2 :</p>
+<p>On reprend le même exemple que précédemment, mais cette fois avec une urne contenant 13 boules.</p>
+<p>La probabilité de tirer un nombre pair (événement <span class="math notranslate nohighlight">\(A\)</span>) est maintenant :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A) = \frac{\text{Nombre de nombres pairs de 1 à 13}}{\text{Nombre total de boules}} = \frac{6}{13}
+\]</div>
+<p>La probabilité de tirer un multiple de 3 (événement <span class="math notranslate nohighlight">\(B\)</span>) reste la même :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B) = \frac{1}{3}
+\]</div>
+<p>La probabilité de tirer une boule qui est à la fois un nombre pair et un multiple de 3 (intersection de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span>) est :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \cap B) = \frac{\text{Nombre de boules qui sont à la fois pairs et multiples de 3}}{\text{Nombre total de boules}} = \frac{2}{13}
+\]</div>
+<p>Vérifions à nouveau l’indépendance de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A) \cdot P(B) = \frac{6}{13} \cdot \frac{1}{3} \neq \frac{2}{13}
+\]</div>
+<p>Puisque <span class="math notranslate nohighlight">\(P(A) \cdot P(B) \neq P(A \cap B)\)</span>, les événements <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> ne sont pas indépendants lorsque l’urne contient 13 boules.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Proposition</p>
+<p>Si <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont indépendants, alors il en est de même pour :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A^c\)</span> et <span class="math notranslate nohighlight">\(B^c\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A^c\)</span> et <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B^c\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="independance-de-plusieurs-evenements">
+<h4><span class="section-number">4.3.2.2. </span>Indépendance de Plusieurs Évènements<a class="headerlink" href="#independance-de-plusieurs-evenements" title="Lien permanent vers cette rubrique">#</a></h4>
+<p>Considérons une séquence d’évènements  <span class="math notranslate nohighlight">\((A_n)_{n=1}^{n}\)</span>. On dit que ces évènements sont :</p>
+<ul class="simple">
+<li><p><strong>Indépendants 2 a 2</strong> : Si pour n’importe quelle couple d’indices distincts <span class="math notranslate nohighlight">\((i, j)\)</span>, les évènements <span class="math notranslate nohighlight">\(A_i\)</span> et <span class="math notranslate nohighlight">\(A_j\)</span> sont indépendants.</p></li>
+<li><p><strong>Mutuellement indépendants</strong> : Si pour n’importe quel ensemble fini d’indices distincts <span class="math notranslate nohighlight">\((i_1, ..., i_k)\)</span>, la propriété suivante est vérifiée :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P(A_{i_1} \cap ... \cap A_{i_k}) = P(A_{i_1}) \times ... \times P(A_{i_k}) 
+\]</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exemples</p>
+<p class="rubric">Exemple 1</p>
+<p>Un couple a deux enfants, et on ne sait pas s’ils sont des garçons, des filles ou un de chaque. On considère les événements suivants :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span>: “les deux enfants sont de sexes différents”.</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span>: “l’aîné est une fille”.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span>: “le cadet est un garçon”.</p></li>
+</ul>
+<p>On souhaite démontrer que les événements <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> sont indépendants deux à deux mais ne sont pas mutuellement indépendants.</p>
+<p><strong>Indépendance deux à deux</strong></p>
+<p>Pour deux événements quelconques pour être indépendants, la probabilité que les deux événements se produisent doit être égale au produit de leurs probabilités individuelles.</p>
+<p><strong>Indépendance de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> :</strong> La probabilité que l’aîné soit une fille, <span class="math notranslate nohighlight">\(P(B)\)</span>, est de <span class="math notranslate nohighlight">\(1/2\)</span>. La probabilité que les deux enfants soient de sexes différents, <span class="math notranslate nohighlight">\(P(A)\)</span>, est de <span class="math notranslate nohighlight">\(1/2\)</span> également, car il y a deux cas favorables (garçon-fille ou fille-garçon) sur quatre cas possibles (garçon-garçon, garçon-fille, fille-garçon, fille-fille).</p>
+<p>La probabilité que l’aîné soit une fille et que les enfants soient de sexes différents, <span class="math notranslate nohighlight">\(P(A \cap B)\)</span>, est de <span class="math notranslate nohighlight">\(1/4\)</span> (seul le cas fille-garçon satisfait les deux conditions).</p>
+<p>Ainsi, <span class="math notranslate nohighlight">\(P(A \cap B) = P(A) \cdot P(B) = 1/4\)</span>, ce qui montre que <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont indépendants.</p>
+<p><strong>Indépendance de <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(C\)</span> :</strong> La probabilité que le cadet soit un garçon, <span class="math notranslate nohighlight">\(P(C)\)</span>, est de <span class="math notranslate nohighlight">\(1/2\)</span>. En suivant une logique similaire à celle ci-dessus, on trouve que <span class="math notranslate nohighlight">\(P(A \cap C) = P(A) \cdot P(C) = 1/4\)</span>, ce qui indique que <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(C\)</span> sont indépendants.</p>
+<p><strong>Indépendance de <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> :</strong> Ici, <span class="math notranslate nohighlight">\(P(B \cap C)\)</span> correspond au cas où l’aîné est une fille et le cadet un garçon, ce qui se produit avec une probabilité de <span class="math notranslate nohighlight">\(1/4\)</span>. Puisque <span class="math notranslate nohighlight">\(P(B) = 1/2\)</span> et <span class="math notranslate nohighlight">\(P(C) = 1/2\)</span>, on a encore <span class="math notranslate nohighlight">\(P(B \cap C) = P(B) \cdot P(C) = 1/4\)</span>. Donc, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> sont également indépendants.</p>
+<p><strong>Non indépendance mutuelle</strong></p>
+<p>Pour que trois événements soient mutuellement indépendants, en plus d’être indépendants deux à deux, il doit également être vrai que la probabilité que tous les trois événements se produisent ensemble est égale au produit de leurs probabilités individuelles.</p>
+<p>Regardons <span class="math notranslate nohighlight">\(P(A \cap B \cap C)\)</span>. Si l’aîné est une fille et le cadet un garçon, alors ils sont nécessairement de sexes différents, ce qui signifie que <span class="math notranslate nohighlight">\(A \cap B \cap C = B \cap C\)</span>. La probabilité de <span class="math notranslate nohighlight">\(B \cap C\)</span> est <span class="math notranslate nohighlight">\(1/4\)</span>, comme nous l’avons établi précédemment.</p>
+<p>Cependant, le produit <span class="math notranslate nohighlight">\(P(A) \cdot P(B) \cdot P(C)\)</span> serait <span class="math notranslate nohighlight">\((1/2) \cdot (1/2) \cdot (1/2) = 1/8\)</span>, qui est différent de <span class="math notranslate nohighlight">\(1/4\)</span>. Cela signifie que bien que <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> soient indépendants deux à deux, ils ne sont pas mutuellement indépendants.</p>
+<p class="rubric">Exemple 2 :</p>
+<p>On dispose de trois pièces de monnaie différentes : une pièce de 1 Dh, une pièce de 5 Dh et une pièce de 10 Dh. On lance chacune de ces pièces une seule fois. On considère les événements suivants :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span>: “La pièce de 1 Dh atterrit sur face.”</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span>: “La pièce de 5 Dh atterrit sur face.”</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span>: “La pièce de 10 Dh atterrit sur face.”</p></li>
+</ul>
+<p>Les lancers de chaque pièce sont indépendants les uns des autres. La probabilité de chaque événement individuel est de <span class="math notranslate nohighlight">\(1/2\)</span>, car il y a deux issues possibles pour chaque pièce : face ou pile.</p>
+<p>Pour vérifier que <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> sont mutuellement indépendants, nous devons vérifier que :</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont indépendants : <span class="math notranslate nohighlight">\(P(A \cap B) = P(A)P(B)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(C\)</span> sont indépendants : <span class="math notranslate nohighlight">\(P(A \cap C) = P(A)P(C)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> sont indépendants : <span class="math notranslate nohighlight">\(P(B \cap C) = P(B)P(C)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> sont mutuellement indépendants : <span class="math notranslate nohighlight">\(P(A \cap B \cap C) = P(A)P(B)P(C)\)</span></p></li>
+</ol>
+<p>Puisque chaque pièce est lancée indépendamment, la probabilité que deux quelconques ou toutes les trois atterrissent sur face est le produit de leurs probabilités individuelles.</p>
+<p>Pour <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \cap B) = P(A)P(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+\]</div>
+<p>Pour <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(C\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \cap C) = P(A)P(C) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+\]</div>
+<p>Pour <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(B \cap C) = P(B)P(C) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+\]</div>
+<p>Et pour les trois événements <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+P(A \cap B \cap C) = P(A)P(B)P(C) = \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{8}
+\]</div>
+<p>Chaque vérification confirme l’indépendance mutuelle. Cela signifie que le résultat d’un lancer de n’importe quelle pièce n’influence pas et n’est pas influencé par le résultat des lancers des autres pièces.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercices">
+<h2><span class="section-number">4.4. </span>Exercices<a class="headerlink" href="#exercices" title="Lien permanent vers cette rubrique">#</a></h2>
+<div class="section" id="exercice-1">
+<h3><span class="section-number">4.4.1. </span>Exercice 1<a class="headerlink" href="#exercice-1" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>On jette deux dés équilibrés. Quelle est la probabilité qu’au moins l’un d’entre eux montre 6, sachant que les deux résultats sont différents ?</p>
+</div>
+<div class="section" id="exercice-2">
+<h3><span class="section-number">4.4.2. </span>Exercice 2<a class="headerlink" href="#exercice-2" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Soient <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> deux événements d’un espace probabilisé. Démontrer que:</p>
+<div class="math notranslate nohighlight">
+\[
+\max(0, P(A) + P(B) - 1) \leq P(A \cap B) \leq \min(P(A), P(B))
+\]</div>
+</div>
+<div class="section" id="exercice-3">
+<h3><span class="section-number">4.4.3. </span>Exercice 3<a class="headerlink" href="#exercice-3" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Soient <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span> des événements d’un espace probabilisé. Démontrer que:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A_1 \cap A_2 \cap \ldots \cap A_n) \geq \sum_{i=1}^n P(A_i) - (n-1)
+\]</div>
+</div>
+<div class="section" id="exercice-4">
+<h3><span class="section-number">4.4.4. </span>Exercice 4<a class="headerlink" href="#exercice-4" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Une urne contient 12 boules numérotées de 1 à 12. On en tire une au hasard, et on considère les événements :</p>
+<ul class="simple">
+<li><p>A = “tirage d’un nombre pair”</p></li>
+<li><p>B = “tirage d’un multiple de 3”</p></li>
+</ul>
+<p>Les événements A et B sont-ils indépendants? Reprendre la question avec une urne contenant 13 boules.</p>
+</div>
+<div class="section" id="exercice-5">
+<h3><span class="section-number">4.4.5. </span>Exercice 5<a class="headerlink" href="#exercice-5" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Un couple a deux enfants dont vous ignorez le sexe. On considère les trois événements suivants :</p>
+<ul class="simple">
+<li><p>A = “les deux enfants sont de sexes différents”</p></li>
+<li><p>B = “l’ainé est une fille”</p></li>
+<li><p>C = “le cadet est un garçon”</p></li>
+</ul>
+<p>Montrer que A, B et C sont deux à deux indépendants. On suppose que la probabilité à la naissance d’avoir une fille (respectivement un garçon) est égale à <span class="math notranslate nohighlight">\(\dfrac{1}{2}\)</span>.</p>
+</div>
+<div class="section" id="exercice-6">
+<h3><span class="section-number">4.4.6. </span>Exercice 6<a class="headerlink" href="#exercice-6" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Soit l’expérience aléatoire “jeter une pièce de monnaie trois fois”. On considère les événements suivants :</p>
+<ul class="simple">
+<li><p>A : “Face apparait exactement deux fois”,</p></li>
+<li><p>B : “Face apparait au moins deux fois”,</p></li>
+<li><p>C : “Face apparait pour la première fois lorsque Pile est apparue au moins une fois”.</p></li>
+<li><p>Donner l’ensemble fondamental <span class="math notranslate nohighlight">\(\Omega\)</span>.</p></li>
+<li><p>Donner les éléments de <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+<li><p>Décrire les événements <span class="math notranslate nohighlight">\(\bar{A} \cap B\)</span>, <span class="math notranslate nohighlight">\(\bar{A} \cap \bar{B}\)</span> et <span class="math notranslate nohighlight">\(\bar{A} \cap C\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="exercice-7">
+<h3><span class="section-number">4.4.7. </span>Exercice 7<a class="headerlink" href="#exercice-7" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Une maladie atteint 3% d’une population de 20000 individus. On appelle “malade” l’individu atteint de cette maladie et “bien portant” celui qui ne l’est pas. On dispose d’un test pour la détecter. Ce test donne les résultats suivants :</p>
+<ul class="simple">
+<li><p>Chez les individus malades, 95% des tests sont positifs.</p></li>
+<li><p>Chez les individus bien portants, 2% des tests sont positifs.</p></li>
+</ul>
+<p>On note les événements suivants :</p>
+<ul class="simple">
+<li><p>M: “être malade”</p></li>
+<li><p>T: “avoir un test positif”</p></li>
+<li><p>Calculer <span class="math notranslate nohighlight">\(P(T)\)</span>, <span class="math notranslate nohighlight">\(P(T \cap M)\)</span> et <span class="math notranslate nohighlight">\(P(M \cup T)\)</span>.</p></li>
+<li><p>Sachant que la personne rencontrée est malade, calculer la probabilité que son test soit négatif.</p></li>
+<li><p>Sachant que la personne rencontrée a un test positif, calculer la probabilité qu’elle ne soit pas malade.</p></li>
+</ul>
+</div>
+<div class="section" id="exercice-8">
+<h3><span class="section-number">4.4.8. </span>Exercice 8<a class="headerlink" href="#exercice-8" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Dans un laboratoire, on a fait les mesures suivantes :</p>
+<ul class="simple">
+<li><p>Si une souris porte l’anticorps A, alors 2 fois sur 5 elle porte aussi l’anticorps B ;</p></li>
+<li><p>Si une souris ne porte pas l’anticorps A, alors 4 fois sur 5 elle ne porte pas l’anticorps B.</p></li>
+<li><p>Notons que 50 % de la population porte l’anticorps A.</p></li>
+<li><p>Calculez la probabilité que, si une souris porte l’anticorps B, alors elle porte aussi l’anticorps A.</p></li>
+<li><p>Calculez la probabilité que, si une souris ne porte pas l’anticorps B, alors elle ne porte pas l’anticorps A.</p></li>
+</ul>
+</div>
+<div class="section" id="exercice-9">
+<h3><span class="section-number">4.4.9. </span>Exercice 9<a class="headerlink" href="#exercice-9" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Une station météo A prévoit de la pluie pour demain. Une autre, B, prévoit au contraire du beau temps. Les enregistrements historiques montrent que la station A se trompe dans 25% de ses prévisions, tandis que la station B a un taux d’erreur de 30%. Il est également connu que, en général, 60% des jours sont ensoleillés et 40% sont pluvieux. Étant donné ces informations, évaluez laquelle des deux stations est la plus fiable pour la prévision de demain, et avec quelle probabilité.</p>
+</div>
+<div class="section" id="exercice-10">
+<h3><span class="section-number">4.4.10. </span>Exercice 10<a class="headerlink" href="#exercice-10" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Considérez une tribu <span class="math notranslate nohighlight">\(\mathcal T\)</span> sur un ensemble <span class="math notranslate nohighlight">\(E\)</span> et un sous-ensemble <span class="math notranslate nohighlight">\(F \subset E\)</span>. Démontrez que <span class="math notranslate nohighlight">\(\mathcal T_F = \{A \cap F, A \in \mathcal T \}\)</span> constitue une tribu sur <span class="math notranslate nohighlight">\(F\)</span> (appelée tribu trace de <span class="math notranslate nohighlight">\(\mathcal T\)</span> sur <span class="math notranslate nohighlight">\(F\)</span>).</p>
+</div>
+<div class="section" id="exercice-11">
+<h3><span class="section-number">4.4.11. </span>Exercice 11<a class="headerlink" href="#exercice-11" title="Lien permanent vers cette rubrique">#</a></h3>
+<p>Soit <span class="math notranslate nohighlight">\(\Omega\)</span> un univers et soient <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(C\)</span> trois événements de <span class="math notranslate nohighlight">\(\Omega\)</span>. Traduire en termes ensemblistes (en utilisant uniquement les symboles d’union, d’intersection et de passage au complémentaire, ainsi que <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> et <span class="math notranslate nohighlight">\(C\)</span>) les événements suivants :</p>
+<ul class="simple">
+<li><p>Seul <span class="math notranslate nohighlight">\(A\)</span> se réalise;</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> se réalisent, mais pas <span class="math notranslate nohighlight">\(C\)</span>;</p></li>
+<li><p>Les trois événements se réalisent;</p></li>
+<li><p>Au moins l’un des trois événements se réalise;</p></li>
+<li><p>Au moins deux des trois événements se réalisent;</p></li>
+<li><p>Aucun ne se réalise.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="denombrement.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Dénombrement</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="var_alea.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Variables Aléatoires Réelles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langage-de-probabilites">4.1. Langage de Probabilités</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-aleatoire">4.1.1. Expérience aléatoire</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomatisation-des-probabilites">4.2. Axiomatisation des probabilités</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tribu-ou-sigma-algebre">4.2.1. Tribu ou <span class="math notranslate nohighlight">\(\sigma\)</span>-algèbre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tribu-borelienne">4.2.2. Tribu borélienne</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mesure-de-probabilite">4.2.3. Mesure de Probabilité</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evenement-presque-sur-evenement-negligeable">4.2.4. Événement presque sûr, événement négligeable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equiprobabilite">4.2.5. Equiprobabilité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilite-conditionnelle-et-independance">4.3. Probabilité Conditionnelle et Independance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilite-conditionnelle">4.3.1. Probabilité Conditionnelle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independance">4.3.2. Indépendance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independance-de-deux-evenements">4.3.2.1. Indépendance de deux événements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independance-de-plusieurs-evenements">4.3.2.2. Indépendance de Plusieurs Évènements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">4.4. Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">4.4.1. Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">4.4.2. Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">4.4.3. Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">4.4.4. Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">4.4.5. Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">4.4.6. Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">4.4.7. Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">4.4.8. Exercice 8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-9">4.4.9. Exercice 9</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-10">4.4.10. Exercice 10</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-11">4.4.11. Exercice 11</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, Département Informatique, École supérieure de technologie, Casablanca, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Iaousse Mbarek.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Mis à jour le 19 déc. 2023.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Ce manuel est mis à disposition selon les termes de la Licence
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative
+Commons Attribution 4.0 International</a>.
+L'utilisation de ce travail est autorisée à condition d'en
+attribuer la paternité.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
